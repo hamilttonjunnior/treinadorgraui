@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Treinador: Pedagogia, Metodologia e Tática no Voleibol</title>
+    <title>Compêndio Geral de Pedagogia, Didática e Tática do Treino de Voleibol</title>
     
     <!-- Tipografia Google Fonts (Inter & Lexend) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
             
-            --sidebar-width: 300px;
+            --sidebar-width: 310px;
         }
 
         *, *::before, *::after {
@@ -61,7 +61,7 @@
         }
 
         /* ==========================================================================
-           2. LAYOUT & NAVEGAÇÃO LATERAL (SIDEBAR)
+           2. NAVEGAÇÃO LATERAL (SIDEBAR)
            ========================================================================== */
         #sidebar {
             width: var(--sidebar-width);
@@ -117,8 +117,8 @@
 
         .nav-item a {
             display: block;
-            padding: 0.6rem 1.5rem 0.6rem 1.75rem;
-            font-size: 0.875rem;
+            padding: 0.55rem 1.5rem 0.55rem 1.75rem;
+            font-size: 0.85rem;
             color: var(--text-body);
             text-decoration: none;
             transition: all 0.2s ease;
@@ -143,7 +143,7 @@
         }
 
         .content-container {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
         }
 
@@ -181,7 +181,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.6;
         }
@@ -320,12 +320,13 @@
             font-weight: 600;
             color: var(--primary);
             margin: 1.5rem 0;
+            line-height: 1.8;
         }
 
         /* Responsividade */
         @media (max-width: 1024px) {
             #sidebar {
-                display: none; /* Em telas móveis o conteúdo expande totalmente */
+                display: none;
             }
             #main-content {
                 margin-left: 0;
@@ -337,182 +338,233 @@
 </head>
 <body>
 
-    <!-- NAVEGAÇÃO LATERAL (SUMÁRIO) -->
+    <!-- NAVEGAÇÃO LATERAL (SUMÁRIO COMPLETO) -->
     <nav id="sidebar">
         <div class="sidebar-brand">
-            <h2>Manual do Treinador</h2>
-            <p>Voleibol & Pedagogia IPDJ</p>
+            <h2>Compêndio do Treinador</h2>
+            <p>Pedagogia & Didática IPDJ / Voleibol</p>
         </div>
         
         <ul class="nav-menu">
-            <li class="nav-section-title"> Módulo 1: Pedagogia do Treino</li>
+            <li class="nav-section-title"> Módulo 1: Ensino e Aprendizagem</li>
             <li class="nav-item"><a href="#cap1">1. Competição e Inclusão</a></li>
-            <li class="nav-item"><a href="#cap2">2. Eficácia e Tempo Útil (ALT)</a></li>
-            <li class="nav-item"><a href="#cap3">3. Fases da Sessão de Treino</a></li>
+            <li class="nav-item"><a href="#cap2">2. Gestão Eficaz do Treino</a></li>
+            <li class="nav-item"><a href="#cap3">3. A Estrutura da Sessão</a></li>
             <li class="nav-item"><a href="#cap4">4. Ciclo do Feedback Pedagógico</a></li>
-            <li class="nav-item"><a href="#cap5">5. Autonomia e Ensino por Pares</a></li>
-            <li class="nav-item"><a href="#cap6">6. Tecnologia e Avaliação Digital</a></li>
 
-            <li class="nav-section-title"> Módulo 2: Regulamento e Formação</li>
-            <li class="nav-item"><a href="#cap7">7. Regulamento de Formação (9 Jogadores)</a></li>
-            <li class="nav-item"><a href="#cap8">8. Escalões: Iniciadas vs. Cadetes vs. Seniores</a></li>
+            <li class="nav-section-title"> Módulo 2: Autonomia e Tecnologia</li>
+            <li class="nav-item"><a href="#cap5">5. Autonomização e Ensino por Pares</a></li>
+            <li class="nav-item"><a href="#cap6">6. Recursos Tecnológicos e Avaliação</a></li>
 
-            <li class="nav-section-title"> Módulo 3: Biomecânica e Tática</li>
-            <li class="nav-item"><a href="#cap9">9. Biomecânica dos Fundamentos</a></li>
-            <li class="nav-item"><a href="#cap10">10. Sistemas Táticos e Fases K1/K2</a></li>
+            <li class="nav-section-title"> Módulo 3: Regulamento e Formação</li>
+            <li class="nav-item"><a href="#cap7">7. Regulamento Oficial de Formação</a></li>
+            <li class="nav-item"><a href="#cap8">8. Abordagem Metodológica por Escalão</a></li>
+
+            <li class="nav-section-title"> Módulo 4: Biomecânica e Tática</li>
+            <li class="nav-item"><a href="#cap9">9. Biomecânica dos Gestos Técnicos</a></li>
+            <li class="nav-item"><a href="#cap10">10. Tática Coletiva (Complexos K1 e K2)</a></li>
         </ul>
     </nav>
 
-    <!-- ÁREA DE CONTEÚDO -->
+    <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
     <main id="main-content">
         <div class="content-container">
             
             <!-- CAPA / HERO HEADER -->
             <header class="hero-card">
-                <span class="hero-badge">Compêndio Oficial de Formação</span>
-                <h1 class="hero-title">Metodologia, Pedagogia e Tática de Voleibol</h1>
-                <p class="hero-subtitle">Manual Integrado do Treinador: Articulação entre os Referenciais do IPDJ (Grau I/II), Biomecânica de Formação, Regulamentos Federais e Gestão Humana de Atletas.</p>
+                <span class="hero-badge">Compêndio Exaustivo e Integrado</span>
+                <h1 class="hero-title">Pedagogia, Didática e Tática do Treino de Voleibol</h1>
+                <p class="hero-subtitle">Síntese Integrada dos Diapositivos Pedagógicos, Referenciais IPDJ (Grau I / II), Biomecânica Aplicada, Tática de Jogo e Regulamentação Oficial de Formação.</p>
             </header>
 
             <!-- CAPÍTULO 1 -->
             <article id="cap1" class="chapter-card">
                 <h2 class="chapter-header">1. O Treino Desportivo como Processo de Ensino-Aprendizagem</h2>
-                <p>O treino com jovens atletas deve ser encarado primariamente como um processo pedagógico estruturado. O papel do treinador vai muito além do conhecimento tático; exige a capacidade de criar um ambiente motivador e inclusivo.</p>
-                
+                <p>O treino desportivo em etapas jovens é uma atividade eminentemente pedagógica. A competição atua como um catalisador de motivação, mas a orientação da prática deve centrar-se na evolução pessoal e coletiva.</p>
+
                 <h3 class="section-header">A. O Compromisso entre Competição e Inclusão</h3>
                 <ul>
-                    <li><strong>Papel Central da Competição:</strong> Funciona como o grande elemento mobilizador e catalisador do interesse e entusiasmo em idades jovens.</li>
-                    <li><strong>Demonstração do Rendimento:</strong> O momento do jogo é a oportunidade de colocar em prática, sob pressão regulada, os comportamentos motores trabalhados nos treinos.</li>
-                    <li><strong>Foco Intrapessoal vs. Interpessoal:</strong> Nas etapas de formação, a avaliação do sucesso deve priorizar a evolução individual e coletiva da própria equipa (auto-superação) em detrimento do resultado exclusivo no marcador.</li>
-                    <li><strong>Garantia de Inclusão:</strong> É dever ético e pedagógico garantir tempo de prática efetiva a todos os atletas para combater a desmotivação e o abandono desportivo precocidade (<em>drop-out</em>).</li>
+                    <li><strong>Papel Central da Competição:</strong> Funciona como elemento mobilizador e catalisador do interesse, empenho e motivação dos praticantes em idades jovens.</li>
+                    <li><strong>Demonstração do Rendimento:</strong> O momento competitivo é a oportunidade real de aplicar, sob pressão do jogo, as soluções motoras e táticas trabalhadas no treino.</li>
+                    <li><strong>Foco Intrapessoal vs. Interpessoal:</strong> Em etapas de formação, a avaliação do sucesso deve priorizar a evolução do próprio atleta/equipa (auto-superação e mestria) em vez do resultado exclusivo frente ao adversário.</li>
+                    <li><strong>Garantia de Inclusão:</strong> Assegurar que todos os atletas têm tempo de jogo e de prática efetiva para evitar a desmotivação e o abandono desportivo precocidade (<em>drop-out</em>).</li>
                 </ul>
 
                 <div class="callout callout-info">
-                    <div class="callout-title"> Princípio da Auto-Superação</div>
-                    O sucesso na formação mede-se pelo domínio técnico e tático adquirido em relação ao ponto de partida do atleta, e não apenas pelo número de vitórias na tabela classificativa.
+                    <div class="callout-title"> Orientação para a Mestria</div>
+                    O foco no rendimento intrapessoal fortalece o autoconceito do jovem atleta. Quando o sucesso é medido pela superação individual, reduz-se a ansiedade competitiva e aumenta-se a retenção a longo prazo.
                 </div>
             </article>
 
             <!-- CAPÍTULO 2 -->
             <article id="cap2" class="chapter-card">
                 <h2 class="chapter-header">2. A Dimensão da Gestão do Treino (Eficácia Pedagógica)</h2>
-                <p>A eficácia do treino mede-se pela densidade motora e pela redução do tempo morto entre tarefas.</p>
+                <p>A eficácia pedagógica do treinador reflete-se na sua capacidade de otimizar o tempo e manter um ambiente de aprendizagem organizado e focado.</p>
 
-                <h3 class="section-header">A. Otimização do Tempo de Treino</h3>
+                <h3 class="section-header">A. Omitir Perdas de Tempo e Otimizar o Tempo</h3>
                 <ul>
-                    <li><strong>Tempo Útil de Treino:</strong> Minimizar pausas para explicações longas, transições de exercícios e montagem de material.</li>
-                    <li><strong>Tempo Potencial de Aprendizagem (ALT - Academic Learning Time):</strong> Garantir que o atleta está a executar tarefas adaptadas ao seu nível real de habilidade (nível ótimo de desafio), reduzindo o tempo em filas de espera.</li>
+                    <li><strong>Tempo Útil de Treino:</strong> Reduzir o tempo gasto em transições de exercícios, explicações longas e montagem/arrumação de material.</li>
+                    <li><strong>Tempo Disponível para a Prática:</strong> Promover exercícios fluídos com poucos atletas em fila de espera, aumentando as repetições de qualidade.</li>
+                    <li><strong>Tempo Potencial de Aprendizagem (ALT - Academic Learning Time):</strong> Garantir que o atleta está a praticar tarefas ajustadas ao seu nível real de habilidade (nível ótimo de desafio).</li>
                 </ul>
 
-                <h3 class="section-header">B. Supervisão e Omnipresença (*Withitness*)</h3>
+                <h3 class="section-header">B. Supervisão e Monitorização</h3>
                 <ul>
-                    <li><strong>Efeito de Omnipresença:</strong> Posicionamento constante do treinador no perímetro do pavilhão, mantendo todo o grupo dentro do seu campo visual para prevenir desequilíbrios comportamentais.</li>
-                    <li><strong>Sinalética Gestual:</strong> Utilização de gestos e apitos padronizados para iniciar, parar ou rodar exercícios, economizando tempo de instrução verbal.</li>
+                    <li><strong>Efeito de Omnipresença (*Withitness*):</strong> Posicionamento constante do treinador no perímetro do recinto de treino, mantendo todo o grupo sob o seu campo visual para prevenir comportamentos desviantes.</li>
+                    <li><strong>Sinalética Gestual:</strong> Uso de gestos e códigos visuais padronizados para orientar, parar ou rodar exercícios, economizando tempo instrucional.</li>
+                    <li><strong>Controlo do Clima de Atenção:</strong> Assegurar o contacto visual direto antes de emitir qualquer instrução.</li>
+                    <li><strong>Manutenção do Empenho:</strong> Presença ativa e dinâmica para incutir rigor, intensidade e atitude positiva nos atletas.</li>
                 </ul>
 
-                <div class="callout callout-accent">
-                    <div class="callout-title"> Regra do Perímetro</div>
-                    Nunca leciones de costas para o restante grupo. Mantém-te na linha limite do campo para abraçar visualmente todos os atletas em prática.
-                </div>
+                <h3 class="section-header">C. Disciplina e "Saber-Estar"</h3>
+                <ul>
+                    <li><strong>Estabelecimento de Regras:</strong> Criar procedimentos e normas claras (por escrito) desde o início da época.</li>
+                    <li><strong>Sanção Educativa e Imparcial:</strong> Atuar com objetividade sobre comportamentos inadequados, sancionando a conduta e mantendo a justiça percetiva no grupo.</li>
+                    <li><strong>Valorização do Comportamento Adequado:</strong> Reforçar <em>EXPLICITAMENTE</em> e elogiar as boas atitudes e o cumprimento das normas.</li>
+                </ul>
             </article>
 
             <!-- CAPÍTULO 3 -->
             <article id="cap3" class="chapter-card">
                 <h2 class="chapter-header">3. A Dimensão Instrucional (Momentos da Sessão)</h2>
-                <p>A organização clara dos momentos da sessão garante a ancoragem do conhecimento e o compromisso dos praticantes.</p>
+                <p>A condução didática da sessão organiza-se em três momentos estruturantes que asseguram a compreensão e o aproveitamento motor.</p>
 
                 <div class="diagram-box">
-                    INÍCIO (Ancoragem & Objetivos) ➔ DURANTE (Demonstração & Variantes) ➔ ENCERRAMENTO (Síntese & Reforço)
+                    <strong>INÍCIO DA SESSÃO</strong> ➔ <strong>DURANTE O TREINO</strong> ➔ <strong>ENCERRAMENTO</strong><br>
+                    <small>(Objetivos & Ancoragem) ➔ (Critérios, Demonstração & Variantes) ➔ (Síntese, Feedbacks & Desafio)</small>
                 </div>
 
-                <h3 class="section-header">A. Estrutura Tripartida da Sessão</h3>
+                <h3 class="section-header">A. Início da Sessão (Apresentação Inicial)</h3>
+                <ul>
+                    <li>Clarificar os objetivos gerais da sessão.</li>
+                    <li>Promover a ancoragem pedagógica, relacionando o treino com as sessões anteriores e futuras.</li>
+                    <li>Apresentar os conteúdos e as aprendizagens-chave.</li>
+                    <li>Definir as condições organizativas (grupos, estações, sinais).</li>
+                    <li><strong>Verificação da Compreensão (Checking for Understanding):</strong> Colocar perguntas concretas e direcionadas a atletas específicos para confirmar a assimilação da mensagem.</li>
+                </ul>
+
+                <h3 class="section-header">B. Durante a Sessão (Apresentação de Tarefas)</h3>
+                <ul>
+                    <li>Identificar com clareza os critérios de êxito (como avaliar o sucesso do movimento).</li>
+                    <li>Fornecer demonstração visual (pelo treinador ou por um atleta modelo) simultaneamente à explicação verbal.</li>
+                    <li>Apresentar variantes de facilidade e dificuldade (regressões e progressões) para adaptar o exercício à heterogeneidade do grupo.</li>
+                    <li>Recapitular e re-explicar caso se detetem falhas de compreensão.</li>
+                </ul>
+
+                <h3 class="section-header">C. Encerramento da Sessão</h3>
+                <ul>
+                    <li>Fazer uma revisão curta e concisa dos pontos essenciais trabalhados.</li>
+                    <li>Ligar o treino às aprendizagens do treino seguinte ou do jogo.</li>
+                    <li>Emitir feedbacks coletivos e/ou individuais.</li>
+                    <li>Lançar novos desafios e reforçar a coesão e motivação do grupo.</li>
+                </ul>
+            </article>
+
+            <!-- CAPÍTULO 4 -->
+            <article id="cap4" class="chapter-card">
+                <h2 class="chapter-header">4. Ciclo e Tipologia do Feedback Pedagógico</h2>
+                <p>A intervenção corretiva do treinador fundamenta-se na observação sistemática e na escolha do tipo de informação a fornecer ao atleta.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title"> O Ciclo Contínuo de Feedback (Rosado & Mesquita)</div>
+                    <div class="diagram-box" style="margin: 0.5rem 0 0; background: #ffffff;">
+                        Observação do Erro ➔ Decisão (Intervir ou Aguardar) ➔ Feedback Informativo ➔ Observação do Ajuste Motor ➔ Nova Decisão
+                    </div>
+                </div>
+
+                <h3 class="section-header">Tipos de Feedback Pedagógico</h3>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>Momento</th>
-                                <th>Ações Chave do Treinador</th>
-                                <th>Objetivo Pedagógico</th>
+                                <th>Tipologia</th>
+                                <th>Caracterização</th>
+                                <th>Exemplo Prático</th>
+                                <th>Aplicação Preferencial</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Início da Sessão</strong></td>
-                                <td>Apresentação dos objetivos, ancoragem com o treino anterior, verificação de compreensão (<em>Checking for Understanding</em>).</td>
-                                <td>Focar a atenção e ativar a memória motora.</td>
+                                <td><strong>Avaliativo (Positivo/Negativo)</strong></td>
+                                <td>Emissão de um juízo de valor sobre a ação. Mantém a motivação, mas não ensina a correção.</td>
+                                <td>"Muito bem!" ou "Não foi bom."</td>
+                                <td>Reforço emocional imediato.</td>
                             </tr>
                             <tr>
-                                <td><strong>Durante a Sessão</strong></td>
-                                <td>Apresentação de critérios de êxito, demonstração visual perfeita, introdução de progressões e regressões.</td>
-                                <td>Garantir a execução técnica correta e adaptada.</td>
+                                <td><strong>Prescritivo</strong></td>
+                                <td>Indica a solução motora exata para a repetição seguinte.</td>
+                                <td>"Flecte mais os joelhos antes da batida."</td>
+                                <td>Iniciação técnica / Erros grosseiros.</td>
                             </tr>
                             <tr>
-                                <td><strong>Encerramento</strong></td>
-                                <td>Síntese concisa dos conteúdos, emissão de feedbacks coletivos e lançamento do desafio para o próximo jogo/treino.</td>
-                                <td>Consolidar a aprendizagem e motivar o grupo.</td>
+                                <td><strong>Descritivo</strong></td>
+                                <td>Identifica o erro específico cometido pelo atleta.</td>
+                                <td>"Bateste na bola demasiado atrás da cabeça."</td>
+                                <td>Consolidação / Atletas intermédios.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interrogativo</strong></td>
+                                <td>Perguntas que induzem o atleta à reflexão e autoconsciência.</td>
+                                <td>"Onde devia estar a tua linha de ombros?"</td>
+                                <td>Avançado / Autonomia tática.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </article>
 
-            <!-- CAPÍTULO 4 -->
-            <article id="cap4" class="chapter-card">
-                <h2 class="chapter-header">4. Ciclo e Tipologia do Feedback Pedagógico</h2>
-                <p>Segundo os referenciais de Rosado & Mesquita, o feedback é o motor principal da correção motora no desporto.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title"> Ciclo Contínuo de Feedback</div>
-                    Observação do Erro ➔ Decisão (Intervir/Aguardar) ➔ Feedback Emitido ➔ Observação do Ajuste Motor ➔ Nova Decisão.
-                </div>
-
-                <h3 class="section-header">Tipos de Feedback</h3>
-                <ul>
-                    <li><strong>Prescritivo:</strong> Indica a solução exata para a repetição seguinte (ex: "Flecte mais os joelhos antes do toque"). Vital no início da aprendizagem.</li>
-                    <li><strong>Descritivo:</strong> Aponta o erro cometido (ex: "Bateu na bola atrás da linha da cabeça"). Útil em atletas intermédios.</li>
-                    <li><strong>Interrogativo:</strong> Faz perguntas que induzem a reflexão (ex: "Onde estava a tua plataforma de manchete no momento do contacto?"). Promove a autonomia tático-cognitiva.</li>
-                    <li><strong>Avaliativo:</strong> Elogio ou reforço (ex: "Excelente passe!"). Mantém a motivação emocional.</li>
-                </ul>
-            </article>
-
             <!-- CAPÍTULO 5 -->
             <article id="cap5" class="chapter-card">
-                <h2 class="chapter-header">5. Autonomização e Ensino por Pares</h2>
-                <p>Formar atletas autónomos exige transferir gradualmente o controlo do processo para os próprios praticantes.</p>
+                <h2 class="chapter-header">5. Estratégias para a Autonomização do Praticante</h2>
+                <p>Transferir responsabilidade pedagógica para os atletas melhora a sua retenção cognitiva e capacidade de tomada de decisão em jogo.</p>
 
                 <h3 class="section-header">A. Ferramentas Autonomizadoras</h3>
                 <ul>
-                    <li><strong>Cartões-Tarefa:</strong> Guias visuais e escritos nas estações de treino que permitem aos atletas gerirem os seus próprios exercícios.</li>
-                    <li><strong>Descoberta Guiada:</strong> Formulação de cenários e problemas táticos para que o atleta "descubra" as melhores soluções de jogo.</li>
+                    <li><strong>Cartões-Tarefa:</strong> Suportes visuais/escritos com esquemas e critérios que permitem aos atletas gerirem e executarem estações de treino de forma autónoma.</li>
+                    <li><strong>Descoberta Guiada Convergente:</strong> Estruturação de perguntas e condicionantes que guiam o atleta a "descobrir" a solução ideal pretendida pelo treinador.</li>
+                    <li><strong>Descoberta Guiada Divergente:</strong> Criação de cenários e problemas táticos para estimular o atleta a encontrar múltiplas soluções válidas (promovendo a criatividade).</li>
                 </ul>
 
-                <h3 class="section-header">B. Ensino por Pares (Peer Instruction)</h3>
-                <p>Ao colocar atletas a observar e corrigir os seus colegas, ativa-se o **Efeito Tutor**: o atleta que ensina consolida de forma muito mais profunda o seu próprio modelo mental do gesto técnico.</p>
+                <h3 class="section-header">B. Ensino por Pares (*Peer Instruction*)</h3>
+                <ul>
+                    <li><strong>Aprendizagem Cooperativa:</strong> Trabalho em dupla ou pequeno grupo com apoio mútuo.</li>
+                    <li><strong>Efeito Tutor:</strong> O atleta que observa e corrige o colega solidifica o seu próprio "modelo mental" do movimento.</li>
+                    <li><strong>Benefícios Socioafetivos:</strong> Desenvolve competências de comunicação, empatia, escuta ativa e responsabilidade partilhada pelo treino.</li>
+                </ul>
             </article>
 
             <!-- CAPÍTULO 6 -->
             <article id="cap6" class="chapter-card">
-                <h2 class="chapter-header">6. Avaliação Digital e Recursos Tecnológicos</h2>
-                <p>A tecnologia no pavilhão deve ser um meio para acelerar a aprendizagem, sem comprometer o tempo de prática motora.</p>
-                
+                <h2 class="chapter-header">6. Recursos Tecnológicos e Avaliação Digital</h2>
+                <p>A utilização de dispositivos digitais no treino deve servir como um meio facilitador da reflexão, sem sacrificar a densidade motora.</p>
+
+                <h3 class="section-header">A. Aplicação no Treino (Tablets / Smartphones)</h3>
                 <ul>
-                    <li><strong>Vídeo Delay (Atraso de Vídeo):</strong> Permite ao atleta executar o gesto técnico (ex: ataque) e observar a sua execução no tablet 5 segundos depois, alinhando a sensação cinestésica com a imagem real.</li>
-                    <li><strong>Filtro de Informação:</strong> Focar a análise em apenas 1 ou 2 componentes críticas de cada vez para evitar o excesso de informação (*information overload*).</li>
+                    <li><strong>Gravação de Vídeo & Video Delay:</strong> Permite ao atleta visualizar a sua própria execução poucos segundos após a ação, eliminando a subjetividade e alinhando a perceção cinestésica com a imagem real.</li>
+                    <li><strong>QR-Codes:</strong> Acesso rápido a fichas de tarefas, exercícios e tutoriais demonstrativos em estações autónomas.</li>
+                    <li><strong>Observação por Pares Digital:</strong> Atribuição de funções analíticas a atletas em pausa através de grelhas simples no ecrã.</li>
+                </ul>
+
+                <h3 class="section-header">B. Cuidados Pedagógicos no Uso da Tecnologia</h3>
+                <ul>
+                    <li><strong>Filtro de Informação:</strong> Selecionar apenas 1 ou 2 componentes críticas para análise, evitando a sobrecarga cognitiva do atleta (<em>information overload</em>).</li>
+                    <li><strong>Literacia Digital:</strong> Assegurar que os atletas dominam o uso da ferramenta para não perder tempo útil de treino.</li>
+                    <li><strong>Tecnologia como Meio:</strong> Garantir que o recurso ao ecrã auxilia o processo reflexivo sem comprometer a intensidade e o volume de prática motora.</li>
                 </ul>
             </article>
 
             <!-- CAPÍTULO 7 -->
             <article id="cap7" class="chapter-card">
                 <h2 class="chapter-header">7. Enquadramento Regulamentar: Regra dos 9 Jogadores</h2>
-                <p>Análise detalhada da regulamentação oficial das federações para os escalões de formação (Infantis e Iniciados).</p>
+                <p>Análise do regulamento federativo de arbitragem para os escalões de formação (Infantis e Iniciados).</p>
 
                 <div class="callout callout-accent">
-                    <div class="callout-title"> Consequências da Falta do Mínimo de 9 Jogadores</div>
-                    <p>Quando uma equipa de Infantis ou Iniciados não apresenta o mínimo de 9 atletas inscritos na folha de jogo:</p>
+                    <div class="callout-title"> Consequências da Falta do Número Mínimo de 9 Atletas</div>
+                    <p>Quando uma equipa de Infantis ou Iniciados não atinge o número mínimo de 9 jogadores inscritos no boletim de jogo:</p>
                     <ol>
-                        <li><strong>Inexistência de Faltas de Rotação:</strong> O jogo **PODE** realizar-se, mas ficam sem efeito as obrigações de rotação e utilização mínima de jogadores por set.</li>
-                        <li><strong>Derrota Administrativa:</strong> Independentemente do resultado no campo, é atribuída **derrota por 0–3** (parciais de 0–25, 0–25, 0–25) e 0 pontos na classificação à equipa faltosa.</li>
-                        <li><strong>Benefício do Adversário:</strong> À equipa adversária é atribuída vitória por 3–0 (25–0, 25–0, 25–0) e 3 pontos.</li>
+                        <li><strong>Permissão de Jogo:</strong> A equipa **PODE** realizar o jogo, desde que cumpra a Regra 7.3.1 (Regra geral de Voleibol). Não se aplicam, nesta situação, as restrições obrigatórias de rotação/utilização de jogadores novos por set.</li>
+                        <li><strong>Derrota Administrativa:</strong> Independentemente do resultado alcançado em campo, é atribuída **derrota por 0–3** (parciais de 0–25, 0–25, 0–25) e **zero (0) pontos** na tabela de classificação à equipa incumpridora.</li>
+                        <li><strong>Adversário:</strong> À equipa adversária é atribuída a **vitória por 3–0** (parciais de 25–0, 25–0, 25–0) e **três (3) pontos** no jogo.</li>
                     </ol>
                 </div>
             </article>
@@ -520,34 +572,36 @@
             <!-- CAPÍTULO 8 -->
             <article id="cap8" class="chapter-card">
                 <h2 class="chapter-header">8. Abordagem Metodológica por Escalão</h2>
+                <p>O planeamento deve respeitar as fases de maturação motora e tática dos atletas ao longo dos escalões de formação.</p>
+
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>Escalão</th>
-                                <th>Foco Principal</th>
+                                <th>Escalão / Categoria</th>
+                                <th>Foco Primário</th>
                                 <th>Sistema Tático</th>
-                                <th>Volume / Intensidade</th>
+                                <th>Volume vs. Intensidade</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>Iniciadas (Sub-14/15)</strong></td>
-                                <td>Deslocamentos, passe alto, manchete precisa, serviço por cima consciente.</td>
+                                <td>Leitura de bola, deslocamentos, manchete precisa, passe alto de dedos, serviço por cima consciente.</td>
                                 <td>6x0 / 4x2 Simples</td>
-                                <td>Alto Volume Técnico / Baixa Intensidade de Salto</td>
+                                <td>Alto volume técnico, baixa/média intensidade mecânica.</td>
                             </tr>
                             <tr>
                                 <td><strong>Cadetes (Sub-16/17)</strong></td>
-                                <td>Especialização posicional, bloqueio duplo, apoio e transição ofensiva.</td>
-                                <td>4x2 c/ Infiltração / 5x1</td>
-                                <td>Volume Moderado / Alta Intensidade Mecânica</td>
+                                <td>Especialização funcional, bloqueio duplo, apoio de ataque e transição K2 rápida.</td>
+                                <td>4x2 c/ Infiltração / 5x1 Inicial</td>
+                                <td>Volume moderado, alta intensidade de deslocamento e saltos.</td>
                             </tr>
                             <tr>
                                 <td><strong>Veteranos / Seniores</strong></td>
-                                <td>Consistência tática, leitura de jogo, eficiência de pontuação, prevenção de lesões.</td>
+                                <td>Eficiência tática, leitura de jogo, estabilidade emocional, gestão articular/prevenção.</td>
                                 <td>5x1 Avançado</td>
-                                <td>Volume Controlado / Máxima Intensidade Competitiva</td>
+                                <td>Volume controlado, máxima intensidade competitiva.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -558,31 +612,37 @@
             <article id="cap9" class="chapter-card">
                 <h2 class="chapter-header">9. Biomecânica dos Gestos Técnicos</h2>
                 
-                <h3 class="section-header">A. O Ataque (Cadeia Cinética)</h3>
-                <p>O remate é uma transferência de energia que começa na corrida de aproximação e culmina no contacto com a bola:</p>
+                <h3 class="section-header">A. O Passe / Recepção de Manchete</h3>
+                <p>Base do jogo de recepção e defesa. Exige uma plataforma rígida formada pelos antebraços unidos, sem quebrar os cotovelos no momento do impacto. O impulso deve provir da extensão suave dos membros inferiores e não do "balanço" excessivo dos braços.</p>
+
+                <h3 class="section-header">B. A Distribuição / Passe de Dedos</h3>
+                <p>Executado sobre a linha da testa, com as mãos a formarem um triângulo/concha (indicadores e polegares). O contacto deve ser suave e simétrico, utilizando a flexão e extensão de pulsos e cotovelos.</p>
+
+                <h3 class="section-header">C. O Ataque (Cadeia Cinética)</h3>
                 <ul>
-                    <li><strong>Penúltima Passada:</strong> Larga e profunda para transformar a velocidade horizontal em impulsão vertical.</li>
-                    <li><strong>Armação de Braços:</strong> O braço não-dominante aponta para a bola (estabilizador visual) enquanto o cotovelo dominante recua acima da linha dos ombros.</li>
-                    <li><strong>Ponto de Contacto:</strong> No ponto mais alto do salto, à frente do corpo, aplicando flexão ativa do pulso para gerar rotação (*top-spin*).</li>
+                    <li><strong>Passada de Aproximação:</strong> A penúltima passada (passo de travagem) deve ser longa e profunda para converter a velocidade horizontal em impulsão vertical.</li>
+                    <li><strong>Armação de Braços:</strong> Elevação simétrica. O braço não-dominante aponta para a bola (estabilizador visual) enquanto o cotovelo dominante recua acima da linha dos ombros.</li>
+                    <li><strong>Punto de Contacto:</strong> No ponto mais alto do salto, à frente do corpo, aplicando flexão/pronação ativa do pulso para gerar efeito *top-spin*.</li>
                 </ul>
 
-                <h3 class="section-header">B. O Bloqueio (Selagem da Rede)</h3>
-                <p>O sucesso do bloqueio depende da penetração das mãos sobre o plano superior da rede, encolhendo os ombros para proteger a articulação do ombro e fechar o espaço de passagem da bola.</p>
+                <h3 class="section-header">D. O Bloqueio</h3>
+                <p>A eficácia depende da velocidade de deslocamento lateral e da penetração das mãos sobre o plano da rede, selando o espaço com os ombros encolhidos para proteção articular.</p>
             </article>
 
             <!-- CAPÍTULO 10 -->
             <article id="cap10" class="chapter-card">
                 <h2 class="chapter-header">10. Tática Coletiva: Complexo K1 e K2</h2>
-                
-                <h3 class="section-header">A. Complexo K1 (Ataque de Recepção)</h3>
-                <p>Envolve as ações de **Serviço Adversário ➔ Recepção / Passe ➔ Distribuição ➔ Remate Ofensivo ➔ Cobertura**. O objetivo do K1 é anular a vantagem do serviço adversário à primeira intenção.</p>
+                <p>A organização tática do voleibol divide-se em duas fases fundamentais de jogo que exigem diferentes estados mentais e coordenações mecânicas.</p>
+
+                <h3 class="section-header">A. Complexo K1 (Ataque de Recepção / Side-Out)</h3>
+                <p>Compreende a sequência ofensiva primária: **Serviço Adversário ➔ Recepção de Manchete ➔ Distribuição ➔ Remate Ofensivo ➔ Cobertura do Ataque**. A prioridade do K1 é garantir uma recepção de alta qualidade para permitir ao distribuidor utilizar todas as opções táticas (zonas 4, 2, centrais e pipe).</p>
 
                 <h3 class="section-header">B. Complexo K2 (Contra-Ataque)</h3>
-                <p>Compreende as ações de **Serviço Próprio ➔ Bloqueio ➔ Defesa de Campo ➔ Distribuição de Transição ➔ Contra-Ataque**. É no K2 que as equipas de alto rendimento constroem as diferenças pontuais no marcador.</p>
+                <p>Compreende a sequência defensiva e de re-ataque: **Serviço Próprio ➔ Bloqueio ➔ Defesa de Campo ➔ Distribuição de Transição ➔ Contra-Ataque**. É no K2 que as equipas de elevado rendimento constroem as diferenças pontuais no marcador, exigindo uma transição mental agressiva da defesa para o ataque.</p>
 
                 <div class="callout callout-success">
-                    <div class="callout-title"> Transição Mental K1 ➔ K2</div>
-                    A velocidade com que uma equipa reage à perda da posse da bola e se organiza em postura defensiva define a sua maturidade tática em campo.
+                    <div class="callout-title"> Sinergia K1-K2</div>
+                    A estabilidade de uma equipa mede-se pela sua eficiência de K1, mas a capacidade de ganhar jogos decisivos reside na agressividade e organização do seu sistema K2.
                 </div>
             </article>
 
@@ -590,7 +650,7 @@
     </main>
 
     <script>
-        // Realçar item ativo no menu ao navegar
+        // Script para realçar o item ativo no menu lateral conforme o scroll
         const navLinks = document.querySelectorAll('.nav-item a');
         
         window.addEventListener('scroll', () => {
@@ -599,7 +659,7 @@
             
             chapters.forEach(chapter => {
                 const chapterTop = chapter.offsetTop;
-                if (pageYOffset >= chapterTop - 100) {
+                if (pageYOffset >= chapterTop - 120) {
                     current = chapter.getAttribute('id');
                 }
             });
