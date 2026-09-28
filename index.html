@@ -1,985 +1,187 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compêndio Enciclopédico de Formação de Treinadores de Voleibol e Vólei de Praia — Grau I</title>
-    
-    <!-- Tipografia Google Fonts (Inter & Lexend) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* ==========================================================================
-           SISTEMA DE DESIGN CLEAN & ELEGANTE (LIGHT MODE PREMIUM)
-           ========================================================================== */
-        :root {
-            --bg-body: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-sidebar: #ffffff;
-            --bg-subtle: #f1f5f9;
-            
-            --border-color: #e2e8f0;
-            --border-hover: #cbd5e1;
-            
-            --text-heading: #0f172a;
-            --text-body: #334155;
-            --text-muted: #64748b;
-            
-            --primary: #1e40af;        /* Azul Real Elegante */
-            --primary-light: #eff6ff;  /* Azul Claro Suave */
-            --accent: #d97706;         /* Âmbar/Dourado Tático */
-            --accent-light: #fffbeb;   /* Fundo Âmbar */
-            --success: #15803d;        /* Verde Sucesso */
-            --success-light: #f0fdf4;
-            --danger: #b91c1c;         /* Vermelho Alerta */
-            --danger-light: #fef2f2;
-            
-            --sidebar-width: 340px;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-body);
-            line-height: 1.75;
-            display: flex;
-            min-height: 100vh;
-        }
-
-        #sidebar {
-            width: var(--sidebar-width);
-            background-color: var(--bg-sidebar);
-            border-right: 1px solid var(--border-color);
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .sidebar-brand {
-            padding: 1.75rem 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            background: linear-gradient(135deg, #ffffff, var(--primary-light));
-        }
-
-        .sidebar-brand h2 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.15rem;
-            color: var(--primary);
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .sidebar-brand p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 0.25rem;
-            font-weight: 600;
-        }
-
-        .nav-menu {
-            list-style: none;
-            padding: 1rem 0;
-        }
-
-        .nav-section-title {
-            padding: 1.25rem 1.5rem 0.4rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-        }
-
-        .nav-item a {
-            display: block;
-            padding: 0.45rem 1.5rem 0.45rem 1.75rem;
-            font-size: 0.81rem;
-            color: var(--text-body);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border-left: 3px solid transparent;
-            font-weight: 500;
-        }
-
-        .nav-item a:hover, .nav-item a.active {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            border-left-color: var(--primary);
-        }
-
-        #main-content {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 3rem 4rem;
-            max-width: calc(100% - var(--sidebar-width));
-        }
-
-        .content-container {
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-        .hero-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-top: 5px solid var(--primary);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.06);
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.35rem 0.85rem;
-            background-color: var(--primary-light);
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title {
-            font-family: 'Lexend', sans-serif;
-            font-size: 2.1rem;
-            font-weight: 800;
-            color: var(--text-heading);
-            line-height: 1.25;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .chapter-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            scroll-margin-top: 2rem;
-        }
-
-        h2.chapter-header {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--primary-light);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        h3.section-header {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin: 1.85rem 0 0.85rem;
-        }
-
-        h4.subsection-header {
-            font-family: 'Lexend', sans-serif;
-            font-size: 0.98rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin: 1.35rem 0 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1.25rem;
-            color: var(--text-body);
-            text-align: justify;
-        }
-
-        ul, ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.6rem;
-            color: var(--text-body);
-        }
-
-        .callout {
-            padding: 1.25rem 1.5rem;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-            border-left: 4px solid;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .callout-info {
-            background-color: var(--primary-light);
-            border-color: var(--primary);
-            color: #1e3a8a;
-        }
-
-        .callout-accent {
-            background-color: var(--accent-light);
-            border-color: var(--accent);
-            color: #78350f;
-        }
-
-        .callout-success {
-            background-color: var(--success-light);
-            border-color: var(--success);
-            color: #14532d;
-        }
-
-        .callout-danger {
-            background-color: var(--danger-light);
-            border-color: var(--danger);
-            color: #7f1d1d;
-        }
-
-        .callout-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            margin: 1.75rem 0;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.88rem;
-            background-color: #ffffff;
-        }
-
-        th {
-            background-color: var(--bg-subtle);
-            color: var(--text-heading);
-            padding: 0.85rem 0.9rem;
-            font-weight: 700;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        td {
-            padding: 0.8rem 0.9rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-body);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:nth-child(even) {
-            background-color: #fafafa;
-        }
-
-        .diagram-box {
-            background-color: var(--bg-subtle);
-            border: 1px dashed var(--primary);
-            padding: 1.25rem;
-            border-radius: 10px;
-            text-align: center;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 600;
-            color: var(--primary);
-            margin: 1.5rem 0;
-            line-height: 1.8;
-            font-size: 0.9rem;
-        }
-
-        .code-like-block {
-            background-color: #0f172a;
-            color: #f8fafc;
-            padding: 1.25rem;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 0.82rem;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 1024px) {
-            #sidebar {
-                display: none;
-            }
-            #main-content {
-                margin-left: 0;
-                max-width: 100%;
-                padding: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- NAVEGAÇÃO LATERAL -->
-    <nav id="sidebar">
-        <div class="sidebar-brand">
-            <h2>Compêndio do Treinador</h2>
-            <p>Voleibol & Praia — Grau I (IPDJ/FPV)</p>
-        </div>
-        
-        <ul class="nav-menu">
-            <li class="nav-section-title">Módulo I: Ética & Pedagogia</li>
-            <li class="nav-item"><a href="#m1-correntes">1. Correntes Éticas e Princípios</a></li>
-            <li class="nav-item"><a href="#m1-problematicas">2. Problemáticas Éticas</a></li>
-            <li class="nav-item"><a href="#m1-pedagogia">3. Pedagogia e Aprendizagem Motora</a></li>
-            <li class="nav-item"><a href="#m1-estilos">4. Estilos de Ensino (Mosston)</a></li>
-            <li class="nav-item"><a href="#m1-psicologia">5. Psicologia e Clima Motivacional</a></li>
-            <li class="nav-item"><a href="#m1-adaptado">6. Desporto Adaptado e Inclusão</a></li>
-
-            <li class="nav-section-title">Módulo II: Fisiologia e Avaliação</li>
-            <li class="nav-item"><a href="#m2-bioenergetica">1. Bioenergética e Fibras Musculares</a></li>
-            <li class="nav-item"><a href="#m2-ltad">2. LTAD, PHV e Bio-Banding</a></li>
-            <li class="nav-item"><a href="#m2-forca">3. Etapas do Treino de Força</a></li>
-            <li class="nav-item"><a href="#m2-protocolos">4. Protocolos dos Testes Físicos</a></li>
-            <li class="nav-item"><a href="#m2-tabelas">5. Tabelas Oficiais de Pontuação</a></li>
-
-            <li class="nav-section-title">Módulo III: Didática e Estatística</li>
-            <li class="nav-item"><a href="#m3-gestao">1. Gestão e Tempo de Prática</a></li>
-            <li class="nav-item"><a href="#m3-instrucao">2. Afunilamento e Instrução</a></li>
-            <li class="nav-item"><a href="#m3-feedback">3. Ciclo de Feedback Pedagógico</a></li>
-            <li class="nav-item"><a href="#m3-autonomia">4. Autonomização e Tecnologia</a></li>
-            <li class="nav-item"><a href="#m3-estatistica">5. Codificação Data Volley e Zonas</a></li>
-
-            <li class="nav-section-title">Módulo IV: Regras e Arbitragem</li>
-            <li class="nav-item"><a href="#m4-composicao">1. Inscrição e Direitos do Capitão</a></li>
-            <li class="nav-item"><a href="#m4-formacao">2. Regra dos 9 Jogadores (FPV)</a></li>
-            <li class="nav-item"><a href="#m4-protocolo">3. Protocolo Cronometrado FIVB</a></li>
-            <li class="nav-item"><a href="#m4-posicoes">4. Regras de Posição e Rotação</a></li>
-            <li class="nav-item"><a href="#m4-libero">5. Substituições e Estatuto do Líbero</a></li>
-            <li class="nav-item"><a href="#m4-sancoes">6. Escala Progressiva de Sanções</a></li>
-            <li class="nav-item"><a href="#m4-protestos">7. Falta de Árbitro e Protestos</a></li>
-
-            <li class="nav-section-title">Módulo V: Biomecânica e Tática (Pavilhão)</li>
-            <li class="nav-item"><a href="#m5-biomecanica">1. Biomecânica dos Gestos Técnicos</a></li>
-            <li class="nav-item"><a href="#m5-complexos">2. Complexos K1, K2 e Transição</a></li>
-            <li class="nav-item"><a href="#m5-escaloes">3. Progressão Tática por Escalão</a></li>
-
-            <li class="nav-section-title">Módulo VI: Voleibol de Praia</li>
-            <li class="nav-item"><a href="#m6-praia-regras">1. Regras Específicas e Instalações</a></li>
-            <li class="nav-item"><a href="#m6-praia-toque">2. Regulamentação do Toque de Bola</a></li>
-            <li class="nav-item"><a href="#m6-praia-biomecanica">3. Biomecânica e Ações na Areia</a></li>
-            <li class="nav-item"><a href="#m6-praia-tatica">4. Tática de Duplas e Sinais de Mão</a></li>
-        </ul>
-    </nav>
-
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main id="main-content">
-        <div class="content-container">
-            
-            <header class="hero-card">
-                <span class="hero-badge">Compêndio Unificado e Sistematizado</span>
-                <h1 class="hero-title">Compêndio do Treinador de Voleibol e Vólei de Praia</h1>
-                <p class="hero-subtitle">Manual completo e detalhado alinhado com o PNFT, FPV, FIVB e IPDJ. Cobre desde a Pedagogia Desportiva, Ética, Fisiologia e Avaliação Física, até à Arbitragem, Biomecânica e Tática do Voleibol de Pavilhão e Voleibol de Praia.</p>
-            </header>
-
-            <!-- ==========================================
-                 MÓDULO I: ÉTICA, PEDAGOGIA E ADAPTADO
-                 ========================================== -->
-            
-            <article id="m1-correntes" class="chapter-card">
-                <h2 class="chapter-header">1. Correntes Éticas e Princípios no Desporto</h2>
-                <p>A ética no desporto constitui a bússola moral do treinador[cite: 10]. A competência técnica é indissociável de uma postura deontológica irrepreensível, uma vez que a conduta do treinador molda diretamente o caráter dos jovens[cite: 10, 17].</p>
-
-                <h3 class="section-header">Correntes Éticas Fundamentais</h3>
-                <ul>
-                    <li><strong>Ética das Virtudes (Aristóteles):</strong> Centra-se no caráter moral do agente[cite: 10]. O agir correto resulta do cultivo continuado de virtudes como a coragem, a justiça, a prudência e a temperança[cite: 10]. No contexto desportivo, o treinador toma decisões corretas porque desenvolveu uma disposição de caráter virtuosa[cite: 10].</li>
-                    <li><strong>Ética Normativa / Deontologismo (Kant):</strong> Assenta no cumprimento estrito de deveres e regras universais (Imperativo Categórico)[cite: 10]. A ação é correta se puder ser adotada como lei universal, independentemente das consequências do ato[cite: 10]. Manifesta-se no respeito absoluto pelas regras do jogo e pela verdade desportiva[cite: 10].</li>
-                    <li><strong>Ética Utilitarista (Mill / Bentham):</strong> Avalia a ação pelas suas consequências, visando produzir a maior utilidade e bem-estar para o maior número de pessoas envolvidas[cite: 10].</li>
-                </ul>
-
-                <div class="callout callout-accent">
-                    <div class="callout-title">Três Questões Éticas da Vida</div>
-                    <p style="margin-bottom:0; font-style:italic; font-weight: 600;">"Nem tudo o que quero eu posso; nem tudo o que posso eu devo; e nem tudo o que devo eu quero."[cite: 10]</p>
-                </div>
-
-                <h3 class="section-header">Neutralidade do Desporto e Integridade</h3>
-                <p>O desporto é uma atividade humana neutra[cite: 10]. O seu valor formativo depende exclusivamente da intenção pedagógica e ética dos seus agentes[cite: 10]. A legalidade cumpre a norma escrita, enquanto a ética assegura o espírito de lealdade e equidade[cite: 10]. O Espírito Olímpico fundamenta-se na <em>Excelência</em>, <em>Amizade</em> e <em>Respeito</em>[cite: 10].</p>
-            </article>
-
-            <article id="m1-problematicas" class="chapter-card">
-                <h2 class="chapter-header">2. Problemáticas Éticas no Desporto Contemporâneo</h2>
-                <ul>
-                    <li><strong>Racismo e Discriminação:</strong> Comportamentos de exclusão ou ofensas baseadas na raça, etnia, religião, orientação sexual ou género[cite: 10]. Exige intervenção imediata e tolerância zero[cite: 10].</li>
-                    <li><strong>Especialização Precoce:</strong> Cargas de treino intensivas e unilaterais em idades jovens[cite: 10, 13]. Provoca lesões de sobrecarga, esgotamento emocional (<em>burnout</em>) e abandono prematuro da modalidade[cite: 10, 13].</li>
-                    <li><strong>Desigualdade de Género:</strong> Assimetria de oportunidades, instalações e visibilidade entre praticantes masculinos e femininos, além de sub-representação em cargos de decisão e treino[cite: 10].</li>
-                    <li><strong>Violência e Bullying:</strong> Práticas de humilhação, abuso verbal ou punições físicas desmesuradas por parte de pares ou treinadores[cite: 10].</li>
-                    <li><strong>Abuso Sexual e Assédio:</strong> Violações graves facilitadas pela assimetria de poder e relação de dependência entre atleta e treinador[cite: 10]. Exige códigos estritos de salvaguarda de menores[cite: 10].</li>
-                    <li><strong>Doping:</strong> Utilização de substâncias proibidas para alterar artificialmente o rendimento físico, destruindo a saúde e a equidade competitiva[cite: 10].</li>
-                    <li><strong>Manipulação de Resultados (Match-Fixing):</strong> Viciação de jogos ou ocorrências específicas associada a apostas desportivas ou corrupção[cite: 10].</li>
-                </ul>
-            </article>
-
-            <article id="m1-pedagogia" class="chapter-card">
-                <h2 class="chapter-header">3. Pedagogia do Desporto e Aprendizagem Motora</h2>
-                <p>A Pedagogia do Desporto estuda a relação didática entre o Treinador, o Praticante e a Tarefa Motora, visando a otimização do processo educativo e do desenvolvimento pessoal[cite: 10, 17].</p>
-
-                <h3 class="section-header">A. Fases da Aprendizagem Motora (Fitts & Posner)</h3>
-                <ol>
-                    <li><strong>Fase Cognitiva:</strong> O praticante tenta compreender o objetivo da tarefa e a sequência mecânica do movimento[cite: 17]. Execução hesitante, cheia de erros e com elevada dependência de feedback visual e instrução verbal exata[cite: 17].</li>
-                    <li><strong>Fase Associativa:</strong> Refinamento técnico[cite: 17]. O atleta reduz o número de erros grosseiros, ganha consistência e começa a utilizar o feedback cinestésico para autorregulação[cite: 17].</li>
-                    <li><strong>Fase Autónoma:</strong> O gesto técnico é executado de forma automática e eficiente, libertando a atenção cognitiva do atleta para a leitura tática do ambiente (e.g., posicionamento do bloqueio adversário)[cite: 17].</li>
-                </ol>
-
-                <h3 class="section-header">B. Estruturação da Prática Motora</h3>
-                <ul>
-                    <li><strong>Prática Em Bloco vs. Prática Aleatória:</strong> A prática em bloco (repetir o mesmo gesto consecutivamente) acelera o desempenho inicial, mas a prática aleatória (variar tarefas aleatoriamente) produz maior retenção e transferência tática a longo prazo[cite: 17].</li>
-                    <li><strong>Prática Massificada vs. Prática Distribuída:</strong> Pausas curtas e distribuídas ao longo da sessão evitam a fadiga neuromuscular e mantêm a precisão técnica[cite: 17].</li>
-                </ul>
-            </article>
-
-            <article id="m1-estilos" class="chapter-card">
-                <h2 class="chapter-header">4. Espectro dos Estilos de Ensino (Mosston & Ashworth)</h2>
-                <p>Os estilos de ensino organizam-se ao longo de um continuum em função da margem de decisão atribuída ao treinador ou ao atleta[cite: 17]:</p>
-
-                <h3 class="section-header">A. Grupo de Estilos por Reprodução (Decisão no Treinador)</h3>
-                <ul>
-                    <li><strong>Comando Direto (Estilo A):</strong> O treinador toma todas as decisões no pré-impacto, impacto e pós-impacto[cite: 17]. Garante rigor e segurança em tarefas complexas, mas inibe a autonomia[cite: 17].</li>
-                    <li><strong>Prática / Tarefa (Estilo B):</strong> Os atletas praticam individualmente com base em guiões fornecidos pelo treinador, gerindo o ritmo e o tempo de execução[cite: 17].</li>
-                    <li><strong>Reciprocidade / Ensino por Pares (Estilo C):</strong> Trabalho em duplas onde um executa e o outro observa e fornece feedback imediato fundamentado numa ficha de critérios[cite: 17].</li>
-                    <li><strong>Autoavaliação (Estilo D):</strong> O atleta avalia a sua própria prestação utilizando critérios objetivos predefinidos[cite: 17].</li>
-                </ul>
-
-                <h3 class="section-header">B. Grupo de Estilos por Produção (Decisão no Atleta)</h3>
-                <ul>
-                    <li><strong>Descoberta Guiada (Estilo F):</strong> O treinador coloca uma sequência lógica de perguntas que conduzem o praticante a "descobrir" a solução técnica ou tática ideal[cite: 17].</li>
-                    <li><strong>Produção Divergente (Estilo G):</strong> O treinador apresenta um problema tático em aberto e estimula a criação de múltiplas respostas válidas, promovendo a criatividade e decisão tática[cite: 17].</li>
-                </ul>
-            </article>
-
-            <article id="m1-psicologia" class="chapter-card">
-                <h2 class="chapter-header">5. Psicologia do Treinador e Clima Motivacional</h2>
-                
-                <h3 class="section-header">A. Teoria da Autodeterminação (TAD - Deci & Ryan)</h3>
-                <p>A motivação intrínseca e o bem-estar psicológico do atleta assentam na satisfação de três **Necessidades Psicológicas Básicas (NPB)**[cite: 10, 13]:</p>
-                <ol>
-                    <li><strong>Autonomia:</strong> Perceção de escolha e participação ativa na tomada de decisões[cite: 10].</li>
-                    <li><strong>Competência:</strong> Sentimento de eficácia e capacidade de superar desafios motrizes[cite: 10, 13].</li>
-                    <li><strong>Pertencimento / Relação:</strong> Sensação de ser integrado, respeitado e valorizado pelo grupo e pelo treinador[cite: 10].</li>
-                </ol>
-
-                <h3 class="section-header">B. Clima Motivacional (Teoria das Metas de Realização)</h3>
-                <ul>
-                    <li><strong>Clima Orientado para a Mestria / Tarefa:</strong> O sucesso é definido pelo esforço, evolução pessoal e aprendizagem intrapessoal[cite: 10]. Promove a resiliência e a retenção[cite: 10].</li>
-                    <li><strong>Clima Orientado para o Ego / Rendimento:</strong> O sucesso é medido pela comparação interpessoal e vitória a qualquer custo[cite: 10]. Eleva a ansiedade e o medo de falhar[cite: 10, 13].</li>
-                </ul>
-            </article>
-
-            <article id="m1-adaptado" class="chapter-card">
-                <h2 class="chapter-header">6. Desporto Adaptado, Inclusão e Modelos da Deficiência</h2>
-                <p>Análise da funcionalidade segundo o modelo Biopsicossocial da CIF (OMS, 2001)[cite: 11].</p>
-                <ul>
-                    <li><strong>Inclusão:</strong> Reestruturação prévia das tarefas, regras e espaços para assegurar acesso e participação equitativa[cite: 11, 17].</li>
-                    <li><strong>Integração:</strong> Inserção do indivíduo num sistema rígido preexistente sem adaptação estrutural[cite: 11, 17].</li>
-                    <li><strong>Escala de Apoio no Desporto Adaptado:</strong> Realiza Sozinho (FS - 4 pts), Ajuda Verbal (AV - 3 pts), Ajuda Física Parcial (AFP - 2 pts), Ajuda Física Total (AFT - 1 pt)[cite: 11].</li>
-                </ul>
-            </article>
-
-            <!-- ==========================================
-                 MÓDULO II: FISIOLOGIA E AVALIAÇÃO FÍSICA
-                 ========================================== -->
-
-            <article id="m2-bioenergetica" class="chapter-card">
-                <h2 class="chapter-header">1. Fisiologia do Exercício, Bioenergética e Tipos de Fibras Musculares</h2>
-                
-                <h3 class="section-header">A. Tipologia de Fibras e Recrutamento Neural</h3>
-                <ul>
-                    <li><strong>Fibras Tipo I (Lentas / Oxidativas):</strong> Baixo limiar de ativação, alta densidade mitocondrial e resistência à fadiga[cite: 15]. Sustentam a postura e o rendimento nas pausas[cite: 15].</li>
-                    <li><strong>Fibras Tipo IIa (Rápidas / Glicolíticas Oxidativas):</strong> Fibras intermédias de elevada velocidade e moderada resistência à fadiga[cite: 15].</li>
-                    <li><strong>Fibras Tipo IIx (Rápidas Glicolíticas Puras):</strong> Máxima velocidade de encurtamento e força explosiva, de fadiga rápida[cite: 15]. Determinantes nos saltos de ataque e bloqueio[cite: 15].</li>
-                    <li><strong>Princípio do Tamanho de Henneman:</strong> Recrutamento progressivo das unidades motoras das menores (Tipo I) para as maiores (Tipo IIx) conforme a exigência de força ou velocidade[cite: 15].</li>
-                </ul>
-
-                <h3 class="section-header">B. Caracterização Bioenergética do Jogo</h3>
-                <p>Modalidade intermitente de alta intensidade[cite: 15]. Alterna ralis explosivos (6–8s em média) com pausas de recuperação (18–30s), num rácio Esforço:Pausa médio entre 1:4 e 1:5[cite: 15]. O Sistema Anaeróbio Alático (ATP-CP) suporta as ações explosivas, enquanto o Sistema Aeróbio garante a ressíntese de fosfocreatina nas pausas[cite: 15].</p>
-            </article>
-
-            <article id="m2-ltad" class="chapter-card">
-                <h2 class="chapter-header">2. Desenvolvimento Atlético a Longo Prazo (LTAD), PHV e Bio-Banding</h2>
-                <p>O Voleibol é uma modalidade de especialização tardia (13–15 anos)[cite: 13].</p>
-                <ul>
-                    <li><strong>Fase de Experimentação (6–12 anos):</strong> Predomínio de Jogo Deliberado sem especialização precoce[cite: 13].</li>
-                    <li><strong>Fase de Especialização (13–15 anos):</strong> Treino estruturado coincidindo com o Pico de Velocidade de Crescimento (PHV)[cite: 13].</li>
-                    <li><strong>Bio-Banding:</strong> Agrupamento de atletas pela maturidade biológica (estimativa de desvio do PHV) para equilibrar a competição e proteger atletas de maturação tardia[cite: 13].</li>
-                </ul>
-            </article>
-
-            <article id="m2-forca" class="chapter-card">
-                <h2 class="chapter-header">3. Etapas do Treino de Força no Voleibol (Modelo Dan Baker)</h2>
-                <ol>
-                    <li>Etapa 1: Calistenia e peso corporal (agachamentos, pranchas, flexões)[cite: 13].</li>
-                    <li>Etapa 2: Controlo motor e amplitude articular completa[cite: 13].</li>
-                    <li>Etapa 3: Cargas leves externas e aprendizagem técnica de barra[cite: 13].</li>
-                    <li>Etapa 4: Hipertrofia funcional e força base[cite: 13].</li>
-                    <li>Etapa 5: Força máxima relativa (&gt;80% 1RM)[cite: 13].</li>
-                    <li>Etapa 6: Potência específica, pliometria e VBT (Treino Baseado na Velocidade)[cite: 13].</li>
-                </ol>
-            </article>
-
-            <article id="m2-protocolos" class="chapter-card">
-                <h2 class="chapter-header">4. Protocolos dos Testes da Bateria Físico-Motora</h2>
-                <ol>
-                    <li><strong>Agachamento Unilateral (na Caixa):</strong> Quebrar a paralela a 90º e retornar à extensão total[cite: 19]. Teste interrompido às 5 repetições por perna[cite: 19]. Em assimetrias, usa-se a média[cite: 19]. Sem repetições válidas = `0` e adaptação TRX (8 reps/lado)[cite: 19].</li>
-                    <li><strong>Pull-ups / Chin-ups:</strong> Queixo ultrapassa a barra a partir de extensão completa[cite: 19]. Adaptação no TRX a 30º: cada repetição vale metade[cite: 19].</li>
-                    <li><strong>Core Ventral / Dorsal no GHD:</strong> Alinhamento pelas espinhas ilíacas (EIAS/EIPS) mantendo coluna neutra cronometrada[cite: 19].</li>
-                    <li><strong>Agachamento 10% PC em 60":</strong> Máximo de repetições completas em 60s com halter junto ao peito[cite: 19].</li>
-                    <li><strong>Push-ups:</strong> Flexão até 90º no ombro e extensão total[cite: 19]. Joelhos no solo = meio ponto por repetição[cite: 19].</li>
-                </ol>
-            </article>
-
-            <article id="m2-tabelas" class="chapter-card">
-                <h2 class="chapter-header">5. Tabelas Oficiais de Pontuação da Bateria Físico-Motora</h2>
-                
-                <h3 class="section-header">Tabela de Normas — MASCULINOS</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Teste / Exercício</th>
-                                <th>5 Pontos</th>
-                                <th>4 Pontos</th>
-                                <th>3 Pontos</th>
-                                <th>2 Pontos</th>
-                                <th>1 Ponto</th>
-                                <th>0 Pontos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Push-ups</strong> (reps)[cite: 20]</td>
-                                <td>&ge; 40[cite: 20]</td>
-                                <td>30 - 39[cite: 20]</td>
-                                <td>20 - 29[cite: 20]</td>
-                                <td>10 - 19[cite: 20]</td>
-                                <td>3 - 9[cite: 20]</td>
-                                <td>&lt; 3[cite: 20]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Pull-ups</strong> (reps)[cite: 20]</td>
-                                <td>&ge; 12[cite: 20]</td>
-                                <td>9 - 11[cite: 20]</td>
-                                <td>6 - 8[cite: 20]</td>
-                                <td>4 - 7[cite: 20]</td>
-                                <td>1 - 3[cite: 20]</td>
-                                <td>0[cite: 20]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Agachamentos Unilaterais</strong> (reps)[cite: 20]</td>
-                                <td>5[cite: 20]</td>
-                                <td>4[cite: 20]</td>
-                                <td>3[cite: 20]</td>
-                                <td>2[cite: 20]</td>
-                                <td>1[cite: 20]</td>
-                                <td>0[cite: 20]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Agachamento 10% PC em 60"</strong> (reps)[cite: 20]</td>
-                                <td>&ge; 40[cite: 20]</td>
-                                <td>33 - 39[cite: 20]</td>
-                                <td>26 - 32[cite: 20]</td>
-                                <td>19 - 25[cite: 20]</td>
-                                <td>11 - 18[cite: 20]</td>
-                                <td>&le; 10[cite: 20]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Prancha - Posterior</strong> (seg)[cite: 20]</td>
-                                <td>&gt; 120[cite: 20]</td>
-                                <td>90 - 119[cite: 20]</td>
-                                <td>60 - 89[cite: 20]</td>
-                                <td>30 - 59[cite: 20]</td>
-                                <td>10 - 29[cite: 20]</td>
-                                <td>&le; 9[cite: 20]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Prancha - Anterior</strong> (seg)[cite: 20]</td>
-                                <td>&gt; 90[cite: 20]</td>
-                                <td>60 - 89[cite: 20]</td>
-                                <td>30 - 59[cite: 20]</td>
-                                <td>15 - 29[cite: 20]</td>
-                                <td>5 - 14[cite: 20]</td>
-                                <td>&le; 4[cite: 20]</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="section-header">Tabela de Normas — FEMININOS</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Teste / Exercício</th>
-                                <th>5 Pontos</th>
-                                <th>4 Pontos</th>
-                                <th>3 Pontos</th>
-                                <th>2 Pontos</th>
-                                <th>1 Ponto</th>
-                                <th>0 Pontos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Push-ups</strong> (reps)[cite: 21]</td>
-                                <td>&ge; 40[cite: 21]</td>
-                                <td>30 - 39[cite: 21]</td>
-                                <td>20 - 29[cite: 21]</td>
-                                <td>10 - 19[cite: 21]</td>
-                                <td>3 - 9[cite: 21]</td>
-                                <td>&lt; 3[cite: 21]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Pull-ups</strong> (reps)[cite: 21]</td>
-                                <td>&ge; 6[cite: 21]</td>
-                                <td>4 - 5[cite: 21]</td>
-                                <td>3[cite: 21]</td>
-                                <td>2[cite: 21]</td>
-                                <td>1[cite: 21]</td>
-                                <td>0[cite: 21]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Agachamentos Unilaterais</strong> (reps)[cite: 21]</td>
-                                <td>5[cite: 21]</td>
-                                <td>4[cite: 21]</td>
-                                <td>3[cite: 21]</td>
-                                <td>2[cite: 21]</td>
-                                <td>1[cite: 21]</td>
-                                <td>0[cite: 21]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Agachamento 10% PC em 60"</strong> (reps)[cite: 21]</td>
-                                <td>&ge; 40[cite: 21]</td>
-                                <td>33 - 39[cite: 21]</td>
-                                <td>26 - 32[cite: 21]</td>
-                                <td>19 - 25[cite: 21]</td>
-                                <td>11 - 18[cite: 21]</td>
-                                <td>&le; 10[cite: 21]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Prancha - Posterior</strong> (seg)[cite: 21]</td>
-                                <td>&gt; 120[cite: 21]</td>
-                                <td>90 - 119[cite: 21]</td>
-                                <td>60 - 89[cite: 21]</td>
-                                <td>30 - 59[cite: 21]</td>
-                                <td>10 - 29[cite: 21]</td>
-                                <td>&le; 9[cite: 21]</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Prancha - Anterior</strong> (seg)[cite: 21]</td>
-                                <td>&gt; 90[cite: 21]</td>
-                                <td>60 - 89[cite: 21]</td>
-                                <td>30 - 59[cite: 21]</td>
-                                <td>15 - 29[cite: 21]</td>
-                                <td>5 - 14[cite: 21]</td>
-                                <td>&le; 4[cite: 21]</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <!-- ==========================================
-                 MÓDULO III: DIDÁTICA E ESTATÍSTICA
-                 ========================================== -->
-
-            <article id="m3-gestao" class="chapter-card">
-                <h2 class="chapter-header">1. Gestão do Treino e Otimização do Tempo de Prática</h2>
-                <p>Otimização do Tempo Útil de Treino, Tempo Disponível para a Prática e Tempo Potencial de Aprendizagem (ALT)[cite: 17]. Exige controlo perimetral (*Withitness*) e redução rigorosa de filas de espera[cite: 17].</p>
-            </article>
-
-            <article id="m3-instrucao" class="chapter-card">
-                <h2 class="chapter-header">2. Afunilamento Instrucional e Estrutura da Sessão</h2>
-                <div class="diagram-box">
-                    O que o Treinador quer dizer ➔ O que realmente diz ➔ O que o Atleta ouve ➔ O que Compreende ➔ O que Retém ➔ <strong>O que Aplica no Terreno</strong>[cite: 17]
-                </div>
-            </article>
-
-            <article id="m3-feedback" class="chapter-card">
-                <h2 class="chapter-header">3. Ciclo e Tipologia do Feedback Pedagógico</h2>
-                <p>Ciclo de Observação-Intervenção de Rosado & Mesquita[cite: 17]:</p>
-                <ul>
-                    <li><strong>Avaliativo:</strong> Juízo de valor ("Excelente!")[cite: 17].</li>
-                    <li><strong>Prescritivo:</strong> Indicação da correção técnica direta[cite: 17].</li>
-                    <li><strong>Descritivo:</strong> Descrição exata do erro cometido[cite: 17].</li>
-                    <li><strong>Interrogativo:</strong> Pergunta indutora de reflexão ("Onde deviam estar os braços?")[cite: 17].</li>
-                </ul>
-            </article>
-
-            <article id="m3-autonomia" class="chapter-card">
-                <h2 class="chapter-header">4. Autonomização e Recursos Digitais no Treino</h2>
-                <p>Uso de Cartões-Tarefa, Ensino por Pares, Descoberta Guiada e aplicações de <em>Video Delay</em> para autoscopia técnica[cite: 17].</p>
-            </article>
-
-            <article id="m3-estatistica" class="chapter-card">
-                <h2 class="chapter-header">5. Codificação Data Volley e Zonas de Passe</h2>
-                <div class="code-like-block">
-+------------+---------------+---------------+-----------------+---------------+---------------+-------------+
-| FUNDAMENTO | (=) / 0       | (/) / 1       | (-) / 2         | ( ! ) / 3     | (+) / 4       | (#) / 5     |
-+------------+---------------+---------------+-----------------+---------------+---------------+-------------+
-| SERVIÇO    | Erro          | Rec #         | Rec +           | Rec !         | Rec /         | Ás (#)      |
-| RECEÇÃO    | Ás concedido  | Rec /         | Rec -           | Rec !         | Passe +       | Passe #     |
-| PASSE      | Erro          | Fb ou Pr      | 1 vs 3          | 1 vs 2        | 1 vs 1        | 1 vs 0      |
-| ATAQUE     | Erro          | Bloco #       | Def + / Bloco + | Def ! / Bloco!| Def - / Bloco-| Ponto (#)   |
-| BLOCO      | Ataque #      | Erro          | Ataque +        | Ataque !      | Ataque -      | Ponto (#)   |
-| DEFESA     | Erro          | Ataque +      | Ataque +        | Ataque !      | Ataque -      | Ataque -    |
-+------------+---------------+---------------+-----------------+---------------+---------------+-------------+
-                </div>
-                <p>Zonas de Passe: Zona A (Perfeito - `#`), Zona B (Positivo - `+`), Zona C (Afastado - `-`)[cite: 24].</p>
-            </article>
-
-            <!-- ==========================================
-                 MÓDULO IV: REGRAS E ARBITRAGEM (PAVILHÃO)
-                 ========================================== -->
-
-            <article id="m4-composicao" class="chapter-card">
-                <h2 class="chapter-header">1. Composição das Equipas e Direitos do Capitão</h2>
-                <p>Inscrição de até 14 jogadores nas seniores e Juniores A[cite: 22, 23]. Direitos do Capitão em jogo como único interlocutor com a arbitragem[cite: 22, 23].</p>
-            </article>
-
-            <article id="m4-formacao" class="chapter-card">
-                <h2 class="chapter-header">2. Regulamento dos Escalões de Formação — Regra dos 9 Jogadores (FPV)</h2>
-                <p>Infantis e Iniciados: mínimo de 9 inscritos[cite: 22]. Obrigatoriedade de 3 novos jogadores na formação inicial do 2.º set e 3 no 3.º set[cite: 22]. Proibido jogar 3 sets completos[cite: 22]. Incumprimento = Derrota Administrativa por 0-3 (parciais 0-25) e 0 pontos[cite: 22].</p>
-            </article>
-
-            <article id="m4-protocolo" class="chapter-card">
-                <h2 class="chapter-header">3. Protocolo Cronometrado FIVB</h2>
-                <div class="diagram-box">
-                    <strong>T-50m:</strong> Entrada e verificação | <strong>T-15m:</strong> Sorteio | <strong>T-14m:</strong> Aquecimento à rede | <strong>T-12m:</strong> Fichas de posição | <strong>T-0m:</strong> Primeiro serviço[cite: 23]
-                </div>
-            </article>
-
-            <article id="m4-posicoes" class="chapter-card">
-                <h2 class="chapter-header">4. Regras de Posição, Rotação e Faltas</h2>
-                <div class="code-like-block">
-             REDE (Linha Central)
- ┌──────────────────┬──────────────────┬──────────────────┐
- │    Posição 4     │    Posição 3     │    Posição 2     │
- │ (Avançado Esq.)  │ (Avançado Ctro)  │ (Avançado Dir.)  │
- ├──────────────────┼──────────────────┼──────────────────┤
- │    Posição 5     │    Posição 6     │    Posição 1     │
- │  (Defesa Esq.)   │  (Defesa Ctro)   │(Defesa Dir/Serv) │
- └──────────────────┴──────────────────┴──────────────────┘
- Sentido da Rotação: Ponteiros do Relógio (2 ➔ 1 ➔ 6 ➔ 5 ➔ 4 ➔ 3 ➔ 2)
-                </div>
-                <p>Validação de faltas de posição no momento do golpe de serviço e faltas de rotação com anulação dos pontos obtidos na rotação errada[cite: 23].</p>
-            </article>
-
-            <article id="m4-libero" class="chapter-card">
-                <h2 class="chapter-header">5. Interrupções, Substituições e Estatuto do Líbero</h2>
-                <p>6 substituições por set[cite: 23]. Líbero restrito às posições 5, 6, 1[cite: 23]. Se o Líbero efetuar passe de dedos dentro da zona dos 3 metros, a bola não pode ser atacada acima do bordo superior da rede[cite: 23].</p>
-            </article>
-
-            <article id="m4-sancoes" class="chapter-card">
-                <h2 class="chapter-header">6. Escala Progressiva de Sanções Disciplinares</h2>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Falta</th>
-                                <th>Cartão</th>
-                                <th>Consequência</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Aviso Menor</td>
-                                <td>Amarelo</td>
-                                <td>Prevenção para a equipa (sem ponto)[cite: 23]</td>
-                            </tr>
-                            <tr>
-                                <td>Conduta Grosseira</td>
-                                <td>Vermelho</td>
-                                <td>Penalização (ponto e serviço ao adversário)[cite: 23]</td>
-                            </tr>
-                            <tr>
-                                <td>Reincidência / Ofensa</td>
-                                <td>Amarelo + Vermelho Juntos</td>
-                                <td>Expulsão do set (vai para o balneário)[cite: 23]</td>
-                            </tr>
-                            <tr>
-                                <td>Agressão / Reincidência</td>
-                                <td>Amarelo + Vermelho Separados</td>
-                                <td>Desqualificação do jogo[cite: 23]</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article id="m4-protestos" class="chapter-card">
-                <h2 class="chapter-header">7. Falta de Árbitro e Protestos de Jogo</h2>
-                <p>Artigo 31.º FPV: Ausência de arbitragem exige que o representante da equipa visitante assuma as funções de 1.º Árbitro[cite: 22]. Protestos devem ser anunciados pelo Capitão e formalizados no CD da FPV em 2 dias úteis[cite: 22, 23].</p>
-            </article>
-
-            <!-- ==========================================
-                 MÓDULO V: BIOMECÂNICA E TÁTICA (PAVILHÃO)
-                 ========================================== -->
-
-            <article id="m5-biomecanica" class="chapter-card">
-                <h2 class="chapter-header">1. Biomecânica dos Gestos Técnicos Fundamentais</h2>
-                <p>Análise mecânica da Manchete, Passe de Dedos, Ataque (passada de aproximação de 3 passos, elevação de braços, ponto de contacto no topo) e Bloqueio com penetração de mãos sobre a rede[cite: 24].</p>
-            </article>
-
-            <article id="m5-complexos" class="chapter-card">
-                <h2 class="chapter-header">2. Complexos de Jogo: K1, K2 e Transição</h2>
-                <p>K1 (Side-out: Serviço ➔ Receção ➔ Passe ➔ Ataque ➔ Cobertura) e K2 (Transição: Serviço ➔ Bloqueio/Defesa ➔ Passe ➔ Contra-Ataque)[cite: 24].</p>
-            </article>
-
-            <article id="m5-escaloes" class="chapter-card">
-                <h2 class="chapter-header">3. Progressão Tática por Escalão</h2>
-                <p>Sistemas 6x0 e 4x2 simples em Iniciados; 4x2 com infiltração e 5x1 inicial em Cadetes; 5x1 avançado com especialização total em Seniores[cite: 24].</p>
-            </article>
-
-            <!-- ==========================================
-                 MÓDULO VI: VOLEIBOL DE PRAIA
-                 ========================================== -->
-
-            <article id="m6-praia-regras" class="chapter-card">
-                <h2 class="chapter-header">1. Regras Específicas do Voleibol de Praia e Instalações</h2>
-                <p>Modalidade olímpica autónoma regulada pela FIVB com regras diferenciadas do pavilhão:</p>
-
-                <h3 class="section-header">A. Dimensões do Recinto e Equipamentos</h3>
-                <ul>
-                    <li><strong>Terreno de Jogo:</strong> Retângulo de <strong>16m x 8m</strong> (versus 18m x 9m no pavilhão), com zona livre mínima de 3m.</li>
-                    <li><strong>Ausência de Linhas Internas:</strong> Sem linha central nem linha de 3 metros (zona de ataque). Delimitado apenas por fitas flexíveis de 5cm.</li>
-                    <li><strong>Superfície:</strong> Areia fina e nivelada com profundidade mínima de 40cm.</li>
-                    <li><strong>Bola:</strong> Circunferência de 66–68 cm e pressão interna reduzida (<strong>0.175 a 0.225 kg/cm²</strong> ou 171–221 hPa) para lidar com o vento.</li>
-                </ul>
-
-                <h3 class="section-header">B. Estrutura de Competição</h3>
-                <ul>
-                    <li>Duplas puras (2v2) sem substituições nem Líbero.</li>
-                    <li>Sem intervenção do treinador durante a partida.</li>
-                    <li>Melhor de 3 sets (2 primeiros sets aos 21 pontos; Tie-break aos 15 pontos).</li>
-                    <li>Trocas de campo a cada 7 pontos nos sets normais e a cada 5 pontos no Tie-break para neutralizar o vento e o sol.</li>
-                </ul>
-            </article>
-
-            <article id="m6-praia-toque" class="chapter-card">
-                <h2 class="chapter-header">2. Regulamentação Específica do Toque de Bola na Areia</h2>
-
-                <h3 class="section-header">A. Passe de Dedos / Distribuição</h3>
-                <p>Avaliação estrita da retenção (carregada). O passe de dedos para o campo adversário exige que a linha dos ombros esteja rigorosamente perpendicular à trajetória de saída da bola.</p>
-
-                <h3 class="section-header">B. Ataque Suave e Defesa de Ataque Forte</h3>
-                <ul>
-                    <li>Proibição absoluta do <em>Soft Tip</em> (largada com a ponta dos dedos). O ataque colocado faz-se com o <em>Poke Shot</em> (nós dos dedos) ou <em>Cobra Shot</em>.</li>
-                    <li>Na defesa de um ataque potente na rede (<em>Hard-Driven Ball</em>), permite-se uma ligeira retenção/duplo toque no passe de dedos defensivo.</li>
-                </ul>
-
-                <h3 class="section-header">C. O Bloqueio como Primeiro Toque</h3>
-                <div class="callout callout-danger">
-                    <div class="callout-title">Regra Crítica</div>
-                    <p style="margin-bottom:0;">No Voleibol de Praia, <strong>o toque no bloqueio CONTA como o 1.º toque da equipa</strong>, restando apenas 2 toques para a devolução. O próprio bloqueador pode efetuar o toque seguinte.</p>
-                </div>
-            </article>
-
-            <article id="m6-praia-biomecanica" class="chapter-card">
-                <h2 class="chapter-header">3. Biomecânica e Ações Técnicas na Areia</h2>
-                <ul>
-                    <li><strong>Impulsão:</strong> A areia absorve cerca de 40% da energia exercida no solo. A aproximação reduz-se para 2 passos curtos com base larga para evitar o afundamento dos pés.</li>
-                    <li><strong>Técnicas Específicas:</strong> <em>Poke Shot</em> (nós dos dedos articulados), <em>Cobra Shot</em> (mão rígida estendida) e mergulhos/tombos com amortecimento na areia.</li>
-                </ul>
-            </article>
-
-            <article id="m6-praia-tatica" class="chapter-card">
-                <h2 class="chapter-header">4. Tática de Duplas e Sinais de Mão no Bloqueio</h2>
-                <p>O bloqueador sinaliza às costas a estratégia defensiva antes do serviço:</p>
-
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sinal de Mão</th>
-                                <th>Bloqueio</th>
-                                <th>Ação do Defensor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1 Dedo Estendido</strong></td>
-                                <td>Bloqueia a <strong>LINHA</strong></td>
-                                <td>Defende a <strong>DIAGONAL</strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>2 Dedos Estendidos</strong></td>
-                                <td>Bloqueia a <strong>DIAGONAL</strong></td>
-                                <td>Defende a <strong>LINHA</strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mão Aberta</strong></td>
-                                <td>Bloqueia <strong>A BOLA</strong></td>
-                                <td>Leitura no centro do campo</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Punho Fechado</strong></td>
-                                <td><strong>SEM BLOQUEIO</strong></td>
-                                <td>Ambos defendem em campo aberto</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-        </div>
-    </main>
-
-    <script>
-        const navLinks = document.querySelectorAll('.nav-item a');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const chapters = document.querySelectorAll('.chapter-card');
-            
-            chapters.forEach(chapter => {
-                const chapterTop = chapter.offsetTop;
-                if (window.pageYOffset >= chapterTop - 120) {
-                    current = chapter.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+<html lang="pt-PT"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compêndio do Treinador de Voleibol — Grau I</title>
+<style>
+:root{--bg:#f8fafc;--card:#fff;--bd:#e2e8f0;--tx:#334155;--hd:#0f172a;--mu:#64748b;--pr:#1e40af;--pl:#eff6ff;--ac:#d97706;--al:#fffbeb;--dg:#b91c1c;--dl:#fef2f2;--sw:320px}
+[data-t=dark]{--bg:#0b1220;--card:#131c2e;--bd:#263248;--tx:#cbd5e1;--hd:#f1f5f9;--mu:#94a3b8;--pr:#60a5fa;--pl:#16233f;--ac:#fbbf24;--al:#2a2210;--dg:#f87171;--dl:#2a1517}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font:16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx)}
+#bar{position:fixed;top:0;left:0;height:4px;background:var(--ac);width:0;z-index:300}
+#side{position:fixed;inset:0 auto 0 0;width:var(--sw);background:var(--card);border-right:1px solid var(--bd);overflow:auto;z-index:100;padding-bottom:2rem}
+.brand{padding:1.2rem 1.2rem .8rem;background:var(--pl);border-bottom:1px solid var(--bd)}
+.brand b{display:block;color:var(--pr);font-size:1.05rem}.brand small{color:var(--mu);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.tools{display:flex;gap:.4rem;padding:.7rem 1.2rem}
+#q{flex:1;padding:.45rem .6rem;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx)}
+button{cursor:pointer;border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:8px;padding:.4rem .7rem}
+.ns{padding:1rem 1.2rem .3rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ac)}
+#side a{display:block;padding:.3rem 1.2rem .3rem 1.5rem;font-size:.82rem;color:var(--tx);text-decoration:none;border-left:3px solid transparent}
+#side a:hover,#side a.on{background:var(--pl);color:var(--pr);border-left-color:var(--pr)}
+main{margin-left:var(--sw);padding:2.5rem 3rem}.wrap{max-width:960px;margin:auto}
+.hero{background:var(--card);border:1px solid var(--bd);border-top:5px solid var(--pr);border-radius:16px;padding:2rem;margin-bottom:2rem}
+.hero h1{color:var(--hd);font-size:2rem;line-height:1.25;margin:.5rem 0}.tag{display:inline-block;background:var(--pl);color:var(--pr);font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:99px;text-transform:uppercase}
+.mod{font-size:1.5rem;color:var(--hd);margin:3rem 0 1rem;padding-bottom:.4rem;border-bottom:3px solid var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1.6rem 1.8rem;margin-bottom:1.4rem;scroll-margin-top:1rem}
+.card h2{font-size:1.2rem;color:var(--hd);margin-bottom:.8rem;border-bottom:2px solid var(--pl);padding-bottom:.4rem}
+.card h3{font-size:1rem;color:var(--pr);margin:1.1rem 0 .4rem}
+p{margin-bottom:.9rem}ul,ol{margin:0 0 1rem 1.3rem}li{margin-bottom:.35rem}
+.box{padding:.9rem 1.2rem;border-radius:10px;border-left:4px solid var(--pr);background:var(--pl);margin:1rem 0}
+.box.a{border-color:var(--ac);background:var(--al)}.box.d{border-color:var(--dg);background:var(--dl)}.box b:first-child{display:block}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;margin:1rem 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:.55rem .7rem;border-bottom:1px solid var(--bd);text-align:left}th{background:var(--pl);color:var(--hd)}
+.src{font-size:.78rem;color:var(--mu);margin-top:.6rem}
+details{border:1px solid var(--bd);border-radius:10px;padding:.6rem 1rem;margin:.6rem 0}summary{cursor:pointer;font-weight:600;color:var(--pr)}
+.hide{display:none!important}
+@media(max-width:1000px){#side{position:static;width:auto;max-height:50vh}main{margin:0;padding:1rem}}
+@media print{#side,#bar,.tools{display:none}main{margin:0}}
+</style></head><body>
+<div id="bar"></div>
+<nav id="side">
+<div class="brand"><b>Compêndio do Treinador</b><small>Voleibol e Praia · Grau I · FPV / IPDJ</small></div>
+<div class="tools"><input id="q" type="search" placeholder="Pesquisar no texto…"><button id="th" title="Modo escuro">◐</button></div>
+<div class="ns">1 · Treinador e Ética</div><a href="#etica">Ética e deontologia</a><a href="#integ">Integridade e apostas</a><a href="#prob">Problemáticas</a>
+<div class="ns">2 · Pedagogia e Didática</div><a href="#modelo">Do modelo de jogo ao treino</a><a href="#pilares">Os 4 pilares</a><a href="#plano">Plano de treino</a>
+<div class="ns">3 · Treino e LTAD</div><a href="#ltad">LTAD, PHV e bio-banding</a>
+<div class="ns">4 · Condição física e saúde</div><a href="#pf">Preparação física</a><a href="#fibras">Fibras e energia</a><a href="#testes">Bateria de testes</a><a href="#nutri">Nutrição e hidratação</a>
+<div class="ns">5 · Formação inicial</div><a href="#gira">Gira-Volei</a><a href="#mini">Minivoleibol</a>
+<div class="ns">6 · Regras, arbitragem e FPV</div><a href="#part">Participantes</a><a href="#jogo">Formato do jogo</a><a href="#reg">Regulamento de Provas</a><a href="#fpv">Organização da FPV</a>
+<div class="ns">7 · Observação e estatística</div><a href="#stat">Estatística no voleibol</a>
+<div class="ns">8 · Voleibol de praia</div><a href="#praia">Praia vs indoor</a><a href="#praiat">Técnica e tática</a>
+<div class="ns">9 · Desporto adaptado</div><a href="#sent">Voleibol sentado</a>
+</nav>
+<main><div class="wrap">
+<header class="hero"><span class="tag">Compêndio unificado · edição 2026/27</span><h1>Compêndio do Treinador de Voleibol e Voleibol de Praia</h1>
+<p>Sínteses do curso de treinadores Grau I (FPV, AV Braga e PNFT/IPDJ), organizadas em 9 módulos. Texto reescrito a partir dos materiais das sessões; as fontes vêm indicadas no fim de cada secção.</p></header>
+
+<h2 class="mod">Módulo 1 · Treinador e Ética</h2>
+<article class="card" id="etica"><h2>Ética e deontologia profissional</h2>
+<p>A ética é o conjunto de valores que orienta cada decisão. Na sessão do CIFI²D (FADE-UP) resume-se em três perguntas: <b>quero? posso? devo?</b> Nem tudo o que queremos podemos, nem tudo o que podemos devemos. A <b>deontologia</b>, do grego <i>déon</i> (dever), é o conjunto de deveres e normas de um grupo profissional.</p>
+<h3>Valores do desporto</h3><p>Amizade, respeito, solidariedade, cooperação, <i>fair play</i> e disciplina.</p>
+<h3>O que o Código de Ética Desportiva (IPDJ, 2014) pede ao treinador</h3>
+<ul><li>Respeitar de forma igual todos os praticantes, preservando a sua saúde e integridade física e mental.</li><li>Promover o desportivismo, também nos treinos, e respeitar as regras técnicas.</li><li>Recusar e denunciar fraude e manipulação de resultados.</li><li>Opor-se a substâncias e métodos proibidos e não usar métodos de treino que prejudiquem a saúde, tendo em conta o crescimento, a nutrição, o lazer e a recuperação.</li><li>Evitar conflitos de interesse e ser um modelo ético, sobretudo para os mais jovens.</li></ul>
+<div class="box a"><b>Para refletir</b>Cumprimento sempre todos os elementos do adversário e da arbitragem, como o protocolo exige? Contacto um menor de outro clube diretamente ou falo primeiro com os encarregados de educação? Ajudo o árbitro numa bola dentro/fora quando tenho a certeza?</div>
+<p class="src">Fontes: Ética Desportiva e Fair-Play na ação do treinador (Corte-Real e Sofia, FADE-UP); Ética no Desporto (PNFT).</p></article>
+
+<article class="card" id="integ"><h2>Integridade e manipulação de competições</h2>
+<p>«Manipulação de competições desportivas» é o acordo, ato ou omissão intencional que altera de forma irregular o resultado ou o decurso de uma competição para obter vantagens indevidas.</p>
+<h3>Os 3R (Comité Olímpico de Portugal)</h3>
+<ol><li><b>Reconhecer</b> abordagens suspeitas e não partilhar informação sobre si, os pares e a modalidade.</li><li><b>Resistir</b>: nunca apostar na própria modalidade nem aceitar benefícios ou favores.</li><li><b>Reportar</b> de imediato ao clube, à federação e às autoridades. A omissão do dever de reporte é punível.</li></ol>
+<div class="tw"><table><tr><th>Diploma</th><th>O que estabelece</th></tr>
+<tr><td>Decreto-Lei 66/2015, art. 6.º</td><td>Proíbe jogos e apostas online a menores e a quem possa ter intervenção no resultado (dirigentes, treinadores, praticantes, árbitros…).</td></tr>
+<tr><td>Lei 13/2017, art. 11.º-A</td><td>Aposta antidesportiva: pena de prisão até 3 anos ou multa até 600 dias.</td></tr></table></div>
+<p>O IPDJ disponibiliza um <b>Portal das Denúncias</b> (denúncia anónima e confidencial, com código de acompanhamento).</p>
+<p class="src">Fontes: sessão de Ética (FADE-UP); Comité Olímpico de Portugal, página Integridade; IPDJ.</p></article>
+
+<article class="card" id="prob"><h2>Problemáticas éticas no desporto</h2>
+<p>Racismo, especialização precoce, igualdade de género, violência, abuso sexual de crianças e jovens, <i>bullying</i>, doping e manipulação de resultados. Recursos indicados: Desporto sem Bullying, Plano Nacional de Ética no Desporto, «Pelo Respeito», folheto «Educar para a ética no desporto» (dicas para os pais).</p>
+<div class="box"><b>O treinador deve</b>Ter uma relação exemplar com todos os agentes; ver a competição como parte do processo e não como o seu produto; e potenciar os benefícios biológicos, psicológicos e sociais da prática.</div></article>
+
+<h2 class="mod">Módulo 2 · Pedagogia e Didática</h2>
+<article class="card" id="modelo"><h2>Do modelo de jogo ao treino</h2>
+<p>O <b>modelo de jogo</b> é o conjunto de princípios e comportamentos que o treinador quer ver na equipa e serve de bússola ao planeamento. A cadeia é: <b>modelo de jogo → objetivos e conteúdos → tarefas de treino → critérios</b> (as preocupações do treinador durante a tarefa). Cada exercício deve poder ser ligado ao modelo.</p>
+<div class="tw"><table><tr><th>Complexo</th><th>Foco</th></tr><tr><td>KI · Serviço e receção</td><td>Pressão sobre a receção adversária; qualidade da primeira bola</td></tr><tr><td>KI/II · Distribuição e ataque</td><td>Leitura de jogo, decisão, eficácia e variedade</td></tr><tr><td>KII · Bloco e defesa</td><td>Organização coletiva na rede; cobertura e recuperação</td></tr></table></div>
+<p class="src">Fonte: Didática Específica do Voleibol (Rui Araújo, FPV).</p></article>
+
+<article class="card" id="pilares"><h2>Os 4 pilares de um bom exercício</h2>
+<ol><li><b>Repetição com qualidade</b>: a prática variável retém mais a longo prazo do que a prática em bloco.</li><li><b>Implicação cognitiva</b>: o atleta decide (quando, como, para onde) e o treinador questiona em vez de dar só a solução.</li><li><b>Monitorização</b>: critérios de êxito definidos antes (quantitativos e qualitativos), feedback e autoavaliação.</li><li><b>Representatividade</b>: o exercício preserva as relações e constrangimentos do jogo (Ecological Dynamics: <i>affordances</i> e <i>constraints</i>).</li></ol>
+<h3>Tipologia de tarefas</h3>
+<div class="tw"><table><tr><th>Tipo</th><th>Descrição</th></tr><tr><td>1 · Adaptação</td><td>Jogo de oposição modificado; máxima representatividade</td></tr><tr><td>2 · Estruturação</td><td>Encadeamento de ações e jogo de cooperação</td></tr><tr><td>3 · Aquisição</td><td>Manipulação de bola e eficiência da execução</td></tr></table></div>
+<div class="box a"><b>Não dá para jogar a semana toda?</b>As tarefas de adaptação são as mais representativas, mas as de estruturação e aquisição continuam necessárias e devem ser doseadas.</div></article>
+
+<article class="card" id="plano"><h2>Plano de treino e microciclo</h2>
+<p>O plano tem cabeçalho (data, hora, duração, rede, nº de atletas, semana, objetivo geral), partes da sessão (inicial, fundamental, final) e uma tabela por exercício:</p>
+<ul><li><b>Conteúdo</b>: o tema (ex.: diferenciação de funções).</li><li><b>Objetivo</b>: conteúdo + situação de aprendizagem + eficiência ou eficácia. Ex.: «o atleta distingue funções em borboleta simples, falando quando recebe e avançando para a rede quando não recebe».</li><li><b>Situação de aprendizagem</b>: a «receita»: nº de atletas, espaço e material, regras e rotação.</li><li><b>Componentes críticas</b>: preocupações do treinador, simples, observáveis e ligadas ao objetivo (ex.: «comunicar antes de tocar na bola»).</li></ul>
+<p>No microciclo semanal aumenta o foco no plano de jogo e diminui a especificidade do treino à medida que o jogo se aproxima, com observação do adversário e preparação de vídeo fora do treino.</p></article>
+
+<h2 class="mod">Módulo 3 · Treino e desenvolvimento a longo prazo</h2>
+<article class="card" id="ltad"><h2>LTAD, PHV e bio-banding</h2>
+<p>O voleibol é uma modalidade de <b>especialização tardia</b>: a especialização precoce aumenta o risco de lesões de sobrecarga e de abandono, e a prática deliberada e o jogo deliberado têm o seu lugar nas primeiras fases.</p>
+<ul><li><b>Idade biológica vs cronológica</b>: o pico de velocidade de crescimento (PHV) muda a coordenação, a força e a perceção de talento.</li><li><b>Bio-banding</b>: agrupar por maturação para equilibrar a competição.</li><li><b>Força</b> (adaptado de Dan Baker): peso corporal e controlo motor, depois cargas externas, força máxima e potência.</li></ul>
+<div class="box d"><b>Sinais de alerta</b>Dor persistente, queda de rendimento e desmotivação devem ser comunicados aos pais e encaminhados.</div>
+<p class="src">Fonte: Aula 1 · Desenvolvimento Atlético a Longo Prazo (Grau I).</p></article>
+
+<h2 class="mod">Módulo 4 · Condição física e saúde</h2>
+<article class="card" id="pf"><h2>Preparação física específica</h2>
+<p>«Preparar fisicamente para jogar melhor voleibol». As ações-chave são saltar, deslocar, travar e repetir. Específico não é obrigatoriamente «com bola»: pode ser na direção, no tempo, na velocidade ou na decisão.</p>
+<ul><li><b>Princípios</b>: individualização, progressão, qualidade, especificidade, variabilidade e recuperação.</li><li><b>Padrões de força</b>: agachar, puxar, empurrar, <i>hinge</i>, transportar e estabilizar.</li><li><b>Aterragem</b>: bilateral → unilateral → após deslocamento → com reação.</li><li><b>Ombro, joelho e tornozelo</b>: controlo da escápula, força da cadeia posterior e equilíbrio unipodal.</li></ul>
+<details><summary>Exemplo de sessão de 90 minutos</summary><p>10' ativação e mobilidade · 10' velocidade/agilidade · 15' força/potência · 20' técnica individual · 25' situações técnico-táticas · 10' jogo condicionado.</p></details>
+<details><summary>Circuito de 5 estações (≈15 min)</summary><p>40'' de trabalho + 20'' de troca, 3 voltas: reação (BlazePod) · agachamento com banda · <i>step-up</i> com joelho · BOSU com alcance · deslocamento resistido e travagem.</p></details>
+<p class="src">Fonte: Preparação Física Específica no Voleibol (Adriano Paço). Mobilidade: ver Aula 2 (CARs, PAILs/RAILs, abordagem articulação a articulação).</p></article>
+
+<article class="card" id="fibras"><h2>Fibras musculares e sistemas energéticos</h2>
+<div class="tw"><table><tr><th>Fibra</th><th>Perfil</th></tr><tr><td>Tipo I</td><td>Lenta, resistente à fadiga</td></tr><tr><td>Tipo IIa</td><td>Rápida, intermédia</td></tr><tr><td>Tipo IIx</td><td>Rápida, explosiva, fadiga rápida (saltos)</td></tr></table></div>
+<p>Pelo <b>princípio do tamanho de Henneman</b>, as unidades motoras são recrutadas das menores para as maiores conforme a exigência. O voleibol é intermitente: esforços curtos e explosivos (sistema ATP-CP) com recuperação assegurada pelo sistema aeróbio; os jogos podem passar de 2 horas. Avaliação indireta: Bronco/1200 m, <i>squat jump</i>, <i>countermovement jump</i> e <i>sprint</i> lançado; HIIT com intervalos curtos ou longos.</p></article>
+
+<article class="card" id="testes"><h2>Bateria de testes físicos e pontuação</h2>
+<ul><li><b>Agachamento unilateral (caixa)</b>: quebrar a paralela; parar às 5 repetições por perna; se falhar, 0 pontos e repetir no TRX (8 repetições).</li><li><b>Chin/pull-ups</b>: extensão completa e queixo acima da barra; alternativa em remada no TRX a ~30º (cada repetição vale metade).</li><li><b>Agachamento completo</b> com ~10% do peso corporal em 60''; <b>push-ups</b> (alternativa de joelhos, meia repetição); <b>core ventral e dorsal</b> no GHD sem perder a posição.</li></ul>
+<div class="tw"><table><tr><th>Teste</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr>
+<tr><td>Push-ups (H e M)</td><td>≥40</td><td>30-39</td><td>20-29</td><td>10-19</td><td>3-9</td><td>&lt;3</td></tr>
+<tr><td>Pull-ups (H)</td><td>≥12</td><td>9-11</td><td>6-8</td><td>4-7</td><td>1-3</td><td>0</td></tr>
+<tr><td>Pull-ups (M)</td><td>≥6</td><td>4-5</td><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><td>Agach. unilaterais (H e M)</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><td>Agach. 10% PC em 60'' (H e M)</td><td>≥40</td><td>33-39</td><td>26-32</td><td>19-25</td><td>11-18</td><td>≤10</td></tr>
+<tr><td>Prancha posterior, s (H e M)</td><td>&gt;120</td><td>90-119</td><td>60-89</td><td>30-59</td><td>10-29</td><td>≤9</td></tr>
+<tr><td>Prancha anterior, s (H e M)</td><td>&gt;90</td><td>60-89</td><td>30-59</td><td>15-29</td><td>5-14</td><td>≤4</td></tr></table></div></article>
+
+<article class="card" id="nutri"><h2>Nutrição e hidratação</h2>
+<p>Ordem de prioridades: alimentação saudável, alimentação ajustada ao treino e, por fim, suplementação («a cereja no topo do bolo»). Proteínas para recuperação, hidratos de carbono para energia física e mental, gorduras para regulação hormonal.</p>
+<ul><li><b>Hidratação</b>: 5-10 mL/kg nas 2 a 4 h antes; evitar perder mais de 2% do peso durante o exercício; repor cerca de 150% do peso perdido, com sódio.</li><li><b>Dia de jogo</b>: refeições 2-3 h antes, sem experimentar alimentos novos em competição.</li><li><b>Suplementos</b>: só com alimentação otimizada e sempre com atenção ao antidoping.</li></ul>
+<p class="src">Fonte: Nutrição no Voleibol (Nutricionista Daniela Meireis).</p></article>
+
+<h2 class="mod">Módulo 5 · Formação inicial</h2>
+<article class="card" id="gira"><h2>Gira-Volei</h2>
+<p>Programa da FPV para massificar a modalidade e criar clubes. Lema: <b>fácil, divertido, competitivo</b>. Objetivos técnicos, educativos e de massificação.</p>
+<div class="tw"><table><tr><th>Idades</th><th>Nível</th><th>Campo</th><th>Rede</th></tr><tr><td>8-10</td><td>I</td><td>4×4 m</td><td>2,00 m</td></tr><tr><td>11-12</td><td>I</td><td>6×6 m</td><td>2,12 m</td></tr><tr><td>13-15</td><td>I e II</td><td>6×6 m</td><td>2,24 m</td></tr></table></div>
+<ul><li>2 jogadores por equipa; 2 sets de 25 pontos (máx. 10 min por set); contagem contínua; só passe de dedos, com tolerância; sem linha central.</li><li>Fases: local (até fevereiro), regional (abril-maio) e final nacional (junho).</li><li>Crianças como árbitros e marcadores, para responsabilização natural.</li></ul>
+<h3>Dinâmicas do dia a dia</h3><p>Trazer o recreio para o treino, privilegiar situações lúdicas e competitivas, definir objetivos por tarefa, terminar com um «ponto alto», equipas heterogéneas no início e regras claras com os pais desde a primeira reunião.</p></article>
+
+<article class="card" id="mini"><h2>Minivoleibol</h2>
+<p>Progressão em 4 relações: com a bola, com o adversário (1×1), com o companheiro (2×2) e com o grupo (3×3 e 4×4). Complexos: K0 serviço · K1 receção/<i>side-out</i> · K2 transição · K3 cobertura · K4 bola morta.</p>
+<ul><li><b>2×2</b> em níveis inicial, intermédio e avançado (regras de Minis B, bloco permitido, serviço fora do campo).</li><li><b>4×4</b>: estruturas de <i>side-out</i> 1:2:1, 2:2, 1:3 e 0:3; transição em quadrado fixo ou móvel, losango e sistema 3:1.</li></ul></article>
+
+<h2 class="mod">Módulo 6 · Regras, arbitragem e organização da FPV</h2>
+<article class="card" id="part"><h2>Participantes e direitos do capitão</h2>
+<ul><li>Equipa: máximo de <b>12 jogadores</b> (14 na 1.ª e 2.ª divisões e nos Juniores A), 1 treinador, até 2 adjuntos, 1 terapeuta e 1 médico. Só os inscritos no boletim entram na área de competição.</li><li>Capitão e treinador respondem pela disciplina da equipa. Com a bola fora de jogo, <b>só o capitão em jogo fala com os árbitros</b> (explicações e pedidos).</li><li>Se discordar da explicação do 1.º árbitro, o capitão reserva-se o direito de protesto e regista-o no boletim no fim do jogo.</li><li>O treinador dirige de fora, entrega a ficha de formação antes de cada set e relaciona-se com o 2.º árbitro. O adjunto não intervém, mas pode substituir o treinador ausente.</li></ul></article>
+
+<article class="card" id="jogo"><h2>Formato do jogo</h2>
+<ul><li><b>Sorteio</b> com os dois capitães: quem ganha escolhe servir/receber ou o campo.</li><li><b>Aquecimento oficial</b> à rede: 6 min em conjunto se houve terreno exclusivo, 10 min se não; em separado, 3 ou 5 min cada.</li><li><b>Posições</b>: avançados 4-3-2, defesas 5-6-1; controladas pelos pés no batimento do serviço (a equipa que serve é livre de ocupar qualquer posição).</li><li>Falta de posição: se o servidor comete falta no batimento, esta prevalece.</li></ul></article>
+
+<article class="card" id="reg"><h2>Regulamento de Provas e formação</h2>
+<div class="tw"><table><tr><th>Situação</th><th>Regra</th></tr>
+<tr><td>Falta de árbitro (art. 31.º)</td><td>Qualquer árbitro presente; senão árbitro não oficial com consenso das equipas; por último, um jogador de cada equipa, sendo 1.º árbitro o da visitante.</td></tr>
+<tr><td>Recinto (art. 29.º)</td><td>Tolerância de 15 min; depois, 30 min para apresentar recinto alternativo.</td></tr>
+<tr><td>Interrupções (Regra 17.3)</td><td>Até 4 h: mesmo campo, retoma-se com a pontuação; outro campo, o set é anulado e reiniciado. Mais de 4 h: jogo repetido.</td></tr>
+<tr><td>Licenças (art. 30.º)</td><td>Sem licença, identificação com CC, carta de condução ou passaporte (também via id.gov.pt).</td></tr>
+<tr><td>Infantis e Iniciados (2026/27)</td><td>Mínimo de 9 jogadores; 3 novos no 2.º e no 3.º set; ninguém joga 3 sets seguidos. Incumprimento: derrota 0-3 (0-25) e 0 pontos.</td></tr></table></div>
+<div class="box a"><b>Nota</b>Confirme sempre os textos em vigor no site da FPV antes de aplicar. Os prazos de protesto formal ao Conselho Disciplinar e a escala de sanções serão acrescentados após verificação nas fontes oficiais.</div></article>
+
+<article class="card" id="fpv"><h2>Como está organizada a FPV</h2>
+<div class="tw"><table><tr><th>Órgão</th><th>Função</th></tr><tr><td>Assembleia Geral</td><td>Elege os órgãos, regulamenta a modalidade, altera estatutos</td></tr><tr><td>Presidente</td><td>Representa a FPV e assegura a gestão corrente</td></tr><tr><td>Direção</td><td>Aprova regulamentos, organiza seleções e competições, orçamento</td></tr><tr><td>Conselho Fiscal</td><td>Fiscaliza contas e regularidade</td></tr><tr><td>Conselho Jurisdicional</td><td>Julga recursos e arbitra conflitos entre órgãos</td></tr><tr><td>Conselho de Disciplina</td><td>Julga em 1.ª instância questões disciplinares e protestos dos clubes</td></tr><tr><td>Conselho de Arbitragem</td><td>Administra a arbitragem, formação e classificação de árbitros</td></tr></table></div>
+<p class="src">Fonte: Organização e Regulamentação (Mário Azevedo).</p></article>
+
+<h2 class="mod">Módulo 7 · Observação e estatística</h2>
+<article class="card" id="stat"><h2>Estatística no voleibol</h2>
+<p>Serve para avaliar, corrigir, organizar treinos, elaborar planos de jogo e motivar. Deve ser precisa, concisa e adequada ao nível da equipa.</p>
+<ul><li><b>Quantitativa</b>: pontos, relação ponto/erro (ações terminais) e eficácia (todas as ações).</li><li><b>Qualitativa</b>: escalas de 4, 5 ou 6 níveis (0 a 5), com programas como o Data Volley no alto nível.</li><li><b>Erros comuns</b>: dar demasiada ênfase aos pontos e aos erros sem perceber a causa.</li></ul>
+<h3>Plano de jogo</h3><p>Comparar prós e contras das duas equipas (serviço, receção, ataque, bloco, defesa, distribuição, KI vs KII), verificar durante o jogo se o plano funciona e avaliá-lo no fim para organizar os microciclos seguintes.</p>
+<p class="src">Fonte: Princípios de Estatística (Sérgio Martins).</p></article>
+
+<h2 class="mod">Módulo 8 · Voleibol de praia</h2>
+<article class="card" id="praia"><h2>Praia vs indoor</h2>
+<div class="tw"><table><tr><th>Aspeto</th><th>Indoor</th><th>Praia</th></tr><tr><td>Jogadores</td><td>6 (com substituições)</td><td>2, sem substituições</td></tr><tr><td>Jogo</td><td>Melhor de 5 sets; 25 pontos</td><td>Melhor de 3 sets; 21 pontos</td></tr><tr><td>Bloco</td><td>Não conta toque</td><td>Conta toque</td></tr></table></div>
+<p>Diferem ainda as limitações no toque, a regra de invasão e o erro de formação. Recomenda-se aprender a competir, aprender a treinar e trabalhar os fundamentos com planeamento integrado entre praia e indoor.</p></article>
+
+<article class="card" id="praiat"><h2>Técnica e tática na areia</h2>
+<ul><li><b>Serviço</b>: flutuante (imprevisível), suspensão forte/<i>spin</i> (mais agressivo, maior risco) e <i>skyball</i>. Escolher em quem, como e onde servir, considerando o vento.</li><li><b>Receção</b>: passos curtos e assertivos, membros superiores preparados em último lugar, joelho no chão para o serviço curto.</li><li><b>Passe</b>: consistência e variabilidade separam as melhores duplas; falar depois do passe.</li><li><b>Ataque</b>: ler bloqueador e defesa, dominar os «4 cantos» e as colocadas.</li><li><b>Bloco e defesa</b>: marcações (linha, diagonal, bola), saídas de rede, falsos blocos e fintas; defesa começa no meio.</li></ul></article>
+
+<h2 class="mod">Módulo 9 · Desporto adaptado</h2>
+<article class="card" id="sent"><h2>Voleibol sentado</h2>
+<div class="tw"><table><tr><th>Parâmetro</th><th>Sentado</th><th>Convencional</th></tr><tr><td>Campo</td><td>10×6 m</td><td>18×9 m</td></tr><tr><td>Rede masculina</td><td>1,15 m</td><td>2,43 m</td></tr><tr><td>Rede feminina</td><td>1,05 m</td><td>2,24 m</td></tr><tr><td>Linha de ataque</td><td>2 m da central</td><td>3 m da central</td></tr></table></div>
+<ul><li>Glúteos em contacto com o solo no toque (atualização 2025-2028: qualquer parte do corpo entre nádegas e ombros); o bloco ao serviço é permitido.</li><li>Equipa de 12, com 6 em campo; classificação funcional (completa ou incapacidade mínima), definida pelo impacto no desempenho.</li><li>Nos Jogos Paralímpicos desde 1980; feminino desde 2004.</li></ul>
+<div class="box"><b>Competência-chave</b>Um bom treinador de voleibol sentado é, antes de tudo, um especialista em pessoas: adapta a posição base e os gestos ao perfil funcional de cada atleta.</div></article>
+</div></main>
+<script>
+const $=s=>document.querySelector(s),cards=[...document.querySelectorAll('.card')],links=[...document.querySelectorAll('#side a')];
+$('#th').onclick=()=>{const r=document.documentElement,d=r.dataset.t==='dark';r.dataset.t=d?'':'dark'};
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();cards.forEach(c=>c.classList.toggle('hide',v&&!c.textContent.toLowerCase().includes(v)))};
+addEventListener('scroll',()=>{const h=document.documentElement;$('#bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';let cur='';cards.forEach(c=>{if(c.offsetTop-140<=scrollY)cur=c.id});links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))});
+</script></body></html>
