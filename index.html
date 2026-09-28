@@ -1,293 +1,565 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual Definitivo do Treinador de Voleibol: Da Formação à Alta Performance</title>
+    <meta name="description" content="Manual Avançado de Metodologia, Técnica e Tática de Voleibol - Guia Prático e Teórico para Treinadores e Estudantes.">
+    <title>Manual Avançado de Metodologia, Técnica e Tática de Voleibol</title>
+    
+    <!-- Tipografia Profissional via Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
+        /* ==========================================================================
+           1. VARIÁVEIS DE DESIGN SYSTEM & ARQUITETURA DE CORES
+           ========================================================================== */
         :root {
-            --primary: #1e3a8a;
-            --secondary: #0284c7;
-            --accent: #f59e0b;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
+            /* Cores Primárias e de Suporte */
+            --brand-primary: #0284c7;
+            --brand-primary-hover: #0369a1;
+            --brand-secondary: #0f172a;
+            --brand-accent: #f59e0b;
+            --brand-accent-subtle: #fef3c7;
+            
+            /* Neutros - Light Mode */
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+            --border-color: #e2e8f0;
+            --border-color-subtle: #f1f5f9;
+            
+            /* Texto - Light Mode */
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+            
+            /* Callouts & Badges */
+            --info-bg: #eff6ff;
+            --info-border: #3b82f6;
+            --info-text: #1e40af;
+            --warning-bg: #fffbeb;
+            --warning-border: #f59e0b;
+            --warning-text: #92400e;
+            --tactical-bg: #f0fdf4;
+            --tactical-border: #22c55e;
+            --tactical-text: #166534;
+
+            /* Tipografia */
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-display: 'Lexend', var(--font-sans);
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Dimensões & Sombras */
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            
+            /* Transições */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.25s ease;
         }
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1.7;
-            color: var(--dark);
-            background-color: var(--light);
+
+        /* Suporte Nativo a Modo Escuro (Dark Mode) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #090d16;
+                --bg-card: #111827;
+                --bg-sidebar: #0f172a;
+                --border-color: #1f2937;
+                --border-color-subtle: #111827;
+                
+                --text-main: #e2e8f0;
+                --text-muted: #94a3b8;
+                --text-heading: #f8fafc;
+                
+                --info-bg: #1e293b;
+                --info-border: #60a5fa;
+                --info-text: #bfdbfe;
+                --warning-bg: #2d2013;
+                --warning-border: #fbbf24;
+                --warning-text: #fef08a;
+                --tactical-bg: #142e1d;
+                --tactical-border: #4ade80;
+                --tactical-text: #bbf7d0;
+            }
+        }
+
+        /* ==========================================================================
+           2. RESET E ESTILOS BASE
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: #ffffff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
         }
-        .cover {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 40px;
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            display: flex;
+            min-height: 100vh;
         }
-        .cover h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
+
+        /* ==========================================================================
+           3. ESTRUTURA DE LAYOUT (SIDEBAR + CONTEÚDO PRINCIPAL)
+           ========================================================================== */
+        #app-layout {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* Sidebar de Navegação */
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-normal);
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-sidebar);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .sidebar-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .cover h2 {
-            font-size: 1.4rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-        .cover .meta {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        h2 {
-            color: var(--primary);
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 8px;
-            margin-top: 40px;
-            font-size: 1.8rem;
-        }
-        h3 {
-            color: var(--secondary);
-            margin-top: 25px;
-            font-size: 1.3rem;
-        }
-        p {
-            margin-bottom: 18px;
-            text-align: justify;
-        }
-        ul, ol {
-            margin-bottom: 20px;
-            padding-left: 25px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        .callout {
-            background-color: #f0f9ff;
-            border-left: 5px solid var(--secondary);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .table-of-contents {
-            background: #f1f5f9;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-        .table-of-contents ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .table-of-contents li {
-            margin-bottom: 10px;
-        }
-        .table-of-contents a {
-            color: var(--primary);
-            text-decoration: none;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
             font-weight: 600;
         }
-        .table-of-contents a:hover {
-            text-decoration: underline;
+
+        .nav-menu {
+            padding: 1rem 0;
+            list-style: none;
         }
+
+        .nav-section-title {
+            padding: 0.75rem 1.5rem 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        .nav-item a {
+            display: block;
+            padding: 0.55rem 1.5rem 0.55rem 2rem;
+            font-size: 0.875rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item a:hover {
+            background-color: var(--border-color-subtle);
+            color: var(--brand-primary);
+            border-left-color: var(--brand-primary);
+        }
+
+        /* Conteúdo Principal */
+        #main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 2.5rem 3rem;
+            max-width: calc(100% - var(--sidebar-width));
+            transition: margin-left var(--transition-normal);
+        }
+
+        .content-container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Header Mobile */
+        #mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background-color: var(--bg-sidebar);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 90;
+            padding: 0 1.25rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           4. TIPOGRAFIA E ELEMENTOS CONTEUDUAIS E-BOOK
+           ========================================================================== */
+        .book-header {
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .book-badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            background-color: var(--brand-primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        .book-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .book-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            max-width: 750px;
+        }
+
+        .book-meta {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Seções e Capítulos */
+        .module-block {
+            margin-bottom: 4rem;
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, var(--brand-secondary), var(--brand-primary));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .module-number {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.85;
+            font-weight: 700;
+        }
+
+        .module-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+            color: #ffffff;
+        }
+
+        .chapter-block {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: calc(var(--header-height) + 1.5rem);
+        }
+
+        h2.chapter-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h3.section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin: 2rem 0 1rem 0;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Callouts / Cards Informativos */
+        .callout {
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.75rem 0;
+            border-left: 4px solid;
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .callout-info {
+            background-color: var(--info-bg);
+            border-color: var(--info-border);
+            color: var(--info-text);
+        }
+
+        .callout-warning {
+            background-color: var(--warning-bg);
+            border-color: var(--warning-border);
+            color: var(--warning-text);
+        }
+
+        .callout-tactical {
+            background-color: var(--tactical-bg);
+            border-color: var(--tactical-border);
+            color: var(--tactical-text);
+        }
+
+        /* Tabelas Estilizadas */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 25px 0;
-        }
-        th, td {
-            border: 1px solid #cbd5e1;
-            padding: 12px;
             text-align: left;
-        }
-        th {
-            background-color: var(--primary);
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
-            color: var(--gray);
             font-size: 0.9rem;
+            background-color: var(--bg-card);
+        }
+
+        th {
+            background-color: var(--border-color-subtle);
+            color: var(--text-heading);
+            padding: 0.85rem 1rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color-subtle);
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Destaques de Código / Esquemas */
+        .tactical-board {
+            font-family: var(--font-mono);
+            background-color: var(--brand-secondary);
+            color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           5. ADAPTAÇÕES RESPONSIVAS (MEDIA QUERIES)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            #sidebar {
+                transform: translateX(-100%);
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            #main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 5.5rem 1.5rem 2rem 1.5rem;
+            }
+
+            #mobile-header {
+                display: flex;
+            }
+
+            .book-title {
+                font-size: 2.1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+    <div id="app-layout">
+        
+        <!-- Header Mobile com Botão de Menu -->
+        <header id="mobile-header">
+            <div class="sidebar-title">
+                🏐 Voleibol Manual
+            </div>
+            <button class="menu-toggle-btn" id="menuToggle" aria-label="Abrir Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </header>
 
-    <div class="cover">
-        <h1>Manual Definitivo do Treinador de Voleibol</h1>
-        <h2>Metodologia Integrada: Tática, Biomecânica, Preparação Física e Gestão Humana</h2>
-        <div class="meta">
-            <p><strong>Guia Completo para Categorias de Formação e Performance</strong></p>
-        </div>
+        <!-- Sidebar Lateral de Navegação (Sumário Dinâmico) -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">
+                    🏐 Voleibol Manual
+                </div>
+                <div class="sidebar-subtitle">Metodologia, Técnica & Tática</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-section-title">Módulo 1: Pedagogia & Ciência</li>
+                <li class="nav-item"><a href="#cap1">Cap. 1: Evolução Metodológica</a></li>
+                <li class="nav-item"><a href="#cap2">Cap. 2: Etapas de Formação</a></li>
+                <li class="nav-item"><a href="#cap3">Cap. 3: Biomecânica e Neuroaprendizagem</a></li>
+                
+                <li class="nav-section-title">Módulo 2: Biomecânica Técnica</li>
+                <li class="nav-item"><a href="#cap4">Cap. 4: Serviço (Saque)</a></li>
+                <li class="nav-item"><a href="#cap5">Cap. 5: Passe / Recepção</a></li>
+                <li class="nav-item"><a href="#cap6">Cap. 6: Distribuição (Toque)</a></li>
+                <li class="nav-item"><a href="#cap7">Cap. 7: Ataque</a></li>
+                <li class="nav-item"><a href="#cap8">Cap. 8: Bloco (Bloqueio)</a></li>
+                <li class="nav-item"><a href="#cap9">Cap. 9: Defesa e Cobertura</a></li>
+
+                <li class="nav-section-title">Módulo 3: Tática & Sistemas</li>
+                <li class="nav-item"><a href="#cap10">Cap. 10: Sistemas Estruturais</a></li>
+                <li class="nav-item"><a href="#cap11">Cap. 11: Tática Ofensiva (K1/K2)</a></li>
+                <li class="nav-item"><a href="#cap12">Cap. 12: Tática Defensiva</a></li>
+                <li class="nav-item"><a href="#cap13">Cap. 13: Especialização de Posições</a></li>
+
+                <li class="nav-section-title">Módulo 4: Gestão & Scout</li>
+                <li class="nav-item"><a href="#cap14">Cap. 14: Estruturação de Treinos</a></li>
+                <li class="nav-item"><a href="#cap15">Cap. 15: Scout & Métricas</a></li>
+                <li class="nav-item"><a href="#cap16">Cap. 16: Psicologia e Liderança</a></li>
+            </ul>
+        </nav>
+
+        <!-- Área de Conteúdo Principal -->
+        <main id="main-content">
+            <div class="content-container">
+                
+                <!-- Cabeçalho do Livro -->
+                <header class="book-header">
+                    <span class="book-badge">Edição Técnica Didática</span>
+                    <h1 class="book-title">E-book Científico e Prático de Voleibol: Da Iniciação ao Alto Rendimento</h1>
+                    <p class="book-subtitle">Uma abordagem pedagógica, biomecânica e tática integrando diretrizes internacionais (FIVB, FPV, CBV) para treinadores, analistas e profissionais de Educação Física.</p>
+                    <div class="book-meta">
+                        <span>📚 Formato: Didático Digital</span>
+                        <span>⚡ Versão: 1.0 (HTML/CSS Fluid)</span>
+                    </div>
+                </header>
+
+                <!-- CONTAINER AONDE SERÁ INSERIDO O CONTEÚDO DOS MÓDULOS -->
+                <div id="book-body">
+                    <!-- O conteúdo estendido dos capítulos será injetado sequencialmente aqui -->
+                </div>
+
+            </div>
+        </main>
     </div>
 
-    <div class="table-of-contents">
-        <h3>Índice do eBook</h3>
-        <ul>
-            <li><a href="#cap1">1. Filosofia de Treino e Desenvolvimento de Atletas</a></li>
-            <li><a href="#cap2">2. Metodologia de Formação por Escalão (Iniciadas vs. Cadetes vs. Seniores)</a></li>
-            <li><a href="#cap3">3. Biomecânica e Correção Técnica dos Fundamentos</a></li>
-            <li><a href="#cap4">4. Sistemas Táticos e Dinâmica de Jogo (K1, K2 e Transições)</a></li>
-            <li><a href="#cap5">5. Periodização, Carga de Treino e Gestão de Fadiga</a></li>
-            <li><a href="#cap6">6. Nutrição Esportiva, Jejum Intermitente e Performance</a></li>
-            <li><a href="#cap7">7. Liderança, Psicologia do Esporte e Gestão de Grupo</a></li>
-        </ul>
-    </div>
+    <!-- Script Minimalista para Navegação Mobile -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
 
-    <!-- CAPÍTULO 1 -->
-    <h2 id="cap1">1. Filosofia de Treino e Desenvolvimento de Atletas</h2>
-    <p>O voleibol moderno exige uma abordagem sistêmica, onde o desenvolvimento técnico não pode ser dissociado do desenvolvimento tático, físico e emocional. A função do treinador ultrapassa a mera aplicação de rotinas de exercícios (<em>drills</em>); trata-se de criar um ecossistema de aprendizagem onde os atletas desenvolvam **autonomia decisional** sob pressão.</p>
-    
-    <div class="callout">
-        <strong>O Princípio do Jogo Aberto:</strong> O voleibol é um esporte de situação sem contato direto com o adversário, onde as ações duram frações de segundo. O treino moderno prioriza o <em>Constraint-Led Approach</em> (Abordagem Baseada em Restrições), onde as regras do exercício manipulam o comportamento tático desejado, em vez de repetições estéreis e sem oposição.
-    </div>
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
 
-    <h3>Os 4 Pilares da Filosofia de Treino</h3>
-    <ul>
-        <li><strong>Tomada de Decisão (Cognição):</strong> Treinar a percepção visual do atleta para ler a rotação do corpo do bloqueador oposto, a posição da defesa e o tempo da bola.</li>
-        <li><strong>Consistência sob Estresse:</strong> Introduzir metas quantitativas com consequências imediatas nos treinos (ex: atingir 80% de precisão de passe sob pressão de pontuação).</li>
-        <li><strong>Transição Rápida de Mentalidade:</strong> A capacidade de apagar o erro da jogada anterior instantaneamente. O voleibol não permite tempo para lamentar entre os pontos.</li>
-        <li><strong>Coesão Operacional:</strong> A sinergia onde a individualidade técnica serve rigorosamente à tática coletiva definida para o sistema de jogo.</li>
-    </ul>
-
-    <!-- CAPÍTULO 2 -->
-    <h2 id="cap2">2. Metodologia de Formação por Escalão</h2>
-    <p>O desenvolvimento harmônico requer o respeito estrito às fases de maturação biológica e cognitiva dos atletas. Erros graves na formação ocorrem quando se aplicam táticas adultas a escalões de formação inicial.</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Escalão / Categoria</th>
-                <th>Foco Primário</th>
-                <th>Sistema Tático Recomendado</th>
-                <th>Volume vs. Intensidade</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Iniciadas (Sub-14/15)</strong></td>
-                <td>Leitura de bola, deslocamentos, passe alto e saque por cima consciente.</td>
-                <td>6x0 / 4x2 Simples</td>
-                <td>Alto volume técnico, baixa/média intensidade mecânica.</td>
-            </tr>
-            <tr>
-                <td><strong>Cadetes (Sub-16/17)</strong></td>
-                <td>Especialização funcional, bloqueio duplo, transição de ataque K2.</td>
-                <td>4x2 com Infiltração / 5x1 Inicial</td>
-                <td>Volume moderado, alta intensidade de deslocamento e saltos.</td>
-            </tr>
-            <tr>
-                <td><strong>Veteranos / Seniores</strong></td>
-                <td>Eficiência tática, leitura de jogo, estabilidade emocional, prevenção.</td>
-                <td>5x1 Avançado</td>
-                <td>Volume controlado (gestão articular), máxima intensidade competitiva.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Iniciadas: O Foco na Mecânica Básica</h3>
-    <p>Nesta fase, o objetivo não é a força, mas sim o **tempo de reação** e a **precisão articular**. O treino deve enfatizar:</p>
-    <ol>
-        <li>Posição de expectativa ativa (centro de gravidade baixo, calcanhares fora do solo).</li>
-        <li>Manchete com plataforma rígida e sem quebrar os cotovelos durante o impacto.</li>
-        <li>Passe por cima com formação de triângulo (indicadores e polegares) sobre a testa.</li>
-    </ol>
-
-    <h3>Cadetes e Veteranos: Especialização e Velocidade</h3>
-    <p>À medida que a maturação física se consolida, o foco migra para a velocidade da distribuição (tempo de levantamento) e a organização da cobertura ofensiva. Nos veteranos, a gestão de energia e a leitura rápida das falhas adversárias compensam a perda natural de explosão máxima.</p>
-
-    <!-- CAPÍTULO 3 -->
-    <h2 id="cap3">3. Biomecânica e Correção Técnica dos Fundamentos</h2>
-
-    <h3>O Ataque: Fase Mecânica do Salto e Golpear de Bola</h3>
-    <p>O ataque eficiente é uma cadeia cinética que começa no contato dos pés com o solo e termina na flexão do punho no ápice do salto.</p>
-    <ul>
-        <li><strong>Passada de Aproximação (3 ou 4 passadas):</strong> A penúltima passada (passo de travagem) deve ser longa e profunda para converter momento horizontal em vertical. A última passada fecha o "bloco" articular.</li>
-        <li><strong>Armação de Braços:</strong> Elevação simétrica dos dois braços. O braço não-dominante aponta para a bola (estabilizador visual), enquanto o cotovelo dominante recua acima da linha dos ombros (rotação externa do úmero).</li>
-        <li><strong>Ponto de Contato:</strong> Contactar a bola no ponto mais alto do salto, à frente do corpo, com extensão completa do cotovelo e pronação ativa do punho para imprimir efeito <em>top-spin</em>.</li>
-    </ul>
-
-    <h3>O Bloqueio: Estabilidade Articular e Leitura</h3>
-    <p>Estudiosos do esporte comprovam que o bloqueio não depende apenas da altura, mas da velocidade de deslocamento lateral e da penetração de braços sobre a rede.</p>
-    <div class="callout">
-        <strong>Ajuste de Penetração:</strong> Os braços do bloqueador não devem apenas ir "para cima", mas sim "para dentro" do campo adversário no momento do impacto do atacante, selando a rede com os ombros encolhidos para proteção da articulação gleno-umeral.
-    </div>
-
-    <!-- CAPÍTULO 4 -->
-    <h2 id="cap4">4. Sistemas Táticos e Dinâmica de Jogo</h2>
-
-    <h3>Fase K1 (Side-Out): Recepção, Levantamento e Ataque</h3>
-    <p>A fase K1 representa o complexo ofensivo primário. O sucesso do K1 depende da estabilidade do passe de manchete para permitir que o distribuidor utilize todas as opções do ataque (zona 4, zona 2, centrais e pipe).</p>
-
-    <h3>Fase K2 (Contra-Ataque): Saque, Bloqueio, Defesa e Re-Ataque</h3>
-    <p>Onde os jogos de alto nível são decididos. O K2 exige uma transição mental agressiva:</p>
-    <ol>
-        <li><strong>Saque Tático:</strong> Direcionado às zonas de conflito ou ao atacante principal para retardar sua aproximação.</li>
-        <li><strong>Leitura de Bloqueio:</strong> Estruturar o bloqueio simples/duplo fechando a diagonal principal do adversário.</li>
-        <li><strong>Posicionamento Defensivo:</strong> Defesa de campo ajustada conforme a sombra do bloqueio.</li>
-    </ol>
-
-    <!-- CAPÍTULO 5 -->
-    <h2 id="cap5">5. Periodização, Carga de Treino e Gestão de Fadiga</h2>
-    <p>Para otimizar o desempenho esportivo e prevenir lesões graves (como tendinopatias patelares e lesões de manguito rotador), o treinador deve gerenciar a **Carga Interna de Treino (RPE - Percepção Subjetiva do Esforço)** multiplicada pela duração da sessão em minutos.</p>
-
-    <h3>Distribuição de Volume e Carga Semanal</h3>
-    <p>Em microciclos competitivos com jogos no fim de semana, a carga deve seguir uma curva ondulatória:</p>
-    <ul>
-        <li><strong>Terça-feira:</strong> Carga técnica de volume alto, baixa intensidade física (foco em ajustes mecânicos).</li>
-        <li><strong>Quarta-feira:</strong> Carga tática intensa, simulação de jogo, alto volume de saltos.</li>
-        <li><strong>Quinta-feira:</strong> Ajustes táticos finos, bolas paradas, saques/recepção (redução drástica de volume).</li>
-        <li><strong>Sexta-feira:</strong> Ativação neuromuscular, velocidade de reação, preparação mental pré-jogo.</li>
-    </ul>
-
-    <!-- CAPÍTULO 6 -->
-    <h2 id="cap6">6. Nutrição Esportiva e Performance</h2>
-    <p>O rendimento em quadra está intrinsecamente ligado à disponibilidade de substratos energéticos e à recuperação muscular adequada.</p>
-
-    <h3>Estratégia Nutricional para Dias de Treino Intenso</h3>
-    <ul>
-        <li><strong>Hidratação:</strong> Mínimo de 35 a 40 ml de água por kg de peso corporal ao longo do dia, acrescido de eletrólitos durante os treinos intensos que ultrapassem 90 minutos.</li>
-        <li><strong>Aporte Proteico:</strong> Manutenção de 1.6g a 2.0g de proteína por kg corporal para suporte à síntese proteica e reparação de microlesões musculares.</li>
-        <li><strong>Janela de Oportunidade:</strong> Refeições pós-treino contendo carboidratos de rápida/média absorção aliados a proteínas de alto valor biológico para rápida ressíntese de glicogênio muscular.</li>
-    </ul>
-
-    <!-- CAPÍTULO 7 -->
-    <h2 id="cap7">7. Liderança, Psicologia do Esporte e Gestão de Grupo</h2>
-    <p>O treinador moderno é um gestor de pessoas e estados emocionais. A liderança autocrática cedeu espaço à **liderança transformacional**, onde o atleta compreende o <em>porquê</em> das exigências táticas.</p>
-
-    <h3>A Gestão dos Momentos Críticos do Set</h3>
-    <p>Nos momentos finais do set (20-20 em diante), a ansiedade altera o tônus muscular e a precisão fina. O treinador deve atuar como um estabilizador emocional:</p>
-    <ul>
-        <li><strong>Tempos Mortos Estratégicos:</strong> Utilizar os 30 segundos não apenas para dar instruções táticas pontuais (máximo de 2 instruções claras), mas para desacelerar o ritmo cardíaco dos atletas através de instruções respiratórias.</li>
-        <li><strong>Comunicação Positiva:</strong> Substituir comandos proibitivos ("Não erres o saque") por comandos direcionados à ação positiva ("Mira no corredor entre a zona 1 e 6 com profundidade").</li>
-    </ul>
-
-    <footer>
-        <p>© 2026 Ebook de Voleibol Avançado. Todos os direitos reservados. Compilação tática, metodológica e aplicada.</p>
-    </footer>
-
-</div>
-
+        // Fechar a sidebar ao clicar em um link no mobile
+        document.querySelectorAll('#sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
