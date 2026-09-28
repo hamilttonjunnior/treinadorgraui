@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Treinador de Voleibol - Grau I</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #d69e2e;
+            --bg-light: #f7fafc;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 60px 80px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        /* Capa / Estilo de Livro */
+        .cover {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 40px;
+            margin-bottom: 50px;
+        }
+
+        .cover h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .cover h2 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .cover .meta {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Tipografia de Capítulo */
+        h2.chapter-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+
+        h3.section-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        /* Caixas Didáticas */
+        .callout {
+            background-color: #ebf8ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Esquemas Visuais / Diagrmas */
+        .diagram-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .diagram-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .diagram-step {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .diagram-arrow {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+
+        /* Tabelas Formatadas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        /* Quebra de página para impressão PDF */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- CAPA DO LIVRO -->
+    <div class="cover">
+        <h1>Manual de Formação do Treinador de Voleibol</h1>
+        <h2>Curso de Treinadores – Grau I (FPV)</h2>
+        <div class="meta">Federação Portuguesa de Voleibol • Guia Didático de Estudo</div>
+    </div>
+
+    <!-- PREFÁCIO / INTRODUÇÃO -->
+    <p>Este manual foi desenvolvido com o propósito de servir como uma estrutura completa, detalhada e pedagógica para o curso de treinadores de Voleibol de Grau I. O seu conteúdo abrange desde a didática e metodologia do treino até à preparação física, etapas de formação inicial, voleibol de praia, ética desportiva e o voleibol adaptado. O objetivo é dotar o futuro treinador das ferramentas concetuais e práticas necessárias para planear, conduzir e avaliar o processo de ensino-aprendizagem com rigor científico e pedagógico.</p>
+
+    <!-- CAPÍTULO 1 -->
+    <h2 class="chapter-title">Capítulo 1: Didática Específica e Construção do Treino</h2>
+    
+    <h3 class="section-title">1.1. O Modelo de Jogo e a Estrutura Tática Sistemática</h3>
+    <p>O Modelo de Jogo constitui a pedra angular do processo pedagógico e estratégico de uma equipa de voleibol[cite: 22]. Não se trata apenas de um desenho tático rígido, mas sim de uma visão global e dinâmica que orienta a tomada de decisão dos atletas e o planeamento do treinador em todos os níveis do microciclo de treino[cite: 22]. No Voleibol, a dinâmica tática está estruturada em quatro Complexos de Jogo fundamentais:</p>
+    
+    <div class="diagram-box">
+        <strong>Estrutura Sistémica dos Complexos de Jogo</strong>
+        <div class="diagram-flow">
+            <div class="diagram-step">Complexo I (KI)<br><small>Side-Out</small></div>
+            <span class="diagram-arrow">→</span>
+            <div class="diagram-step">Complexo II (KII)<br><small>Side-Out Break</small></div>
+            <span class="diagram-arrow">→</span>
+            <div class="diagram-step">Complexo III (KIII)<br><small>Transição / Cobertura</small></div>
+            <span class="diagram-arrow">→</span>
+            <div class="diagram-step">Complexo IV (KIV)<br><small>Bola Livre / Lixo</small></div>
+        </div>
+    </div>
+
+    <p><strong>Complexo I (KI - Side-Out ou Ataque):</strong> Representa a sequência ofensiva primária que é iniciada a partir da receção ao serviço do adversário[cite: 20]. A sua cadeia de ações envolve a Receção $\rightarrow$ Distribuição $\rightarrow$ Ataque $\rightarrow$ Cobertura do Ataque[cite: 20]. O objetivo prioritário do KI é anular a vantagem inicial do serviço adversário e conquistar a posse de bola imediatamente através da vitória do ponto.</p>
+
+    <p><strong>Complexo II (KII - Side-Out Break ou Contra-Ataque):</strong> Inicia-se com a execução do próprio serviço[cite: 20]. A sequência encadeia a relação tática entre Serviço $\rightarrow$ Bloco $\rightarrow$ Defesa de Campo $\rightarrow$ Distribuição de Transição $\rightarrow$ Contra-Ataque[cite: 20]. O KII é a fase onde as equipas constroem as suas vantagens pontuais no marcador.</p>
+
+    <p><strong>Complexo III (KIII - Transição e Cobertura):</strong> Envolve todas as situações em que o ataque da própria equipa é bloqueado ou amortecido pelo adversário, exigindo a ação imediata de Cobertura do Ataque, Reconstituição da Organização Ofensiva e Re-Ataque[cite: 20]. Requer elevados níveis de concentração e capacidade de reação rápida.</p>
+
+    <p><strong>Complexo IV (KIV - Ataque após Controlo de Bola Livre/Lixo):</strong> Ocorre quando o adversário não consegue construir uma ação ofensiva agressiva e devolve a bola em trajetória alta ou fácil[cite: 20]. A equipa deve organizar-se instantaneamente para transformar essa bola fácil numa combinação de ataque de alta percentagem de conversão[cite: 20].</p>
+
+    <h3 class="section-title">1.2. Os 4 Pilares da Metodologia do Exercício Eficaz</h3>
+    <p>A conceção das tarefas no treino moderno deve afastar-se do ensino tradicional mecânico e focar-se na criação de contextos de aprendizagem representativos[cite: 22]. Para que um exercício seja pedagogicamente eficaz, deve assentar em quatro pilares[cite: 22]:</p>
+
+    <p><strong>1. Repetição com Variabilidade:</strong> O princípio do treino em bloco (repetir o mesmo gesto sob as mesmas condições indefinidamente) provou ser ineficaz para a retenção a longo prazo[cite: 22]. O treinador deve introduzir uma prática variável e aleatória, alterando distâncias, trajetórias, velocidades e origens da bola[cite: 22]. O atleta deve aprender a adaptar a sua solução técnica a condições constantemente mutáveis.</p>
+
+    <p><strong>2. Implicação Cognitiva (Perceção e Tomada de Decisão):</strong> O gesto técnico não existe isolado da tática[cite: 22]. Cada tarefa deve exigir que o atleta execute o ciclo cognitivo completo: Ler o contexto $\rightarrow$ Decidir a melhor resposta $\rightarrow$ Executar a técnica[cite: 22]. Exercícios meramente analíticos sem oposição ou sem alvos decisionais reduzem o envolvimento cognitivo do praticante.</p>
+
+    <p><strong>3. Monitorização e Critérios de Êxito:</strong> Cada exercício precisa de objetivos claros e mensuráveis (ex.: "conseguir 7 em 10 passes na zona ideal" em vez de "fazer 10 passes")[cite: 22]. O treinador deve atuar como facilitador, fornecendo feedback descritivo e orientando o foco do atleta para as componentes críticas do movimento[cite: 22].</p>
+
+    <p><strong>4. Representatividade da Tarefa:</strong> O exercício de treino deve manter as relações fundamentais do jogo real[cite: 22]. Isto implica a presença constante da rede, delimitações reais do campo, a presença de oposição (mesmo que condicionada) e a existência de uma consequência lógica na pontuação[cite: 22].</p>
+
+    <div class="callout">
+        <div class="callout-title">Nota Didática para o Treinador</div>
+        A progressão pedagógica não deve ser vista como uma transição da técnica pura para a tática, mas sim como o aumento gradual da complexidade e da incerteza do ambiente em que a técnica é aplicada[cite: 22].
+    </div>
+
+    <!-- QUEBRA DE PÁGINA -->
+    <div class="page-break"></div>
+
+    <!-- CAPÍTULO 2 -->
+    <h2 class="chapter-title">Capítulo 2: Preparação Física Específica</h2>
+
+    <h3 class="section-title">2.1. Perfil Fisiológico e Exigências Motoras</h3>
+    <p>O Voleibol é classificado fisiologicamente como uma modalidade de esforço **intermitente de alta intensidade**, com solicitações neuromusculares explosivas intercaladas por períodos de recuperação incompleta[cite: 24]. A duração média de um ponto situa-se entre os 4 e os 9 segundos, enquanto os tempos de pausa entre pontos variam entre os 15 e os 25 segundos[cite: 24].</p>
+
+    <p>Do ponto de vista bioenergético, o sistema **Anaeróbico Alático (ATP-CP)** é o ecossistema metabólico dominante para a realização de ações decisivas (saltos para bloco e ataque, acelerações, mergulhos e pancadas de serviço)[cite: 24]. Contudo, o sistema **Aeróbico** desempenha um papel crucial no suporte metabólico, sendo o responsável direto pela remoção de subprodutos, ressíntese de fosfocreatina nos períodos de pausa e manutenção da eficiência do Sistema Nervoso Central (SNC) ao longo dos múltiplos sets[cite: 24].</p>
+
+    <h3 class="section-title">2.2. Desenvolvimento das Capacidades Motoras e Prevenção de Lesões</h3>
+    <p>O planeamento da preparação física no Voleibol de formação e rendimento inicial deve priorizar a qualidade dos padrões motores antes de procurar o incremento de cargas[cite: 24]:</p>
+
+    <p><strong>A. Treino de Força e Potência:</strong> Deve ser estruturado em torno dos padrões fundamentais do movimento humano (Agachar, Articulação da Anca/Hinge, Empurrar e Puxar)[cite: 24]. A transição da força geral para a potência explosiva deve utilizar exercícios de pliometria (ciclo de alongamento-encurtamento) com volume rigorosamente controlado para evitar a sobrecarga tendinosa[cite: 24].</p>
+
+    <p><strong>B. Mecanismos de Aterragem e Prevenção do Joelho:</strong> A maior incidência de lesões graves no joelho (como a rutura do Ligamento Cruzado Anterior) e de patologias crónicas (tendinite patelar ou "joelho do saltador") ocorre na fase de aterragem[cite: 24]. O treinador deve ensinar explicitamente a absorção de força através da tripla flexão simétrica (anca, joelho e tornozelo), prevenindo o valgo dinâmico do joelho[cite: 24].</p>
+
+    <p><strong>C. Saúde e Estabilidade do Ombro:</strong> A mecânica do remate e do serviço gera um desequilíbrio muscular significativo entre os rotadores internos (fortes e solicitados) e os rotadores externos[cite: 24]. O programa de treino deve incluir obrigatoriamente exercícios diários de mobilidade da coluna torácica, estabilização escapular e fortalecimento do manguito rotador[cite: 24].</p>
+
+    <h3 class="section-title">2.3. Estrutura Padrão de uma Sessão de Treino de 90 Minutos</h3>
+    <p>A distribuição do tempo numa sessão de treino deve refletir o estado de fadiga do sistema neuromuscular[cite: 24]:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fase do Treino</th>
+                <th>Duração</th>
+                <th>Foco e Conteúdos Principais</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. Ativação / Aquecimento</strong></td>
+                <td>15 min</td>
+                <td>Mobilidade articular ativa, estabilização do <em>core</em>, ativação dos glúteos e elevação da temperatura corporal[cite: 24].</td>
+            </tr>
+            <tr>
+                <td><strong>2. Velocidade e Potência</strong></td>
+                <td>15 min</td>
+                <td>Exercícios de pliometria leve, reatividade, velocidade de reação e deslocamentos curtos com o SNC fresco[cite: 24].</td>
+            </tr>
+            <tr>
+                <td><strong>3. Bloco Técnico-Tático</strong></td>
+                <td>50 min</td>
+                <td>Situações representativas de jogo (KI, KII, jogos reduzidos e condicionados)[cite: 22, 24].</td>
+            </tr>
+            <tr>
+                <td><strong>4. Volta à Calma</strong></td>
+                <td>10 min</td>
+                <td>Alongamentos analíticos suaves, descompressão articular e feedback final da sessão[cite: 24].</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- CAPÍTULO 3 -->
+    <h2 class="chapter-title">Capítulo 3: Formação Inicial, Gira-Volei e Minivoleibol</h2>
+
+    <h3 class="section-title">3.1. O Projecto Gira-Volei como Ferramenta de Massificação</h3>
+    <p>O Gira-Volei é o projeto de expressão nacional da Federação Portuguesa de Voleibol concebido para promover o primeiro contacto com a modalidade num ambiente festivo, simplificado e altamente motivador[cite: 20]. A sua pedagogia assenta no jogo reduzido de $2\times2$, garantindo um elevado número de contactos com a bola por atleta[cite: 20].</p>
+
+    <p><strong>Divisão por Níveis Etários e Técnicos:</strong></p>
+    <p><strong>• Nível I (8 a 10 anos):</strong> O jogo é praticado exclusivamente com a utilização do **toque de dedos**[cite: 20]. Esta regra simplifica radicalmente a trajetórias da bola, permitindo aos jovens praticantes manter a bola no ar, construir pontos longos e desenvolver o sentido de trajetória e tempo de reação sem a frustração do erro técnico imediato[cite: 20].</p>
+
+    <p><strong>• Nível II (11 a 13 anos):</strong> Introduz-se gradualmente a utilização da **manchete, do serviço por baixo e por cima, do passe de distribuição e do remate**[cite: 20]. Mantém-se o formato de $2\times2$, mas aproxima-se a dinâmica da estrutura do voleibol formal[cite: 20].</p>
+
+    <h3 class="section-title">3.2. A Metodologia do Minivoleibol e a Filosofia do "Jogador Total"</h3>
+    <p>O Minivoleibol é a etapa de transição pedagógica entre o jogo recreativo e a modalidade regulamentar[cite: 20]. A sua progressão deve respeitar o desenvolvimento maturacional da criança através da seguinte cadeia estrutural[cite: 20]:</p>
+
+    <div class="diagram-box">
+        <strong>Progressão Pedagógica no Minivoleibol</strong>
+        <div class="diagram-flow">
+            <div class="diagram-step">1x1<br><small>Relação com a Bola</small></div>
+            <span class="diagram-arrow">→</span>
+            <div class="diagram-step">2x2<br><small>Relação com o Colega</small></div>
+            <span class="diagram-arrow">→</span>
+            <div class="diagram-step">3x3 e 4x4<br><small>Relação com o Grupo</small></div>
+        </div>
+    </div>
+
+    <p><strong>A Filosofia Fundamental do "Jogador Total":</strong> Nos escalões de formação inicial (Minivoleibol e Infantis), o objetivo central do treinador é **evitar a especialização precoce por posições**[cite: 20, 21]. Definir precocemente um jovem como "distribuidor" ou "central" limita drasticamente o seu desenvolvimento motor e cognitivo[cite: 20, 21]. Todos os atletas devem passar por todas as posições em campo através do sistema de rotação obrigatório, executando ações de passe, distribuição, ataque e defesa[cite: 20, 21]. A especialização tática só deve ser introduzida em etapas posteriores (a partir do escalão de Iniciados/Cadetes).</p>
+
+    <!-- QUEBRA DE PÁGINA -->
+    <div class="page-break"></div>
+
+    <!-- CAPÍTULO 4 -->
+    <h2 class="chapter-title">Capítulo 4: Voleibol de Praia</h2>
+
+    <h3 class="section-title">4.1. Análise Comparativa Regulamentar e Tática</h3>
+    <p>Embora partilhem a mesma essência motora, o Voleibol Indoor e o Voleibol de Praia apresentam diferenças regulamentares estruturais que alteram profundamente a exigência física e tática dos praticantes[cite: 19]:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Dimensão / Regra</th>
+                <th>Voleibol Indoor (Pavilhão)</th>
+                <th>Voleibol de Praia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Composição da Equipa</strong></td>
+                <td>6 jogadores em campo + substitutos[cite: 19]</td>
+                <td>2 jogadores em campo (sem substituições)[cite: 19]</td>
+            </tr>
+            <tr>
+                <td><strong>Área do Terreno de Jogo</strong></td>
+                <td>$18 \times 9\text{ m}$ ($9 \times 9\text{ m}$ por meio-campo)[cite: 19]</td>
+                <td>$16 \times 8\text{ m}$ ($8 \times 8\text{ m}$ por meio-campo)[cite: 19]</td>
+            </tr>
+            <tr>
+                <td><strong>Estatuto do Toque no Bloco</strong></td>
+                <td><strong>NÃO</strong> conta como toque de equipa (restando 3 toques)[cite: 19]</td>
+                <td><strong>CONTA</strong> como o 1.º toque da equipa (restando apenas 2 toques)[cite: 19]</td>
+            </tr>
+            <tr>
+                <td><strong>Toque de Dedos na Receção</strong></td>
+                <td>Permitido com critérios de dupla falta permissivos[cite: 19]</td>
+                <td>Extremamente restrito; o contacto deve ser limpo e simultâneo[cite: 19]</td>
+            </tr>
+            <tr>
+                <td><strong>Ação de Largada (Tip)</strong></td>
+                <td>Permitida a utilização da ponta dos dedos[cite: 19]</td>
+                <td><strong>PROIBIDA</strong>; o ataque suave deve ser feito com a mão fechada/rigida[cite: 19]</td>
+            </tr>
+            <tr>
+                <td><strong>Sistema de Pontuação</strong></td>
+                <td>À melhor de 5 Sets (25 pontos os 4 primeiros)[cite: 19]</td>
+                <td>À melhor de 3 Sets (21 pontos os 2 primeiros / 15 o 3.º)[cite: 19]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="section-title">4.2. Fatores Ambientais e Sinais de Comunicação</h3>
+    <p>No Voleibol de Praia, o vento, o sol e o piso instável (areia) deixam de ser condicionantes externas para passarem a integrar a tática do jogo[cite: 19]:</p>
+
+    <p><strong>• Gestão do Vento:</strong> O serviço contra o vento exige maior projeção e potência, enquanto o serviço a favor do vento beneficia de trajetórias flutuantes que caem abruptamente[cite: 19]. O passe de distribuição deve ser mantido mais baixo para evitar o desvio do vento[cite: 19].</p>
+
+    <p><strong>• Sistema de Sinais de Bloco:</strong> Como existe apenas um bloqueador na rede, a comunicação com o defensor de campo é realizada antes de cada ponto através de sinais de mão colocados atrás das costas[cite: 19]:</p>
+    <p>– <strong>1 Dedo Estendido:</strong> O bloqueador vai fechar a linha paralela de ataque[cite: 19].</p>
+    <p>– <strong>2 Dedos Estendidos:</strong> O bloqueador vai fechar a diagonal de ataque[cite: 19].</p>
+    <p>– <strong>Mão Aberta:</strong> O bloqueador vai seguir a trajetória do ombro do atacante / bloquear a bola[cite: 19].</p>
+    <p>– <strong>Punho Fechado:</strong> O bloqueador finge o bloco e recua para a defesa de campo[cite: 19].</p>
+
+    <!-- CAPÍTULO 5 -->
+    <h2 class="chapter-title">Capítulo 5: Ética Desportiva e Voleibol Sentado</h2>
+
+    <h3 class="section-title">5.1. Ética, Deontologia e Integridade Desportiva</h3>
+    <p>O treinador de Grau I é o principal agente de formação humana e desportiva dos praticantes[cite: 21]. A sua conduta deontológica deve pautar-se pelo respeito absoluto pelo Fair-Play, pela arbitragem e pelos adversários[cite: 21]. Na vertente de proteção da integridade do jogo, o treinador deve dominar a **Diretriz dos 3R's**[cite: 21]:</p>
+
+    <div class="callout">
+        <div class="callout-title">A Diretriz Integrada dos 3 R's</div>
+        <p><strong>1. RECONHECER:</strong> Identificar precocemente situações de manipulação de competições, assédio, discriminação, bullying ou doping[cite: 21].</p>
+        <p><strong>2. RESISTIR:</strong> Recusar categoricamente qualquer envolvimento, facilitação ou omissão perante comportamentos ilícitos ou antidesportivos[cite: 21].</p>
+        <p><strong>3. REPORTAR:</strong> Denunciar obrigatoriamente qualquer irregularidade às instâncias disciplinares da Federação Portuguesa de Voleibol e às autoridades competentes[cite: 21].</p>
+    </div>
+
+    <h3 class="section-title">5.2. Voleibol Sentado (Desporto Adaptado)</h3>
+    <p>O Voleibol Sentado é a variante paralímpica da modalidade, destinada a atletas com deficiências físico-motoras permanentes ou temporárias[cite: 23]. A modalidade partilha a mesma lógica de pontuação do voleibol de pavilhão, mas possui especificidades regulamentares críticas[cite: 23]:</p>
+
+    <div class="diagram-box">
+        <strong>Especificidades Técnicas do Voleibol Sentado</strong>
+        <p style="text-align: center; margin-top: 10px;">
+            <strong>Dimensões do Campo:</strong> $10 \times 6\text{ m}$ ($5 \times 6\text{ m}$ por meio-campo)[cite: 23]<br>
+            <strong>Altura da Rede:</strong> 1,15 m (Masculinos) | 1,05 m (Femininos)[cite: 23]<br>
+            <strong>Regra Especial:</strong> É PERMITIDO bloquear o serviço adversário[cite: 23]
+        </p>
+    </div>
+
+    <p><strong>A Regra Fundamental do *Lifting* (Elevação):</strong> A regra mais importante do Voleibol Sentado determina que a parte inferior do tronco do atleta (glúteos) deve obrigatoriamente estar em contacto com o solo no exato momento em que o atleta toca na bola[cite: 23]. Levantar a bacia do chão para alcançar uma bola configura uma falta técnica (*Lifting*)[cite: 23].</p>
+
+    <p><strong>Classificação Funcional:</strong> Os atletas são avaliados e divididos em duas categorias para garantir a equidade na competição: **VS1** (atletas com compromisso funcional mais elevado) e **VS2** (atletas com compromisso funcional mínimo)[cite: 23]. Cada equipa em campo só pode ter, no máximo, um jogador da categoria VS2 a jogar em simultâneo[cite: 23].</p>
+
+    <!-- CONCLUSÃO DO MANUAL -->
+    <h2 class="chapter-title">Considerações Finais para o Teste de Avaliação</h2>
+    <p>Este manual consolida a totalidade dos pilares teóricos e práticos exigidos no Curso de Treinadores de Voleibol de Grau I. Aconselha-se o estudo focado na integração concetual entre os módulos: a compreensão de como a preparação física serve o Modelo de Jogo, como o Minivoleibol prepara o atleta sem especialização para o jogo formal, e como o rigor ético suporta todas as ações do treinador no terreno de jogo. Bons estudos e boa sorte no teste de domingo!</p>
+
+</div>
+
+</body>
+</html>
