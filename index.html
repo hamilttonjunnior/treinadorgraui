@@ -1,460 +1,616 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel Interativo</title>
-  <style>
-    /* ==========================================================================
-       RESET & VARIÁVEIS DE CORES (Paleta Minimalista / Dark Mode)
-       ========================================================================== */
-    :root {
-      --bg-primary: #0f172a;       /* Fundo principal (Cinza escuro/Slate) */
-      --bg-surface: #1e293b;       /* Superfície dos cartões/paineis */
-      --bg-surface-hover: #334155; /* Estado hover de itens */
-      --border-color: #334155;     /* Bordas discretas */
-      
-      --text-main: #f8fafc;        /* Texto principal (Branco suave) */
-      --text-muted: #94a3b8;       /* Texto secundário (Cinza médio) */
-      
-      --accent: #3b82f6;           /* Cor de destaque principal (Azul) */
-      --accent-hover: #2563eb;     /* Destaque interativo */
-      --danger: #ef4444;           /* Vermelho para ações críticas */
-      --success: #10b981;          /* Verde para confirmações */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Treinador: Pedagogia, Metodologia e Tática no Voleibol</title>
+    
+    <!-- Tipografia Google Fonts (Inter & Lexend) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --transition: all 0.2s ease-in-out;
-    }
+    <style>
+        /* ==========================================================================
+           1. SISTEMA DE DESIGN CLEAN & ELEGANTE (LIGHT MODE PREMIUM)
+           ========================================================================== */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+            --bg-subtle: #f1f5f9;
+            
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            
+            --primary: #1e40af;        /* Azul Real Elegante */
+            --primary-light: #eff6ff;  /* Azul Claro Suave */
+            --accent: #d97706;         /* Âmbar/Dourado Tático */
+            --accent-light: #fffbeb;  /* Fundo Âmbar */
+            --success: #15803d;        /* Verde Sucesso */
+            --success-light: #f0fdf4;
+            
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            
+            --sidebar-width: 300px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      display: flex;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-body);
+            line-height: 1.7;
+            display: flex;
+            min-height: 100vh;
+        }
 
-    /* ==========================================================================
-       ESTRUTURA DE LAYOUT (Sidebar + Main Content)
-       ========================================================================== */
-    .app-container {
-      display: flex;
-      width: 100%;
-      min-height: 100vh;
-    }
+        /* ==========================================================================
+           2. LAYOUT & NAVEGAÇÃO LATERAL (SIDEBAR)
+           ========================================================================== */
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            box-shadow: var(--shadow-sm);
+        }
 
-    aside.sidebar {
-      width: 260px;
-      background-color: var(--bg-surface);
-      border-right: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1rem;
-      flex-shrink: 0;
-    }
+        .sidebar-brand {
+            padding: 1.75rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #ffffff, var(--primary-light));
+        }
 
-    .brand {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .sidebar-brand h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.3;
+        }
 
-    .brand-icon {
-      width: 12px;
-      height: 12px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-    }
+        .sidebar-brand p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+            font-weight: 600;
+        }
 
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+        .nav-menu {
+            list-style: none;
+            padding: 1rem 0;
+        }
 
-    .nav-item button {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      text-align: left;
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+        .nav-section-title {
+            padding: 1rem 1.5rem 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+        }
 
-    .nav-item button:hover {
-      background-color: var(--bg-surface-hover);
-      color: var(--text-main);
-    }
+        .nav-item a {
+            display: block;
+            padding: 0.6rem 1.5rem 0.6rem 1.75rem;
+            font-size: 0.875rem;
+            color: var(--text-body);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
 
-    .nav-item.active button {
-      background-color: var(--accent);
-      color: #ffffff;
-    }
+        .nav-item a:hover, .nav-item a.active {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
 
-    main.content {
-      flex: 1;
-      padding: 2rem;
-      overflow-y: auto;
-    }
+        /* ==========================================================================
+           3. CONTEÚDO PRINCIPAL
+           ========================================================================== */
+        #main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            max-width: calc(100% - var(--sidebar-width));
+        }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
-    }
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    .header h1 {
-      font-size: 1.75rem;
-      font-weight: 600;
-    }
+        /* Hero Header */
+        .hero-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-top: 5px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
 
-    /* ==========================================================================
-       COMPONENTES & CARDS
-       ========================================================================== */
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
 
-    .card {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      transition: var(--transition);
-    }
+        .hero-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
 
-    .card:hover {
-      border-color: var(--accent);
-    }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
-    .card-title {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
+        /* Seções e Capítulos */
+        .chapter-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            scroll-margin-top: 2rem;
+        }
 
-    .card-value {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
+        h2.chapter-header {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-light);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    /* Formulários e Inputs */
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
+        h3.section-header {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 1.75rem 0 1rem;
+        }
 
-    label {
-      display: block;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-body);
+            text-align: justify;
+        }
 
-    input[type="text"],
-    input[type="email"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background-color: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-      transition: var(--transition);
-    }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
 
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--accent);
-    }
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-body);
+        }
 
-    /* Botões */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      background-color: var(--accent);
-      color: #ffffff;
-    }
+        /* Callouts / Caixas Destaque */
+        .callout {
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+            box-shadow: var(--shadow-sm);
+        }
 
-    .btn:hover {
-      background-color: var(--accent-hover);
-    }
+        .callout-info {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: #1e3a8a;
+        }
 
-    .btn-secondary {
-      background-color: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-    }
+        .callout-accent {
+            background-color: var(--accent-light);
+            border-color: var(--accent);
+            color: #78350f;
+        }
 
-    .btn-secondary:hover {
-      background-color: var(--bg-surface-hover);
-    }
+        .callout-success {
+            background-color: var(--success-light);
+            border-color: var(--success);
+            color: #14532d;
+        }
 
-    /* Tabelas */
-    .table-container {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
+        .callout-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
+        /* Tabelas Clean */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
 
-    th, td {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border-color);
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+        }
 
-    th {
-      background-color: rgba(0, 0, 0, 0.15);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+        th {
+            background-color: var(--bg-subtle);
+            color: var(--text-heading);
+            padding: 0.85rem 1rem;
+            font-weight: 700;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-body);
+        }
 
-    tr:hover td {
-      background-color: var(--bg-surface-hover);
-    }
+        tr:last-child td {
+            border-bottom: none;
+        }
 
-    /* Seções (Alternância por Tab) */
-    .tab-content {
-      display: none;
-    }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
 
-    .tab-content.active {
-      display: block;
-    }
+        /* Diagrama de Fluxo */
+        .diagram-box {
+            background-color: var(--bg-subtle);
+            border: 1px dashed var(--primary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .app-container {
-        flex-direction: column;
-      }
-      aside.sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-      }
-    }
-  </style>
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            #sidebar {
+                display: none; /* Em telas móveis o conteúdo expande totalmente */
+            }
+            #main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- BARRA LATERAL -->
-    <aside class="sidebar">
-      <div class="brand">
-        <span class="brand-icon"></span>
-        <span>WORKSPACE</span>
-      </div>
-      <ul class="nav-menu">
-        <li class="nav-item active">
-          <button onclick="switchTab('dashboard', this)">Dashboard</button>
-        </li>
-        <li class="nav-item">
-          <button onclick="switchTab('cadastros', this)">Cadastros</button>
-        </li>
-        <li class="nav-item">
-          <button onclick="switchTab('configuracoes', this)">Configurações</button>
-        </li>
-      </ul>
-    </aside>
-
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="content">
-      
-      <!-- TAB: DASHBOARD -->
-      <section id="dashboard" class="tab-content active">
-        <header class="header">
-          <h1>Visão Geral</h1>
-          <button class="btn" onclick="atualizarMetricas()">Atualizar Dados</button>
-        </header>
-
-        <div class="grid-cards">
-          <div class="card">
-            <div class="card-title">Projetos Ativos</div>
-            <div class="card-value" id="val-projetos">12</div>
-          </div>
-          <div class="card">
-            <div class="card-title">Tarefas Concluídas</div>
-            <div class="card-value" id="val-tarefas">148</div>
-          </div>
-          <div class="card">
-            <div class="card-title">Eficiência Média</div>
-            <div class="card-value" id="val-eficiencia">94%</div>
-          </div>
+    <!-- NAVEGAÇÃO LATERAL (SUMÁRIO) -->
+    <nav id="sidebar">
+        <div class="sidebar-brand">
+            <h2>Manual do Treinador</h2>
+            <p>Voleibol & Pedagogia IPDJ</p>
         </div>
-
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Nome do Projeto</th>
-                <th>Responsável</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tabela-projetos">
-              <tr>
-                <td>Redesign de Interface</td>
-                <td>Hamilton</td>
-                <td><span style="color: var(--success);">Em Andamento</span></td>
-                <td><button class="btn btn-secondary" onclick="detalhar('Redesign')">Ver</button></td>
-              </tr>
-              <tr>
-                <td>Pipeline de VFX</td>
-                <td>Cássia</td>
-                <td><span style="color: var(--accent);">Planejamento</span></td>
-                <td><button class="btn btn-secondary" onclick="detalhar('Pipeline')">Ver</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- TAB: CADASTROS -->
-      <section id="cadastros" class="tab-content">
-        <header class="header">
-          <h1>Novo Registro</h1>
-        </header>
-
-        <div class="card" style="max-width: 600px;">
-          <form id="meuFormulario" onsubmit="salvarFormulario(event)">
-            <div class="form-group">
-              <label for="nome">Nome Completo</label>
-              <input type="text" id="nome" placeholder="Digite o nome..." required>
-            </div>
-
-            <div class="form-group">
-              <label for="categoria">Categoria</label>
-              <select id="categoria">
-                <option value="producao">Produção</option>
-                <option value="pos-producao">Pós-Produção / VFX</option>
-                <option value="desenvolvimento">Desenvolvimento</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="observacoes">Observações</label>
-              <textarea id="observacoes" rows="4" placeholder="Detalhes adicionais..."></textarea>
-            </div>
-
-            <div style="display: flex; gap: 1rem;">
-              <button type="submit" class="btn">Salvar Dados</button>
-              <button type="reset" class="btn btn-secondary">Limpar</button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      <!-- TAB: CONFIGURAÇÕES -->
-      <section id="configuracoes" class="tab-content">
-        <header class="header">
-          <h1>Configurações do Sistema</h1>
-        </header>
         
-        <div class="card">
-          <p style="color: var(--text-muted); margin-bottom: 1rem;">
-            Ajustes e preferências gerais da aplicação.
-          </p>
-          <button class="btn btn-secondary" onclick="alert('Configurações salvas com sucesso!')">Salvar Preferências</button>
+        <ul class="nav-menu">
+            <li class="nav-section-title"> Módulo 1: Pedagogia do Treino</li>
+            <li class="nav-item"><a href="#cap1">1. Competição e Inclusão</a></li>
+            <li class="nav-item"><a href="#cap2">2. Eficácia e Tempo Útil (ALT)</a></li>
+            <li class="nav-item"><a href="#cap3">3. Fases da Sessão de Treino</a></li>
+            <li class="nav-item"><a href="#cap4">4. Ciclo do Feedback Pedagógico</a></li>
+            <li class="nav-item"><a href="#cap5">5. Autonomia e Ensino por Pares</a></li>
+            <li class="nav-item"><a href="#cap6">6. Tecnologia e Avaliação Digital</a></li>
+
+            <li class="nav-section-title"> Módulo 2: Regulamento e Formação</li>
+            <li class="nav-item"><a href="#cap7">7. Regulamento de Formação (9 Jogadores)</a></li>
+            <li class="nav-item"><a href="#cap8">8. Escalões: Iniciadas vs. Cadetes vs. Seniores</a></li>
+
+            <li class="nav-section-title"> Módulo 3: Biomecânica e Tática</li>
+            <li class="nav-item"><a href="#cap9">9. Biomecânica dos Fundamentos</a></li>
+            <li class="nav-item"><a href="#cap10">10. Sistemas Táticos e Fases K1/K2</a></li>
+        </ul>
+    </nav>
+
+    <!-- ÁREA DE CONTEÚDO -->
+    <main id="main-content">
+        <div class="content-container">
+            
+            <!-- CAPA / HERO HEADER -->
+            <header class="hero-card">
+                <span class="hero-badge">Compêndio Oficial de Formação</span>
+                <h1 class="hero-title">Metodologia, Pedagogia e Tática de Voleibol</h1>
+                <p class="hero-subtitle">Manual Integrado do Treinador: Articulação entre os Referenciais do IPDJ (Grau I/II), Biomecânica de Formação, Regulamentos Federais e Gestão Humana de Atletas.</p>
+            </header>
+
+            <!-- CAPÍTULO 1 -->
+            <article id="cap1" class="chapter-card">
+                <h2 class="chapter-header">1. O Treino Desportivo como Processo de Ensino-Aprendizagem</h2>
+                <p>O treino com jovens atletas deve ser encarado primariamente como um processo pedagógico estruturado. O papel do treinador vai muito além do conhecimento tático; exige a capacidade de criar um ambiente motivador e inclusivo.</p>
+                
+                <h3 class="section-header">A. O Compromisso entre Competição e Inclusão</h3>
+                <ul>
+                    <li><strong>Papel Central da Competição:</strong> Funciona como o grande elemento mobilizador e catalisador do interesse e entusiasmo em idades jovens.</li>
+                    <li><strong>Demonstração do Rendimento:</strong> O momento do jogo é a oportunidade de colocar em prática, sob pressão regulada, os comportamentos motores trabalhados nos treinos.</li>
+                    <li><strong>Foco Intrapessoal vs. Interpessoal:</strong> Nas etapas de formação, a avaliação do sucesso deve priorizar a evolução individual e coletiva da própria equipa (auto-superação) em detrimento do resultado exclusivo no marcador.</li>
+                    <li><strong>Garantia de Inclusão:</strong> É dever ético e pedagógico garantir tempo de prática efetiva a todos os atletas para combater a desmotivação e o abandono desportivo precocidade (<em>drop-out</em>).</li>
+                </ul>
+
+                <div class="callout callout-info">
+                    <div class="callout-title"> Princípio da Auto-Superação</div>
+                    O sucesso na formação mede-se pelo domínio técnico e tático adquirido em relação ao ponto de partida do atleta, e não apenas pelo número de vitórias na tabela classificativa.
+                </div>
+            </article>
+
+            <!-- CAPÍTULO 2 -->
+            <article id="cap2" class="chapter-card">
+                <h2 class="chapter-header">2. A Dimensão da Gestão do Treino (Eficácia Pedagógica)</h2>
+                <p>A eficácia do treino mede-se pela densidade motora e pela redução do tempo morto entre tarefas.</p>
+
+                <h3 class="section-header">A. Otimização do Tempo de Treino</h3>
+                <ul>
+                    <li><strong>Tempo Útil de Treino:</strong> Minimizar pausas para explicações longas, transições de exercícios e montagem de material.</li>
+                    <li><strong>Tempo Potencial de Aprendizagem (ALT - Academic Learning Time):</strong> Garantir que o atleta está a executar tarefas adaptadas ao seu nível real de habilidade (nível ótimo de desafio), reduzindo o tempo em filas de espera.</li>
+                </ul>
+
+                <h3 class="section-header">B. Supervisão e Omnipresença (*Withitness*)</h3>
+                <ul>
+                    <li><strong>Efeito de Omnipresença:</strong> Posicionamento constante do treinador no perímetro do pavilhão, mantendo todo o grupo dentro do seu campo visual para prevenir desequilíbrios comportamentais.</li>
+                    <li><strong>Sinalética Gestual:</strong> Utilização de gestos e apitos padronizados para iniciar, parar ou rodar exercícios, economizando tempo de instrução verbal.</li>
+                </ul>
+
+                <div class="callout callout-accent">
+                    <div class="callout-title"> Regra do Perímetro</div>
+                    Nunca leciones de costas para o restante grupo. Mantém-te na linha limite do campo para abraçar visualmente todos os atletas em prática.
+                </div>
+            </article>
+
+            <!-- CAPÍTULO 3 -->
+            <article id="cap3" class="chapter-card">
+                <h2 class="chapter-header">3. A Dimensão Instrucional (Momentos da Sessão)</h2>
+                <p>A organização clara dos momentos da sessão garante a ancoragem do conhecimento e o compromisso dos praticantes.</p>
+
+                <div class="diagram-box">
+                    INÍCIO (Ancoragem & Objetivos) ➔ DURANTE (Demonstração & Variantes) ➔ ENCERRAMENTO (Síntese & Reforço)
+                </div>
+
+                <h3 class="section-header">A. Estrutura Tripartida da Sessão</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Momento</th>
+                                <th>Ações Chave do Treinador</th>
+                                <th>Objetivo Pedagógico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Início da Sessão</strong></td>
+                                <td>Apresentação dos objetivos, ancoragem com o treino anterior, verificação de compreensão (<em>Checking for Understanding</em>).</td>
+                                <td>Focar a atenção e ativar a memória motora.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Durante a Sessão</strong></td>
+                                <td>Apresentação de critérios de êxito, demonstração visual perfeita, introdução de progressões e regressões.</td>
+                                <td>Garantir a execução técnica correta e adaptada.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Encerramento</strong></td>
+                                <td>Síntese concisa dos conteúdos, emissão de feedbacks coletivos e lançamento do desafio para o próximo jogo/treino.</td>
+                                <td>Consolidar a aprendizagem e motivar o grupo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <!-- CAPÍTULO 4 -->
+            <article id="cap4" class="chapter-card">
+                <h2 class="chapter-header">4. Ciclo e Tipologia do Feedback Pedagógico</h2>
+                <p>Segundo os referenciais de Rosado & Mesquita, o feedback é o motor principal da correção motora no desporto.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title"> Ciclo Contínuo de Feedback</div>
+                    Observação do Erro ➔ Decisão (Intervir/Aguardar) ➔ Feedback Emitido ➔ Observação do Ajuste Motor ➔ Nova Decisão.
+                </div>
+
+                <h3 class="section-header">Tipos de Feedback</h3>
+                <ul>
+                    <li><strong>Prescritivo:</strong> Indica a solução exata para a repetição seguinte (ex: "Flecte mais os joelhos antes do toque"). Vital no início da aprendizagem.</li>
+                    <li><strong>Descritivo:</strong> Aponta o erro cometido (ex: "Bateu na bola atrás da linha da cabeça"). Útil em atletas intermédios.</li>
+                    <li><strong>Interrogativo:</strong> Faz perguntas que induzem a reflexão (ex: "Onde estava a tua plataforma de manchete no momento do contacto?"). Promove a autonomia tático-cognitiva.</li>
+                    <li><strong>Avaliativo:</strong> Elogio ou reforço (ex: "Excelente passe!"). Mantém a motivação emocional.</li>
+                </ul>
+            </article>
+
+            <!-- CAPÍTULO 5 -->
+            <article id="cap5" class="chapter-card">
+                <h2 class="chapter-header">5. Autonomização e Ensino por Pares</h2>
+                <p>Formar atletas autónomos exige transferir gradualmente o controlo do processo para os próprios praticantes.</p>
+
+                <h3 class="section-header">A. Ferramentas Autonomizadoras</h3>
+                <ul>
+                    <li><strong>Cartões-Tarefa:</strong> Guias visuais e escritos nas estações de treino que permitem aos atletas gerirem os seus próprios exercícios.</li>
+                    <li><strong>Descoberta Guiada:</strong> Formulação de cenários e problemas táticos para que o atleta "descubra" as melhores soluções de jogo.</li>
+                </ul>
+
+                <h3 class="section-header">B. Ensino por Pares (Peer Instruction)</h3>
+                <p>Ao colocar atletas a observar e corrigir os seus colegas, ativa-se o **Efeito Tutor**: o atleta que ensina consolida de forma muito mais profunda o seu próprio modelo mental do gesto técnico.</p>
+            </article>
+
+            <!-- CAPÍTULO 6 -->
+            <article id="cap6" class="chapter-card">
+                <h2 class="chapter-header">6. Avaliação Digital e Recursos Tecnológicos</h2>
+                <p>A tecnologia no pavilhão deve ser um meio para acelerar a aprendizagem, sem comprometer o tempo de prática motora.</p>
+                
+                <ul>
+                    <li><strong>Vídeo Delay (Atraso de Vídeo):</strong> Permite ao atleta executar o gesto técnico (ex: ataque) e observar a sua execução no tablet 5 segundos depois, alinhando a sensação cinestésica com a imagem real.</li>
+                    <li><strong>Filtro de Informação:</strong> Focar a análise em apenas 1 ou 2 componentes críticas de cada vez para evitar o excesso de informação (*information overload*).</li>
+                </ul>
+            </article>
+
+            <!-- CAPÍTULO 7 -->
+            <article id="cap7" class="chapter-card">
+                <h2 class="chapter-header">7. Enquadramento Regulamentar: Regra dos 9 Jogadores</h2>
+                <p>Análise detalhada da regulamentação oficial das federações para os escalões de formação (Infantis e Iniciados).</p>
+
+                <div class="callout callout-accent">
+                    <div class="callout-title"> Consequências da Falta do Mínimo de 9 Jogadores</div>
+                    <p>Quando uma equipa de Infantis ou Iniciados não apresenta o mínimo de 9 atletas inscritos na folha de jogo:</p>
+                    <ol>
+                        <li><strong>Inexistência de Faltas de Rotação:</strong> O jogo **PODE** realizar-se, mas ficam sem efeito as obrigações de rotação e utilização mínima de jogadores por set.</li>
+                        <li><strong>Derrota Administrativa:</strong> Independentemente do resultado no campo, é atribuída **derrota por 0–3** (parciais de 0–25, 0–25, 0–25) e 0 pontos na classificação à equipa faltosa.</li>
+                        <li><strong>Benefício do Adversário:</strong> À equipa adversária é atribuída vitória por 3–0 (25–0, 25–0, 25–0) e 3 pontos.</li>
+                    </ol>
+                </div>
+            </article>
+
+            <!-- CAPÍTULO 8 -->
+            <article id="cap8" class="chapter-card">
+                <h2 class="chapter-header">8. Abordagem Metodológica por Escalão</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Escalão</th>
+                                <th>Foco Principal</th>
+                                <th>Sistema Tático</th>
+                                <th>Volume / Intensidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Iniciadas (Sub-14/15)</strong></td>
+                                <td>Deslocamentos, passe alto, manchete precisa, serviço por cima consciente.</td>
+                                <td>6x0 / 4x2 Simples</td>
+                                <td>Alto Volume Técnico / Baixa Intensidade de Salto</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cadetes (Sub-16/17)</strong></td>
+                                <td>Especialização posicional, bloqueio duplo, apoio e transição ofensiva.</td>
+                                <td>4x2 c/ Infiltração / 5x1</td>
+                                <td>Volume Moderado / Alta Intensidade Mecânica</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Veteranos / Seniores</strong></td>
+                                <td>Consistência tática, leitura de jogo, eficiência de pontuação, prevenção de lesões.</td>
+                                <td>5x1 Avançado</td>
+                                <td>Volume Controlado / Máxima Intensidade Competitiva</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <!-- CAPÍTULO 9 -->
+            <article id="cap9" class="chapter-card">
+                <h2 class="chapter-header">9. Biomecânica dos Gestos Técnicos</h2>
+                
+                <h3 class="section-header">A. O Ataque (Cadeia Cinética)</h3>
+                <p>O remate é uma transferência de energia que começa na corrida de aproximação e culmina no contacto com a bola:</p>
+                <ul>
+                    <li><strong>Penúltima Passada:</strong> Larga e profunda para transformar a velocidade horizontal em impulsão vertical.</li>
+                    <li><strong>Armação de Braços:</strong> O braço não-dominante aponta para a bola (estabilizador visual) enquanto o cotovelo dominante recua acima da linha dos ombros.</li>
+                    <li><strong>Ponto de Contacto:</strong> No ponto mais alto do salto, à frente do corpo, aplicando flexão ativa do pulso para gerar rotação (*top-spin*).</li>
+                </ul>
+
+                <h3 class="section-header">B. O Bloqueio (Selagem da Rede)</h3>
+                <p>O sucesso do bloqueio depende da penetração das mãos sobre o plano superior da rede, encolhendo os ombros para proteger a articulação do ombro e fechar o espaço de passagem da bola.</p>
+            </article>
+
+            <!-- CAPÍTULO 10 -->
+            <article id="cap10" class="chapter-card">
+                <h2 class="chapter-header">10. Tática Coletiva: Complexo K1 e K2</h2>
+                
+                <h3 class="section-header">A. Complexo K1 (Ataque de Recepção)</h3>
+                <p>Envolve as ações de **Serviço Adversário ➔ Recepção / Passe ➔ Distribuição ➔ Remate Ofensivo ➔ Cobertura**. O objetivo do K1 é anular a vantagem do serviço adversário à primeira intenção.</p>
+
+                <h3 class="section-header">B. Complexo K2 (Contra-Ataque)</h3>
+                <p>Compreende as ações de **Serviço Próprio ➔ Bloqueio ➔ Defesa de Campo ➔ Distribuição de Transição ➔ Contra-Ataque**. É no K2 que as equipas de alto rendimento constroem as diferenças pontuais no marcador.</p>
+
+                <div class="callout callout-success">
+                    <div class="callout-title"> Transição Mental K1 ➔ K2</div>
+                    A velocidade com que uma equipa reage à perda da posse da bola e se organiza em postura defensiva define a sua maturidade tática em campo.
+                </div>
+            </article>
+
         </div>
-      </section>
-
     </main>
-  </div>
 
-  <!-- ==========================================================================
-     LOGICA JAVASCRIPT
-     ========================================================================== -->
-  <script>
-    // Alternância de Abas (Navigation)
-    function switchTab(tabId, element) {
-      // Remove a classe active de todas as seções e botões
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-      });
+    <script>
+        // Realçar item ativo no menu ao navegar
+        const navLinks = document.querySelectorAll('.nav-item a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const chapters = document.querySelectorAll('.chapter-card');
+            
+            chapters.forEach(chapter => {
+                const chapterTop = chapter.offsetTop;
+                if (pageYOffset >= chapterTop - 100) {
+                    current = chapter.getAttribute('id');
+                }
+            });
 
-      // Ativa a aba e o botão correspondente
-      document.getElementById(tabId).classList.add('active');
-      element.parentElement.classList.add('active');
-    }
-
-    // Função de simulação para atualizar métricas do Dashboard
-    function atualizarMetricas() {
-      const projetos = document.getElementById('val-projetos');
-      const tarefas = document.getElementById('val-tarefas');
-      
-      projetos.innerText = Math.floor(Math.random() * 10) + 10;
-      tarefas.innerText = Math.floor(Math.random() * 50) + 120;
-    }
-
-    // Simulação de submissão de formulário
-    function salvarFormulario(event) {
-      event.preventDefault();
-      const nome = document.getElementById('nome').value;
-      alert(`Registro de "${nome}" salvo com sucesso!`);
-      document.getElementById('meuFormulario').reset();
-    }
-
-    // Ação simples para itens da tabela
-    function detalhar(item) {
-      alert(`Exibindo detalhes para: ${item}`);
-    }
-  </script>
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
