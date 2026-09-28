@@ -1,565 +1,460 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Manual Avançado de Metodologia, Técnica e Tática de Voleibol - Guia Prático e Teórico para Treinadores e Estudantes.">
-    <title>Manual Avançado de Metodologia, Técnica e Tática de Voleibol</title>
-    
-    <!-- Tipografia Profissional via Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Interativo</title>
+  <style>
+    /* ==========================================================================
+       RESET & VARIÁVEIS DE CORES (Paleta Minimalista / Dark Mode)
+       ========================================================================== */
+    :root {
+      --bg-primary: #0f172a;       /* Fundo principal (Cinza escuro/Slate) */
+      --bg-surface: #1e293b;       /* Superfície dos cartões/paineis */
+      --bg-surface-hover: #334155; /* Estado hover de itens */
+      --border-color: #334155;     /* Bordas discretas */
+      
+      --text-main: #f8fafc;        /* Texto principal (Branco suave) */
+      --text-muted: #94a3b8;       /* Texto secundário (Cinza médio) */
+      
+      --accent: #3b82f6;           /* Cor de destaque principal (Azul) */
+      --accent-hover: #2563eb;     /* Destaque interativo */
+      --danger: #ef4444;           /* Vermelho para ações críticas */
+      --success: #10b981;          /* Verde para confirmações */
 
-    <style>
-        /* ==========================================================================
-           1. VARIÁVEIS DE DESIGN SYSTEM & ARQUITETURA DE CORES
-           ========================================================================== */
-        :root {
-            /* Cores Primárias e de Suporte */
-            --brand-primary: #0284c7;
-            --brand-primary-hover: #0369a1;
-            --brand-secondary: #0f172a;
-            --brand-accent: #f59e0b;
-            --brand-accent-subtle: #fef3c7;
-            
-            /* Neutros - Light Mode */
-            --bg-body: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-sidebar: #ffffff;
-            --border-color: #e2e8f0;
-            --border-color-subtle: #f1f5f9;
-            
-            /* Texto - Light Mode */
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --text-heading: #0f172a;
-            
-            /* Callouts & Badges */
-            --info-bg: #eff6ff;
-            --info-border: #3b82f6;
-            --info-text: #1e40af;
-            --warning-bg: #fffbeb;
-            --warning-border: #f59e0b;
-            --warning-text: #92400e;
-            --tactical-bg: #f0fdf4;
-            --tactical-border: #22c55e;
-            --tactical-text: #166534;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --transition: all 0.2s ease-in-out;
+    }
 
-            /* Tipografia */
-            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --font-display: 'Lexend', var(--font-sans);
-            --font-mono: 'JetBrains Mono', monospace;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-            /* Dimensões & Sombras */
-            --sidebar-width: 320px;
-            --header-height: 70px;
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            
-            /* Transições */
-            --transition-fast: 0.15s ease;
-            --transition-normal: 0.25s ease;
-        }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
 
-        /* Suporte Nativo a Modo Escuro (Dark Mode) */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-body: #090d16;
-                --bg-card: #111827;
-                --bg-sidebar: #0f172a;
-                --border-color: #1f2937;
-                --border-color-subtle: #111827;
-                
-                --text-main: #e2e8f0;
-                --text-muted: #94a3b8;
-                --text-heading: #f8fafc;
-                
-                --info-bg: #1e293b;
-                --info-border: #60a5fa;
-                --info-text: #bfdbfe;
-                --warning-bg: #2d2013;
-                --warning-border: #fbbf24;
-                --warning-text: #fef08a;
-                --tactical-bg: #142e1d;
-                --tactical-border: #4ade80;
-                --tactical-text: #bbf7d0;
-            }
-        }
+    /* ==========================================================================
+       ESTRUTURA DE LAYOUT (Sidebar + Main Content)
+       ========================================================================== */
+    .app-container {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+    }
 
-        /* ==========================================================================
-           2. RESET E ESTILOS BASE
-           ========================================================================== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    aside.sidebar {
+      width: 260px;
+      background-color: var(--bg-surface);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      flex-shrink: 0;
+    }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-            -webkit-text-size-adjust: 100%;
-        }
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.7;
-            overflow-x: hidden;
-            display: flex;
-            min-height: 100vh;
-        }
+    .brand-icon {
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
 
-        /* ==========================================================================
-           3. ESTRUTURA DE LAYOUT (SIDEBAR + CONTEÚDO PRINCIPAL)
-           ========================================================================== */
-        #app-layout {
-            display: flex;
-            width: 100%;
-            min-height: 100vh;
-        }
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-        /* Sidebar de Navegação */
-        #sidebar {
-            width: var(--sidebar-width);
-            background-color: var(--bg-sidebar);
-            border-right: 1px solid var(--border-color);
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            transition: transform var(--transition-normal);
-            overflow-y: auto;
-        }
+    .nav-item button {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-        .sidebar-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            background-color: var(--bg-sidebar);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+    .nav-item button:hover {
+      background-color: var(--bg-surface-hover);
+      color: var(--text-main);
+    }
 
-        .sidebar-title {
-            font-family: var(--font-display);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--brand-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .nav-item.active button {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
 
-        .sidebar-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 0.25rem;
-            font-weight: 600;
-        }
+    main.content {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
 
-        .nav-menu {
-            padding: 1rem 0;
-            list-style: none;
-        }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
 
-        .nav-section-title {
-            padding: 0.75rem 1.5rem 0.35rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-        }
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
 
-        .nav-item a {
-            display: block;
-            padding: 0.55rem 1.5rem 0.55rem 2rem;
-            font-size: 0.875rem;
-            color: var(--text-main);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            border-left: 3px solid transparent;
-        }
+    /* ==========================================================================
+       COMPONENTES & CARDS
+       ========================================================================== */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
 
-        .nav-item a:hover {
-            background-color: var(--border-color-subtle);
-            color: var(--brand-primary);
-            border-left-color: var(--brand-primary);
-        }
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
 
-        /* Conteúdo Principal */
-        #main-content {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 2.5rem 3rem;
-            max-width: calc(100% - var(--sidebar-width));
-            transition: margin-left var(--transition-normal);
-        }
+    .card:hover {
+      border-color: var(--accent);
+    }
 
-        .content-container {
-            max-width: 960px;
-            margin: 0 auto;
-        }
+    .card-title {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
 
-        /* Header Mobile */
-        #mobile-header {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            background-color: var(--bg-sidebar);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 90;
-            padding: 0 1.25rem;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .card-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
 
-        .menu-toggle-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            padding: 0.5rem;
-            border-radius: var(--radius-sm);
-            color: var(--text-main);
-            cursor: pointer;
-        }
+    /* Formulários e Inputs */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
 
-        /* ==========================================================================
-           4. TIPOGRAFIA E ELEMENTOS CONTEUDUAIS E-BOOK
-           ========================================================================== */
-        .book-header {
-            margin-bottom: 3.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border-color);
-        }
+    label {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
 
-        .book-badge {
-            display: inline-block;
-            padding: 0.35rem 0.85rem;
-            background-color: var(--brand-primary);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+    }
 
-        .book-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            color: var(--text-heading);
-            line-height: 1.15;
-            margin-bottom: 1rem;
-        }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
 
-        .book-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            max-width: 750px;
-        }
+    /* Botões */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      background-color: var(--accent);
+      color: #ffffff;
+    }
 
-        .book-meta {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
+    .btn:hover {
+      background-color: var(--accent-hover);
+    }
 
-        /* Seções e Capítulos */
-        .module-block {
-            margin-bottom: 4rem;
-        }
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
 
-        .module-header {
-            background: linear-gradient(135deg, var(--brand-secondary), var(--brand-primary));
-            color: white;
-            padding: 2rem;
-            border-radius: var(--radius-lg);
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-md);
-        }
+    .btn-secondary:hover {
+      background-color: var(--bg-surface-hover);
+    }
 
-        .module-number {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.85;
-            font-weight: 700;
-        }
+    /* Tabelas */
+    .table-container {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
 
-        .module-title {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-top: 0.25rem;
-            color: #ffffff;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
 
-        .chapter-block {
-            margin-bottom: 3.5rem;
-            scroll-margin-top: calc(var(--header-height) + 1.5rem);
-        }
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+    }
 
-        h2.chapter-title {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    th {
+      background-color: rgba(0, 0, 0, 0.15);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-        h3.section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-heading);
-            margin: 2rem 0 1rem 0;
-        }
+    tr:last-child td {
+      border-bottom: none;
+    }
 
-        p {
-            margin-bottom: 1.25rem;
-            color: var(--text-main);
-            text-align: justify;
-        }
+    tr:hover td {
+      background-color: var(--bg-surface-hover);
+    }
 
-        ul, ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
+    /* Seções (Alternância por Tab) */
+    .tab-content {
+      display: none;
+    }
 
-        li {
-            margin-bottom: 0.5rem;
-        }
+    .tab-content.active {
+      display: block;
+    }
 
-        /* Callouts / Cards Informativos */
-        .callout {
-            padding: 1.25rem 1.5rem;
-            border-radius: var(--radius-md);
-            margin: 1.75rem 0;
-            border-left: 4px solid;
-            background-color: var(--bg-card);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .callout-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .callout-info {
-            background-color: var(--info-bg);
-            border-color: var(--info-border);
-            color: var(--info-text);
-        }
-
-        .callout-warning {
-            background-color: var(--warning-bg);
-            border-color: var(--warning-border);
-            color: var(--warning-text);
-        }
-
-        .callout-tactical {
-            background-color: var(--tactical-bg);
-            border-color: var(--tactical-border);
-            color: var(--tactical-text);
-        }
-
-        /* Tabelas Estilizadas */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            margin: 2rem 0;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
-            background-color: var(--bg-card);
-        }
-
-        th {
-            background-color: var(--border-color-subtle);
-            color: var(--text-heading);
-            padding: 0.85rem 1rem;
-            font-weight: 700;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        td {
-            padding: 0.85rem 1rem;
-            border-bottom: 1px solid var(--border-color-subtle);
-            color: var(--text-main);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Destaques de Código / Esquemas */
-        .tactical-board {
-            font-family: var(--font-mono);
-            background-color: var(--brand-secondary);
-            color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            margin: 1.5rem 0;
-            overflow-x: auto;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        /* ==========================================================================
-           5. ADAPTAÇÕES RESPONSIVAS (MEDIA QUERIES)
-           ========================================================================== */
-        @media (max-width: 1024px) {
-            #sidebar {
-                transform: translateX(-100%);
-            }
-
-            #sidebar.active {
-                transform: translateX(0);
-            }
-
-            #main-content {
-                margin-left: 0;
-                max-width: 100%;
-                padding: 5.5rem 1.5rem 2rem 1.5rem;
-            }
-
-            #mobile-header {
-                display: flex;
-            }
-
-            .book-title {
-                font-size: 2.1rem;
-            }
-        }
-    </style>
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .app-container {
+        flex-direction: column;
+      }
+      aside.sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="app-layout">
-        
-        <!-- Header Mobile com Botão de Menu -->
-        <header id="mobile-header">
-            <div class="sidebar-title">
-                🏐 Voleibol Manual
-            </div>
-            <button class="menu-toggle-btn" id="menuToggle" aria-label="Abrir Menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
+  <div class="app-container">
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon"></span>
+        <span>WORKSPACE</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item active">
+          <button onclick="switchTab('dashboard', this)">Dashboard</button>
+        </li>
+        <li class="nav-item">
+          <button onclick="switchTab('cadastros', this)">Cadastros</button>
+        </li>
+        <li class="nav-item">
+          <button onclick="switchTab('configuracoes', this)">Configurações</button>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="content">
+      
+      <!-- TAB: DASHBOARD -->
+      <section id="dashboard" class="tab-content active">
+        <header class="header">
+          <h1>Visão Geral</h1>
+          <button class="btn" onclick="atualizarMetricas()">Atualizar Dados</button>
         </header>
 
-        <!-- Sidebar Lateral de Navegação (Sumário Dinâmico) -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-title">
-                    🏐 Voleibol Manual
-                </div>
-                <div class="sidebar-subtitle">Metodologia, Técnica & Tática</div>
+        <div class="grid-cards">
+          <div class="card">
+            <div class="card-title">Projetos Ativos</div>
+            <div class="card-value" id="val-projetos">12</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Tarefas Concluídas</div>
+            <div class="card-value" id="val-tarefas">148</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Eficiência Média</div>
+            <div class="card-value" id="val-eficiencia">94%</div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome do Projeto</th>
+                <th>Responsável</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-projetos">
+              <tr>
+                <td>Redesign de Interface</td>
+                <td>Hamilton</td>
+                <td><span style="color: var(--success);">Em Andamento</span></td>
+                <td><button class="btn btn-secondary" onclick="detalhar('Redesign')">Ver</button></td>
+              </tr>
+              <tr>
+                <td>Pipeline de VFX</td>
+                <td>Cássia</td>
+                <td><span style="color: var(--accent);">Planejamento</span></td>
+                <td><button class="btn btn-secondary" onclick="detalhar('Pipeline')">Ver</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB: CADASTROS -->
+      <section id="cadastros" class="tab-content">
+        <header class="header">
+          <h1>Novo Registro</h1>
+        </header>
+
+        <div class="card" style="max-width: 600px;">
+          <form id="meuFormulario" onsubmit="salvarFormulario(event)">
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input type="text" id="nome" placeholder="Digite o nome..." required>
             </div>
-            
-            <ul class="nav-menu">
-                <li class="nav-section-title">Módulo 1: Pedagogia & Ciência</li>
-                <li class="nav-item"><a href="#cap1">Cap. 1: Evolução Metodológica</a></li>
-                <li class="nav-item"><a href="#cap2">Cap. 2: Etapas de Formação</a></li>
-                <li class="nav-item"><a href="#cap3">Cap. 3: Biomecânica e Neuroaprendizagem</a></li>
-                
-                <li class="nav-section-title">Módulo 2: Biomecânica Técnica</li>
-                <li class="nav-item"><a href="#cap4">Cap. 4: Serviço (Saque)</a></li>
-                <li class="nav-item"><a href="#cap5">Cap. 5: Passe / Recepção</a></li>
-                <li class="nav-item"><a href="#cap6">Cap. 6: Distribuição (Toque)</a></li>
-                <li class="nav-item"><a href="#cap7">Cap. 7: Ataque</a></li>
-                <li class="nav-item"><a href="#cap8">Cap. 8: Bloco (Bloqueio)</a></li>
-                <li class="nav-item"><a href="#cap9">Cap. 9: Defesa e Cobertura</a></li>
 
-                <li class="nav-section-title">Módulo 3: Tática & Sistemas</li>
-                <li class="nav-item"><a href="#cap10">Cap. 10: Sistemas Estruturais</a></li>
-                <li class="nav-item"><a href="#cap11">Cap. 11: Tática Ofensiva (K1/K2)</a></li>
-                <li class="nav-item"><a href="#cap12">Cap. 12: Tática Defensiva</a></li>
-                <li class="nav-item"><a href="#cap13">Cap. 13: Especialização de Posições</a></li>
-
-                <li class="nav-section-title">Módulo 4: Gestão & Scout</li>
-                <li class="nav-item"><a href="#cap14">Cap. 14: Estruturação de Treinos</a></li>
-                <li class="nav-item"><a href="#cap15">Cap. 15: Scout & Métricas</a></li>
-                <li class="nav-item"><a href="#cap16">Cap. 16: Psicologia e Liderança</a></li>
-            </ul>
-        </nav>
-
-        <!-- Área de Conteúdo Principal -->
-        <main id="main-content">
-            <div class="content-container">
-                
-                <!-- Cabeçalho do Livro -->
-                <header class="book-header">
-                    <span class="book-badge">Edição Técnica Didática</span>
-                    <h1 class="book-title">E-book Científico e Prático de Voleibol: Da Iniciação ao Alto Rendimento</h1>
-                    <p class="book-subtitle">Uma abordagem pedagógica, biomecânica e tática integrando diretrizes internacionais (FIVB, FPV, CBV) para treinadores, analistas e profissionais de Educação Física.</p>
-                    <div class="book-meta">
-                        <span>📚 Formato: Didático Digital</span>
-                        <span>⚡ Versão: 1.0 (HTML/CSS Fluid)</span>
-                    </div>
-                </header>
-
-                <!-- CONTAINER AONDE SERÁ INSERIDO O CONTEÚDO DOS MÓDULOS -->
-                <div id="book-body">
-                    <!-- O conteúdo estendido dos capítulos será injetado sequencialmente aqui -->
-                </div>
-
+            <div class="form-group">
+              <label for="categoria">Categoria</label>
+              <select id="categoria">
+                <option value="producao">Produção</option>
+                <option value="pos-producao">Pós-Produção / VFX</option>
+                <option value="desenvolvimento">Desenvolvimento</option>
+              </select>
             </div>
-        </main>
-    </div>
 
-    <!-- Script Minimalista para Navegação Mobile -->
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
+            <div class="form-group">
+              <label for="observacoes">Observações</label>
+              <textarea id="observacoes" rows="4" placeholder="Detalhes adicionais..."></textarea>
+            </div>
 
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+            <div style="display: flex; gap: 1rem;">
+              <button type="submit" class="btn">Salvar Dados</button>
+              <button type="reset" class="btn btn-secondary">Limpar</button>
+            </div>
+          </form>
+        </div>
+      </section>
 
-        // Fechar a sidebar ao clicar em um link no mobile
-        document.querySelectorAll('#sidebar a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 1024) {
-                    sidebar.classList.remove('active');
-                }
-            });
-        });
-    </script>
+      <!-- TAB: CONFIGURAÇÕES -->
+      <section id="configuracoes" class="tab-content">
+        <header class="header">
+          <h1>Configurações do Sistema</h1>
+        </header>
+        
+        <div class="card">
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Ajustes e preferências gerais da aplicação.
+          </p>
+          <button class="btn btn-secondary" onclick="alert('Configurações salvas com sucesso!')">Salvar Preferências</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+     LOGICA JAVASCRIPT
+     ========================================================================== -->
+  <script>
+    // Alternância de Abas (Navigation)
+    function switchTab(tabId, element) {
+      // Remove a classe active de todas as seções e botões
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Ativa a aba e o botão correspondente
+      document.getElementById(tabId).classList.add('active');
+      element.parentElement.classList.add('active');
+    }
+
+    // Função de simulação para atualizar métricas do Dashboard
+    function atualizarMetricas() {
+      const projetos = document.getElementById('val-projetos');
+      const tarefas = document.getElementById('val-tarefas');
+      
+      projetos.innerText = Math.floor(Math.random() * 10) + 10;
+      tarefas.innerText = Math.floor(Math.random() * 50) + 120;
+    }
+
+    // Simulação de submissão de formulário
+    function salvarFormulario(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      alert(`Registro de "${nome}" salvo com sucesso!`);
+      document.getElementById('meuFormulario').reset();
+    }
+
+    // Ação simples para itens da tabela
+    function detalhar(item) {
+      alert(`Exibindo detalhes para: ${item}`);
+    }
+  </script>
 </body>
 </html>
