@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compêndio Geral de Pedagogia, Didática e Tática do Treino de Voleibol</title>
+    <title>Compêndio Integral do Treinador de Voleibol — Grau I</title>
     
     <!-- Tipografia Google Fonts (Inter & Lexend) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,9 +30,11 @@
             --primary: #1e40af;        /* Azul Real Elegante */
             --primary-light: #eff6ff;  /* Azul Claro Suave */
             --accent: #d97706;         /* Âmbar/Dourado Tático */
-            --accent-light: #fffbeb;  /* Fundo Âmbar */
+            --accent-light: #fffbeb;   /* Fundo Âmbar */
             --success: #15803d;        /* Verde Sucesso */
             --success-light: #f0fdf4;
+            --danger: #b91c1c;         /* Vermelho Alerta */
+            --danger-light: #fef2f2;
             
             --radius-sm: 6px;
             --radius-md: 10px;
@@ -42,7 +44,7 @@
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
             
-            --sidebar-width: 310px;
+            --sidebar-width: 320px;
         }
 
         *, *::before, *::after {
@@ -117,8 +119,8 @@
 
         .nav-item a {
             display: block;
-            padding: 0.55rem 1.5rem 0.55rem 1.75rem;
-            font-size: 0.85rem;
+            padding: 0.5rem 1.5rem 0.5rem 1.75rem;
+            font-size: 0.83rem;
             color: var(--text-body);
             text-decoration: none;
             transition: all 0.2s ease;
@@ -143,7 +145,7 @@
         }
 
         .content-container {
-            max-width: 920px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
@@ -173,7 +175,7 @@
 
         .hero-title {
             font-family: 'Lexend', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 800;
             color: var(--text-heading);
             line-height: 1.25;
@@ -199,7 +201,7 @@
 
         h2.chapter-header {
             font-family: 'Lexend', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: var(--text-heading);
             padding-bottom: 0.75rem;
@@ -212,10 +214,18 @@
 
         h3.section-header {
             font-family: 'Lexend', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--primary);
-            margin: 1.75rem 0 1rem;
+            margin: 1.75rem 0 0.85rem;
+        }
+
+        h4.subsection-header {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin: 1.25rem 0 0.5rem;
         }
 
         p {
@@ -261,6 +271,12 @@
             color: #14532d;
         }
 
+        .callout-danger {
+            background-color: var(--danger-light);
+            border-color: var(--danger);
+            color: #7f1d1d;
+        }
+
         .callout-title {
             font-weight: 700;
             font-size: 0.95rem;
@@ -282,21 +298,21 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             background-color: #ffffff;
         }
 
         th {
             background-color: var(--bg-subtle);
             color: var(--text-heading);
-            padding: 0.85rem 1rem;
+            padding: 0.85rem 0.9rem;
             font-weight: 700;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
 
         td {
-            padding: 0.85rem 1rem;
+            padding: 0.8rem 0.9rem;
             border-bottom: 1px solid var(--border-color);
             color: var(--text-body);
         }
@@ -309,11 +325,11 @@
             background-color: #fafafa;
         }
 
-        /* Diagrama de Fluxo */
+        /* Diagramas e Caixas Estruturadas */
         .diagram-box {
             background-color: var(--bg-subtle);
             border: 1px dashed var(--primary);
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: var(--radius-md);
             text-align: center;
             font-family: 'Lexend', sans-serif;
@@ -321,6 +337,19 @@
             color: var(--primary);
             margin: 1.5rem 0;
             line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        .code-like-block {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 0.82rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            line-height: 1.5;
         }
 
         /* Responsividade */
@@ -338,31 +367,37 @@
 </head>
 <body>
 
-    <!-- NAVEGAÇÃO LATERAL (SUMÁRIO COMPLETO) -->
+    <!-- NAVEGAÇÃO LATERAL (SUMÁRIO INTEGRAL) -->
     <nav id="sidebar">
         <div class="sidebar-brand">
             <h2>Compêndio do Treinador</h2>
-            <p>Pedagogia & Didática IPDJ / Voleibol</p>
+            <p>Voleibol Grau I — PNFT / FPV / FIVB</p>
         </div>
         
         <ul class="nav-menu">
-            <li class="nav-section-title"> Módulo 1: Ensino e Aprendizagem</li>
-            <li class="nav-item"><a href="#cap1">1. Competição e Inclusão</a></li>
-            <li class="nav-item"><a href="#cap2">2. Gestão Eficaz do Treino</a></li>
-            <li class="nav-item"><a href="#cap3">3. A Estrutura da Sessão</a></li>
-            <li class="nav-item"><a href="#cap4">4. Ciclo do Feedback Pedagógico</a></li>
+            <li class="nav-section-title">Módulo I: Ética e Inclusão</li>
+            <li class="nav-item"><a href="#m1-etica">1. Ética e Valores no Desporto</a></li>
+            <li class="nav-item"><a href="#m1-problematicas">2. Problemáticas Éticas</a></li>
+            <li class="nav-item"><a href="#m1-papel">3. O Papel do Treinador</a></li>
+            <li class="nav-item"><a href="#m1-adaptado">4. Desporto Adaptado e Inclusão</a></li>
 
-            <li class="nav-section-title"> Módulo 2: Autonomia e Tecnologia</li>
-            <li class="nav-item"><a href="#cap5">5. Autonomização e Ensino por Pares</a></li>
-            <li class="nav-item"><a href="#cap6">6. Recursos Tecnológicos e Avaliação</a></li>
+            <li class="nav-section-title">Módulo II: Fisiologia e Avaliação</li>
+            <li class="nav-item"><a href="#m2-fisiologia">1. Bioenergética e Fibras Musculares</a></li>
+            <li class="nav-item"><a href="#m2-ltad">2. Desenvolvimento Atlético (LTAD)</a></li>
+            <li class="nav-item"><a href="#m2-testes">3. Bateria de Testes Físico-Motores</a></li>
 
-            <li class="nav-section-title"> Módulo 3: Regulamento e Formação</li>
-            <li class="nav-item"><a href="#cap7">7. Regulamento Oficial de Formação</a></li>
-            <li class="nav-item"><a href="#cap8">8. Abordagem Metodológica por Escalão</a></li>
+            <li class="nav-section-title">Módulo III: Didática e Estatística</li>
+            <li class="nav-item"><a href="#m3-didatica">1. Dimensões Didáticas do Treino</a></li>
+            <li class="nav-item"><a href="#m3-estatistica">2. Estatística e Análise de Jogo</a></li>
 
-            <li class="nav-section-title"> Módulo 4: Biomecânica e Tática</li>
-            <li class="nav-item"><a href="#cap9">9. Biomecânica dos Gestos Técnicos</a></li>
-            <li class="nav-item"><a href="#cap10">10. Tática Coletiva (Complexos K1 e K2)</a></li>
+            <li class="nav-section-title">Módulo IV: Regras e Arbitragem</li>
+            <li class="nav-item"><a href="#m4-composicao">1. Equipas e Inscrição</a></li>
+            <li class="nav-item"><a href="#m4-formacao">2. Normas de Formação (FPV)</a></li>
+            <li class="nav-item"><a href="#m4-protocolo">3. Protocolo de Jogo Cronometrado</a></li>
+            <li class="nav-item"><a href="#m4-posicoes">4. Posições e Rotações</a></li>
+            <li class="nav-item"><a href="#m4-interrupcoes">5. Interrupções e Líbero</a></li>
+            <li class="nav-item"><a href="#m4-sancoes">6. Disciplina e Sanções</a></li>
+            <li class="nav-item"><a href="#m4-protestos">7. Situações Especiais e Protestos</a></li>
         </ul>
     </nav>
 
@@ -372,278 +407,488 @@
             
             <!-- CAPA / HERO HEADER -->
             <header class="hero-card">
-                <span class="hero-badge">Compêndio Exaustivo e Integrado</span>
-                <h1 class="hero-title">Pedagogia, Didática e Tática do Treino de Voleibol</h1>
-                <p class="hero-subtitle">Síntese Integrada dos Diapositivos Pedagógicos, Referenciais IPDJ (Grau I / II), Biomecânica Aplicada, Tática de Jogo e Regulamentação Oficial de Formação.</p>
+                <span class="hero-badge">Manual de Formação e Consulta Técnica</span>
+                <h1 class="hero-title">Compêndio Integral do Treinador de Voleibol</h1>
+                <p class="hero-subtitle">Sistematização dos conteúdos programáticos, regulamentares, biomecânicos e didáticos para a Formação de Treinadores de Voleibol (Grau I), alinhado com o PNFT, FPV, FIVB e IPDJ.</p>
             </header>
 
-            <!-- CAPÍTULO 1 -->
-            <article id="cap1" class="chapter-card">
-                <h2 class="chapter-header">1. O Treino Desportivo como Processo de Ensino-Aprendizagem</h2>
-                <p>O treino desportivo em etapas jovens é uma atividade eminentemente pedagógica. A competição atua como um catalisador de motivação, mas a orientação da prática deve centrar-se na evolução pessoal e coletiva.</p>
+            <!-- ==========================================
+                 MÓDULO I: ÉTICA, DEONTOLOGIA E ADAPTADO
+                 ========================================== -->
+            
+            <article id="m1-etica" class="chapter-card">
+                <h2 class="chapter-header">1. Ética e Valores no Desporto</h2>
+                <p>A ética atua como o sistema de princípios e valores que orienta a conduta moral e pedagógica do treinador[cite: 10]. A competência técnica deve caminhar sempre a par de uma postura exemplar, dado que os valores manifestados pelo treinador moldam diretamente a postura dos seus praticantes[cite: 10, 17].</p>
 
-                <h3 class="section-header">A. O Compromisso entre Competição e Inclusão</h3>
+                <h3 class="section-header">Correntes Éticas Fundamentais</h3>
                 <ul>
-                    <li><strong>Papel Central da Competição:</strong> Funciona como elemento mobilizador e catalisador do interesse, empenho e motivação dos praticantes em idades jovens.</li>
-                    <li><strong>Demonstração do Rendimento:</strong> O momento competitivo é a oportunidade real de aplicar, sob pressão do jogo, as soluções motoras e táticas trabalhadas no treino.</li>
-                    <li><strong>Foco Intrapessoal vs. Interpessoal:</strong> Em etapas de formação, a avaliação do sucesso deve priorizar a evolução do próprio atleta/equipa (auto-superação e mestria) em vez do resultado exclusivo frente ao adversário.</li>
-                    <li><strong>Garantia de Inclusão:</strong> Assegurar que todos os atletas têm tempo de jogo e de prática efetiva para evitar a desmotivação e o abandono desportivo precocidade (<em>drop-out</em>).</li>
+                    <li><strong>Ética das Virtudes (Aristóteles):</strong> Foca-se no caráter do indivíduo e nas virtudes que sustentam o agir correto (ex.: ponderação, respeito, verdade)[cite: 10].</li>
+                    <li><strong>Ética Normativa ou do Dever (Kant):</strong> Foca-se no cumprimento de normas universais; a ação é correta se puder ser adotada universalmente[cite: 10].</li>
+                    <li><strong>Ética Utilitarista (Mill):</strong> A ação é avaliada pelas suas consequências, visando maximizar o bem-estar e minimizar o dano global[cite: 10].</li>
+                </ul>
+
+                <div class="callout callout-accent">
+                    <div class="callout-title">Três Questões Éticas da Vida</div>
+                    <p>A conduta ética articula-se na interseção de três perguntas[cite: 10]:</p>
+                    <ul>
+                        <li><em>Quero?</em> (Desejo/Intenção)[cite: 10]</li>
+                        <li><em>Devo?</em> (Dever moral/norma)[cite: 10]</li>
+                        <li><em>Posso?</em> (Possibilidade/Permissão)[cite: 10]</li>
+                    </ul>
+                    <p style="margin-bottom:0; font-style:italic; font-weight: 600;">"Nem tudo o que quero eu posso; nem tudo o que posso eu devo; e nem tudo o que devo eu quero."[cite: 10]</p>
+                </div>
+
+                <h3 class="section-header">Neutralidade do Desporto e Integridade</h3>
+                <p>O desporto é uma atividade humana neutra; o seu valor formativo depende exclusivamente da intenção pedagógica do agente[cite: 10]. O cumprimento estrito dos regulamentos formais não assegura, por si só, uma conduta ética[cite: 10]. A integridade é o valor central e alicerce de todas as ações pedagógicas[cite: 10].</p>
+                <p>O <strong>Espírito Olímpico</strong> assenta na Excelência, Amizade e Respeito, enquanto o <strong>Fair Play</strong> vai além da obediência cega às regras, envolvendo lealdade e a recusa da batota ou manipulação[cite: 10].</p>
+            </article>
+
+            <article id="m1-problematicas" class="chapter-card">
+                <h2 class="chapter-header">2. Problemáticas Éticas no Desporto</h2>
+                <ul>
+                    <li><strong>Racismo & Discriminação:</strong> Preconceito ou exclusão baseados na etnia ou origem, atentando contra a dignidade e a coesão social[cite: 10].</li>
+                    <li><strong>Especialização Precoce:</strong> Treino intensivo precoce com exclusão de outras modalidades, gerando risco acrescido de lesões por sobrecarga, <em>burnout</em> e abandono[cite: 10, 13].</li>
+                    <li><strong>Desigualdade de Género:</strong> Sub-representação feminina na prática, arbitragem e gestão, comprometendo a equidade e a igualdade de oportunidades[cite: 10].</li>
+                    <li><strong>Violência & Bullying:</strong> Abuso de poder, castigos físicos e humilhações orais recorrentes que originam danos emocionais profundos e abandono precoce[cite: 10].</li>
+                    <li><strong>Abuso Sexual:</strong> Condutas inadequadas facilitadas pela assimetria de poder e dependência, constituindo violação grave dos direitos fundamentais[cite: 10].</li>
+                    <li><strong>Doping:</strong> Utilização de substâncias/métodos proibidos para elevar o rendimento, violando a equidade, o respeito pela saúde e o espírito desportivo[cite: 10].</li>
+                    <li><strong>Manipulação de Resultados:</strong> Viciação de jogos (<em>match-fixing</em>) associada a apostas ou acordos, anulando a verdade desportiva[cite: 10].</li>
+                    <li><strong>Sustentabilidade:</strong> Impacto ambiental e uso irresponsável de recursos, comprometendo o equilíbrio ecológico e o futuro sustentável[cite: 10].</li>
+                </ul>
+            </article>
+
+            <article id="m1-papel" class="chapter-card">
+                <h2 class="chapter-header">3. O Papel do Treinador na Promoção da Ética</h2>
+                <p>O treinador atua prioritariamente como formador de cidadãos[cite: 10, 17]. Cumpre-lhe adotar o Código de Ética Desportiva (PNED / Conselho da Europa) e assinar compromissos formais com atletas, pais e dirigentes[cite: 10].</p>
+
+                <h3 class="section-header">Perspetivas de Intervenção</h3>
+                <ul>
+                    <li><strong>Intervenção PELO Desporto:</strong> O desporto é utilizado como um meio para promover o desenvolvimento humano, cívico e social (Pessoas como fim)[cite: 10, 11].</li>
+                    <li><strong>Intervenção PARA o Desporto:</strong> A focalização recai sobre o rendimento técnico-tático e a vitória (Pessoas como meio)[cite: 10].</li>
+                </ul>
+
+                <h3 class="section-header">Princípios Didáticos no Treino</h3>
+                <ol>
+                    <li>Manter presentes os objetivos educativos na estruturação do treino[cite: 10].</li>
+                    <li>Gerir o diálogo e usar linguagem inclusiva, explicando a fundamentação das decisões[cite: 10].</li>
+                    <li>Estimular a autonomia e proatividade, transferindo responsabilidades de forma progressiva[cite: 10].</li>
+                </ol>
+            </article>
+
+            <article id="m1-adaptado" class="chapter-card">
+                <h2 class="chapter-header">4. Desporto Adaptado e Inclusão</h2>
+                
+                <h3 class="section-header">Modelos de Análise da Deficiência</h3>
+                <ul>
+                    <li><strong>Modelo Clínico (ICIDH, OMS 1980):</strong> Foca-se na patologia individual, estabelecendo uma relação direta entre Deficiência, Incapacidade e Desvantagem/Handicap[cite: 11].</li>
+                    <li><strong>Modelo Social (UPIAS 1976):</strong> Transfere a responsabilidade para a estrutura social, entendendo a incapacidade como uma restrição gerada por um contexto inflexível[cite: 11].</li>
+                    <li><strong>Modelo Biopsicossocial (CIF, OMS 2001/2004):</strong> Integra as perspetivas biológica, individual e social, onde a funcionalidade resulta da interação dinâmica entre condições de saúde, estruturas do corpo, atividade e fatores contextuais[cite: 11].</li>
                 </ul>
 
                 <div class="callout callout-info">
-                    <div class="callout-title"> Orientação para a Mestria</div>
-                    O foco no rendimento intrapessoal fortalece o autoconceito do jovem atleta. Quando o sucesso é medido pela superação individual, reduz-se a ansiedade competitiva e aumenta-se a retenção a longo prazo.
-                </div>
-            </article>
-
-            <!-- CAPÍTULO 2 -->
-            <article id="cap2" class="chapter-card">
-                <h2 class="chapter-header">2. A Dimensão da Gestão do Treino (Eficácia Pedagógica)</h2>
-                <p>A eficácia pedagógica do treinador reflete-se na sua capacidade de otimizar o tempo e manter um ambiente de aprendizagem organizado e focado.</p>
-
-                <h3 class="section-header">A. Omitir Perdas de Tempo e Otimizar o Tempo</h3>
-                <ul>
-                    <li><strong>Tempo Útil de Treino:</strong> Reduzir o tempo gasto em transições de exercícios, explicações longas e montagem/arrumação de material.</li>
-                    <li><strong>Tempo Disponível para a Prática:</strong> Promover exercícios fluídos com poucos atletas em fila de espera, aumentando as repetições de qualidade.</li>
-                    <li><strong>Tempo Potencial de Aprendizagem (ALT - Academic Learning Time):</strong> Garantir que o atleta está a praticar tarefas ajustadas ao seu nível real de habilidade (nível ótimo de desafio).</li>
-                </ul>
-
-                <h3 class="section-header">B. Supervisão e Monitorização</h3>
-                <ul>
-                    <li><strong>Efeito de Omnipresença (*Withitness*):</strong> Posicionamento constante do treinador no perímetro do recinto de treino, mantendo todo o grupo sob o seu campo visual para prevenir comportamentos desviantes.</li>
-                    <li><strong>Sinalética Gestual:</strong> Uso de gestos e códigos visuais padronizados para orientar, parar ou rodar exercícios, economizando tempo instrucional.</li>
-                    <li><strong>Controlo do Clima de Atenção:</strong> Assegurar o contacto visual direto antes de emitir qualquer instrução.</li>
-                    <li><strong>Manutenção do Empenho:</strong> Presença ativa e dinâmica para incutir rigor, intensidade e atitude positiva nos atletas.</li>
-                </ul>
-
-                <h3 class="section-header">C. Disciplina e "Saber-Estar"</h3>
-                <ul>
-                    <li><strong>Estabelecimento de Regras:</strong> Criar procedimentos e normas claras (por escrito) desde o início da época.</li>
-                    <li><strong>Sanção Educativa e Imparcial:</strong> Atuar com objetividade sobre comportamentos inadequados, sancionando a conduta e mantendo a justiça percetiva no grupo.</li>
-                    <li><strong>Valorização do Comportamento Adequado:</strong> Reforçar <em>EXPLICITAMENTE</em> e elogiar as boas atitudes e o cumprimento das normas.</li>
-                </ul>
-            </article>
-
-            <!-- CAPÍTULO 3 -->
-            <article id="cap3" class="chapter-card">
-                <h2 class="chapter-header">3. A Dimensão Instrucional (Momentos da Sessão)</h2>
-                <p>A condução didática da sessão organiza-se em três momentos estruturantes que asseguram a compreensão e o aproveitamento motor.</p>
-
-                <div class="diagram-box">
-                    <strong>INÍCIO DA SESSÃO</strong> ➔ <strong>DURANTE O TREINO</strong> ➔ <strong>ENCERRAMENTO</strong><br>
-                    <small>(Objetivos & Ancoragem) ➔ (Critérios, Demonstração & Variantes) ➔ (Síntese, Feedbacks & Desafio)</small>
+                    <div class="callout-title">Inclusão vs. Integração</div>
+                    <p><strong>Inclusão:</strong> Reestruturação prévia dos ambientes e regulamentos para assegurar o acesso equitativo de todos os praticantes[cite: 11, 17].</p>
+                    <p style="margin-bottom:0;"><strong>Integração:</strong> Inserção do indivíduo num sistema rígido, exigindo dele a adaptação individual[cite: 11, 17].</p>
                 </div>
 
-                <h3 class="section-header">A. Início da Sessão (Apresentação Inicial)</h3>
+                <h3 class="section-header">Competências Motoras Fundamentais no Desporto Adaptado</h3>
+                <ol>
+                    <li><strong>Locomoção:</strong> Deslocação no espaço (em pé ou em cadeira de rodas), manejos de cadeira e orientação espacial[cite: 11]. Escala de apoio: Realiza Sozinho (FS - 4 pts), Ajuda Verbal (AV - 3 pts), Ajuda Física Parcial (AFP - 2 pts), Ajuda Física Total (AFT - 1 pt)[cite: 11].</li>
+                    <li><strong>Estabilidade e Equilíbrio:</strong> Manutenção de posturas, transferências, controlo postural sentado sem apoio e rotações de tronco[cite: 11].</li>
+                    <li><strong>Manipulação de Objetos:</strong> Controlo, receção e projeção de objetos com mãos, pés ou ajudas técnicas (ex.: bolas sonoras com guizos)[cite: 11].</li>
+                </ol>
+            </article>
+
+            <!-- ==========================================
+                 MÓDULO II: FISIOLOGIA E AVALIAÇÃO FÍSICA
+                 ========================================== -->
+
+            <article id="m2-fisiologia" class="chapter-card">
+                <h2 class="chapter-header">1. Fisiologia do Exercício e Bioenergética no Voleibol</h2>
+                
+                <h3 class="section-header">Tipos de Fibras Musculares e Recrutamento</h3>
                 <ul>
-                    <li>Clarificar os objetivos gerais da sessão.</li>
-                    <li>Promover a ancoragem pedagógica, relacionando o treino com as sessões anteriores e futuras.</li>
-                    <li>Apresentar os conteúdos e as aprendizagens-chave.</li>
-                    <li>Definir as condições organizativas (grupos, estações, sinais).</li>
-                    <li><strong>Verificação da Compreensão (Checking for Understanding):</strong> Colocar perguntas concretas e direcionadas a atletas específicos para confirmar a assimilação da mensagem.</li>
+                    <li><strong>Tipo I (Lentas / Oxidativas):</strong> Baixo limiar de ativação, elevadas reservas mitocôndrias, resistência superior à fadiga[cite: 15].</li>
+                    <li><strong>Tipo IIa (Rápidas / Glicolíticas Oxidativas):</strong> Intermédias, recrutadas em esforços de intensidade moderada/elevada[cite: 15].</li>
+                    <li><strong>Tipo IIx (Rápidas Glicolíticas Puras):</strong> Alto limiar de ativação, contração rápida e potente, fadiga acelerada[cite: 15].</li>
+                    <li><strong>Princípio do Tamanho de Henneman:</strong> Recrutamento progressivo das unidades motoras, das menores (Tipo I) para as maiores (Tipo IIx), consoante a magnitude da força ou velocidade exigida[cite: 15].</li>
                 </ul>
 
-                <h3 class="section-header">B. Durante a Sessão (Apresentação de Tarefas)</h3>
+                <h3 class="section-header">Caracterização Bioenergética</h3>
+                <p>Esforço intermitente de alta intensidade: Ralis curtos e explosivos (6–8 segundos) intercalados por pausas de recuperação (18–30 segundos), num rácio Esforço:Pausa médio de 1:4 a 1:5[cite: 15].</p>
                 <ul>
-                    <li>Identificar com clareza os critérios de êxito (como avaliar o sucesso do movimento).</li>
-                    <li>Fornecer demonstração visual (pelo treinador ou por um atleta modelo) simultaneamente à explicação verbal.</li>
-                    <li>Apresentar variantes de facilidade e dificuldade (regressões e progressões) para adaptar o exercício à heterogeneidade do grupo.</li>
-                    <li>Recapitular e re-explicar caso se detetem falhas de compreensão.</li>
-                </ul>
-
-                <h3 class="section-header">C. Encerramento da Sessão</h3>
-                <ul>
-                    <li>Fazer uma revisão curta e concisa dos pontos essenciais trabalhados.</li>
-                    <li>Ligar o treino às aprendizagens do treino seguinte ou do jogo.</li>
-                    <li>Emitir feedbacks coletivos e/ou individuais.</li>
-                    <li>Lançar novos desafios e reforçar a coesão e motivação do grupo.</li>
+                    <li><strong>Sistema Metabólico Principal:</strong> Sistema Anaeróbio Alático (ATP-CP) para as ações explosivas (saltos, deslocamentos, remates)[cite: 15].</li>
+                    <li><strong>Função do Sistema Aeróbio:</strong> Ressíntese rápida de fosfocreatina (PCr), depuração de metabolitos e manutenção da potência ao longo dos <em>sets</em>[cite: 15].</li>
                 </ul>
             </article>
 
-            <!-- CAPÍTULO 4 -->
-            <article id="cap4" class="chapter-card">
-                <h2 class="chapter-header">4. Ciclo e Tipologia do Feedback Pedagógico</h2>
-                <p>A intervenção corretiva do treinador fundamenta-se na observação sistemática e na escolha do tipo de informação a fornecer ao atleta.</p>
+            <article id="m2-ltad" class="chapter-card">
+                <h2 class="chapter-header">2. Desenvolvimento Atlético a Longo Prazo (LTAD) e Treino de Força</h2>
+                <p>O voleibol é uma modalidade de especialização tardia; a aquisição técnica específica consolida-se com maior eficácia entre os 13 e os 15 anos[cite: 13]. A especialização precoce provoca elevado risco de lesões por sobrecarga, exaustão psicofísica (<em>burnout</em>) e abandono prematuro[cite: 10, 13].</p>
 
-                <div class="callout callout-info">
-                    <div class="callout-title"> O Ciclo Contínuo de Feedback (Rosado & Mesquita)</div>
-                    <div class="diagram-box" style="margin: 0.5rem 0 0; background: #ffffff;">
-                        Observação do Erro ➔ Decisão (Intervir ou Aguardar) ➔ Feedback Informativo ➔ Observação do Ajuste Motor ➔ Nova Decisão
-                    </div>
-                </div>
+                <h3 class="section-header">Fases do LTAD e Pico de Velocidade de Crescimento (PHV)</h3>
+                <ul>
+                    <li><strong>Fase de Experimentação (6–12 anos):</strong> Predomínio do Jogo Deliberado (atividades recreativas e flexíveis) focado no controlo motor e mobilidade[cite: 13].</li>
+                    <li><strong>Fase de Especialização (13–15 anos):</strong> Transição para o treino estruturado, coincidindo com o PHV (<em>Peak Height Velocity</em>)[cite: 13].</li>
+                    <li><strong>Fase de Investimento (+16 anos):</strong> Foco no alto rendimento e na especialização posicional[cite: 13].</li>
+                    <li><strong>Bio-Banding:</strong> Agrupamento de jovens praticantes pelo seu desenvolvimento biológico/maturacional (calculado via <em>Maturity Offset</em>), evitando a exclusão de atletas de maturação tardia[cite: 13].</li>
+                </ul>
 
-                <h3 class="section-header">Tipos de Feedback Pedagógico</h3>
+                <h3 class="section-header">Etapas do Treino de Força (Modelo Dan Baker)</h3>
+                <p><strong>Etapas 1 e 2:</strong> Calistenia e peso corporal (agachamento, lunge, flexões, prancha)[cite: 13].<br>
+                <strong>Etapa 3:</strong> Introdução de resistências externas leves (halteres, elásticos) e aprendizagem do treino com barra[cite: 13].<br>
+                <strong>Etapas 4, 5 e 6:</strong> Treino de força máxima e potência específica (barras pesadas, VBT, treino pliométrico avançado)[cite: 13].</p>
+            </article>
+
+            <article id="m2-testes" class="chapter-card">
+                <h2 class="chapter-header">3. Bateria de Testes de Avaliação Físico-Motora</h2>
+                <p>A avaliação da condição física geral e neuromuscular é balizada por protocolos padronizados de execução e critérios de pontuação diferenciados por género[cite: 19, 20, 21].</p>
+
+                <h3 class="section-header">Protocolos de Execução dos Exercícios de Teste</h3>
+                <ol>
+                    <li><strong>Agachamento Unilateral (Single Leg Squat na Caixa):</strong> Quebrar a paralela e voltar à posição inicial[cite: 19]. Parar nas 5 repetições de cada membro[cite: 19]. Em caso de assimetria, calcular a média das repetições[cite: 19]. Se não conseguir, registar `0` e realizar no TRX (8 repetições de cada lado)[cite: 19].</li>
+                    <li><strong>Pull-ups / Chin-ups (Elevações na Barra):</strong> Extensão completa dos cotovelos no ponto inferior e queixo a ultrapassar a barra[cite: 19]. Adaptação: remada invertida no TRX a ~30º do chão (cada repetição conta metade)[cite: 19].</li>
+                    <li><strong>Core - Ventral (Prancha Anterior no GHD / Solo):</strong> Deitado de barriga para baixo, com a espinha ilíaca ântero-superior alinhada pelo limite da almofada e mãos nos ombros, sem perder o alinhamento[cite: 19].</li>
+                    <li><strong>Agachamento Completo c/ ~10% PC em 60":</strong> Quebrar a paralela com halter de ~10% do Peso Corporal junto ao peito[cite: 19]. Adaptação TRX: 10 repetições (registo `0`)[cite: 19].</li>
+                    <li><strong>Push-ups (Flexões de Braços):</strong> Cotovelo alinhado com o ombro no ponto baixo e extensão completa no topo[cite: 19]. Adaptação: de joelhos (conta metade)[cite: 19].</li>
+                    <li><strong>Core - Dorsal (Prancha Posterior no GHD / Solo):</strong> Deitado de barriga para cima, espinha ilíaca póstero-superior alinhada pelo limite da almofada e mãos nos ombros[cite: 19].</li>
+                </ol>
+
+                <h3 class="section-header">Tabela de Pontuação — HOMENS</h3>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>Tipologia</th>
-                                <th>Caracterização</th>
-                                <th>Exemplo Prático</th>
-                                <th>Aplicação Preferencial</th>
+                                <th>Teste / Exercício</th>
+                                <th>5 Pontos</th>
+                                <th>4 Pontos</th>
+                                <th>3 Pontos</th>
+                                <th>2 Pontos</th>
+                                <th>1 Ponto</th>
+                                <th>0 Pontos</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Avaliativo (Positivo/Negativo)</strong></td>
-                                <td>Emissão de um juízo de valor sobre a ação. Mantém a motivação, mas não ensina a correção.</td>
-                                <td>"Muito bem!" ou "Não foi bom."</td>
-                                <td>Reforço emocional imediato.</td>
+                                <td><strong>Push-ups</strong> (reps)</td>
+                                <td>&ge; 40</td>
+                                <td>30 - 39</td>
+                                <td>20 - 29</td>
+                                <td>10 - 19</td>
+                                <td>3 - 9</td>
+                                <td>&lt; 3</td>
                             </tr>
                             <tr>
-                                <td><strong>Prescritivo</strong></td>
-                                <td>Indica a solução motora exata para a repetição seguinte.</td>
-                                <td>"Flecte mais os joelhos antes da batida."</td>
-                                <td>Iniciação técnica / Erros grosseiros.</td>
+                                <td><strong>Pull-ups</strong> (reps)</td>
+                                <td>&ge; 12</td>
+                                <td>9 - 11</td>
+                                <td>6 - 8</td>
+                                <td>4 - 7</td>
+                                <td>1 - 3</td>
+                                <td>0</td>
                             </tr>
                             <tr>
-                                <td><strong>Descritivo</strong></td>
-                                <td>Identifica o erro específico cometido pelo atleta.</td>
-                                <td>"Bateste na bola demasiado atrás da cabeça."</td>
-                                <td>Consolidação / Atletas intermédios.</td>
+                                <td><strong>Agachamentos Unilaterais</strong> (reps)</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>0</td>
                             </tr>
                             <tr>
-                                <td><strong>Interrogativo</strong></td>
-                                <td>Perguntas que induzem o atleta à reflexão e autoconsciência.</td>
-                                <td>"Onde devia estar a tua linha de ombros?"</td>
-                                <td>Avançado / Autonomia tática.</td>
+                                <td><strong>Agachamento 10% PC em 60"</strong> (reps)</td>
+                                <td>&ge; 40</td>
+                                <td>33 - 39</td>
+                                <td>26 - 32</td>
+                                <td>19 - 25</td>
+                                <td>11 - 18</td>
+                                <td>&le; 10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prancha - Posterior</strong> (seg)</td>
+                                <td>&gt; 120</td>
+                                <td>90 - 119</td>
+                                <td>60 - 89</td>
+                                <td>30 - 59</td>
+                                <td>10 - 29</td>
+                                <td>&le; 9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prancha - Anterior</strong> (seg)</td>
+                                <td>&gt; 90</td>
+                                <td>60 - 89</td>
+                                <td>30 - 59</td>
+                                <td>15 - 29</td>
+                                <td>5 - 14</td>
+                                <td>&le; 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="section-header">Tabela de Pontuação — MULHERES</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Teste / Exercício</th>
+                                <th>5 Pontos</th>
+                                <th>4 Pontos</th>
+                                <th>3 Pontos</th>
+                                <th>2 Pontos</th>
+                                <th>1 Ponto</th>
+                                <th>0 Pontos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Push-ups</strong> (reps)</td>
+                                <td>&ge; 40</td>
+                                <td>30 - 39</td>
+                                <td>20 - 29</td>
+                                <td>10 - 19</td>
+                                <td>3 - 9</td>
+                                <td>&lt; 3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pull-ups</strong> (reps)</td>
+                                <td>&ge; 6</td>
+                                <td>4 - 5</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agachamentos Unilaterais</strong> (reps)</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agachamento 10% PC em 60"</strong> (reps)</td>
+                                <td>&ge; 40</td>
+                                <td>33 - 39</td>
+                                <td>26 - 32</td>
+                                <td>19 - 25</td>
+                                <td>11 - 18</td>
+                                <td>&le; 10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prancha - Posterior</strong> (seg)</td>
+                                <td>&gt; 120</td>
+                                <td>90 - 119</td>
+                                <td>60 - 89</td>
+                                <td>30 - 59</td>
+                                <td>10 - 29</td>
+                                <td>&le; 9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prancha - Anterior</strong> (seg)</td>
+                                <td>&gt; 90</td>
+                                <td>60 - 89</td>
+                                <td>30 - 59</td>
+                                <td>15 - 29</td>
+                                <td>5 - 14</td>
+                                <td>&le; 4</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </article>
 
-            <!-- CAPÍTULO 5 -->
-            <article id="cap5" class="chapter-card">
-                <h2 class="chapter-header">5. Estratégias para a Autonomização do Praticante</h2>
-                <p>Transferir responsabilidade pedagógica para os atletas melhora a sua retenção cognitiva e capacidade de tomada de decisão em jogo.</p>
+            <!-- ==========================================
+                 MÓDULO III: DIDÁTICA E ESTATÍSTICA
+                 ========================================== -->
 
-                <h3 class="section-header">A. Ferramentas Autonomizadoras</h3>
+            <article id="m3-didatica" class="chapter-card">
+                <h2 class="chapter-header">1. Dimensões Didáticas do Treino</h2>
                 <ul>
-                    <li><strong>Cartões-Tarefa:</strong> Suportes visuais/escritos com esquemas e critérios que permitem aos atletas gerirem e executarem estações de treino de forma autónoma.</li>
-                    <li><strong>Descoberta Guiada Convergente:</strong> Estruturação de perguntas e condicionantes que guiam o atleta a "descobrir" a solução ideal pretendida pelo treinador.</li>
-                    <li><strong>Descoberta Guiada Divergente:</strong> Criação de cenários e problemas táticos para estimular o atleta a encontrar múltiplas soluções válidas (promovendo a criatividade).</li>
-                </ul>
-
-                <h3 class="section-header">B. Ensino por Pares (*Peer Instruction*)</h3>
-                <ul>
-                    <li><strong>Aprendizagem Cooperativa:</strong> Trabalho em dupla ou pequeno grupo com apoio mútuo.</li>
-                    <li><strong>Efeito Tutor:</strong> O atleta que observa e corrige o colega solidifica o seu próprio "modelo mental" do movimento.</li>
-                    <li><strong>Benefícios Socioafetivos:</strong> Desenvolve competências de comunicação, empatia, escuta ativa e responsabilidade partilhada pelo treino.</li>
+                    <li><strong>Gestão de Treino:</strong> Otimização do Tempo Útil de Treino e do Tempo de Prática Potencial (redução de filas, transições rápidas)[cite: 17]. Posicionamento perimetral do treinador para manter controlo visual constante[cite: 17].</li>
+                    <li><strong>Instrução Eficaz:</strong> Explicações sucintas centradas em pontos críticos[cite: 17]. Aplicação sistemática de Feedback Pedagógico e Questionamento[cite: 17].</li>
+                    <li><strong>Afunilamento Instrucional:</strong> A informação perde-se entre a intenção do treinador, a mensagem emitida, a receção e a retenção final[cite: 17].</li>
                 </ul>
             </article>
 
-            <!-- CAPÍTULO 6 -->
-            <article id="cap6" class="chapter-card">
-                <h2 class="chapter-header">6. Recursos Tecnológicos e Avaliação Digital</h2>
-                <p>A utilização de dispositivos digitais no treino deve servir como um meio facilitador da reflexão, sem sacrificar a densidade motora.</p>
+            <article id="m3-estatistica" class="chapter-card">
+                <h2 class="chapter-header">2. Princípios de Estatística e Análise de Jogo</h2>
+                <p>A estatística serve para avaliar atletas e contextos, corrigir a técnica/tática, organizar os treinos com critério e elaborar planos de jogo[cite: 24]. Na formação, deve ser <strong>precisa, concisa e adequada ao nível da equipa</strong>[cite: 24].</p>
 
-                <h3 class="section-header">A. Aplicação no Treino (Tablets / Smartphones)</h3>
-                <ul>
-                    <li><strong>Gravação de Vídeo & Video Delay:</strong> Permite ao atleta visualizar a sua própria execução poucos segundos após a ação, eliminando a subjetividade e alinhando a perceção cinestésica com a imagem real.</li>
-                    <li><strong>QR-Codes:</strong> Acesso rápido a fichas de tarefas, exercícios e tutoriais demonstrativos em estações autónomas.</li>
-                    <li><strong>Observação por Pares Digital:</strong> Atribuição de funções analíticas a atletas em pausa através de grelhas simples no ecrã.</li>
-                </ul>
+                <h3 class="section-header">Escala de Codificação Qualitativa (6 Dimensões / Data Volley)</h3>
+                <div class="code-like-block">
++------------+---------------+---------------+-----------------+---------------+---------------+-------------+
+| FUNDAMENTO | (=) / 0       | (/) / 1       | (-) / 2         | ( ! ) / 3     | (+) / 4       | (#) / 5     |
++------------+---------------+---------------+-----------------+---------------+---------------+-------------+
+| SERVIÇO    | Erro          | Rec #         | Rec +           | Rec !         | Rec /         | Ás (#)      |
+| RECEÇÃO    | Ás concedido  | Rec /         | Rec -           | Rec !         | Passe +       | Passe #     |
+| PASSE      | Erro          | Fb ou Pr      | 1 vs 3          | 1 vs 2        | 1 vs 1        | 1 vs 0      |
+| ATAQUE     | Erro          | Bloco #       | Def + / Bloco + | Def ! / Bloco!| Def - / Bloco-| Ponto (#)   |
+| BLOCO      | Ataque #      | Erro          | Ataque +        | Ataque !      | Ataque -      | Ponto (#)   |
+| DEFESA     | Erro          | Ataque +      | Ataque +        | Ataque !      | Ataque -      | Ataque -    |
++------------+---------------+---------------+-----------------+---------------+---------------+-------------+
+                </div>
 
-                <h3 class="section-header">B. Cuidados Pedagógicos no Uso da Tecnologia</h3>
+                <h3 class="section-header">Análise Tática de Campo e Zonas de Receção</h3>
                 <ul>
-                    <li><strong>Filtro de Informação:</strong> Selecionar apenas 1 ou 2 componentes críticas para análise, evitando a sobrecarga cognitiva do atleta (<em>information overload</em>).</li>
-                    <li><strong>Literacia Digital:</strong> Assegurar que os atletas dominam o uso da ferramenta para não perder tempo útil de treino.</li>
-                    <li><strong>Tecnologia como Meio:</strong> Garantir que o recurso ao ecrã auxilia o processo reflexivo sem comprometer a intensidade e o volume de prática motora.</li>
+                    <li><strong>Divisão Sub-Zonal:</strong> Subdivisão de cada zona (1 a 6) em sub-zonas (A, B, C, D) para mapear trajetórias exatas[cite: 24].</li>
+                    <li><strong>Qualidade de Receção:</strong>
+                        <ul>
+                            <li><em>Zona A (Perfeita):</em> Bola no microespaço do distribuidor (entre zonas 2 e 3, colada à rede)[cite: 24].</li>
+                            <li><em>Zona B (Positiva):</em> Bola jogável na zona de ataque[cite: 24].</li>
+                            <li><em>Zona C (Afastada):</em> Bola fora da zona de ataque[cite: 24].</li>
+                        </ul>
+                    </li>
+                    <li><strong>Códigos de Central (K1/K2):</strong> K2, K7, KC, KM, KP, KE (definem o tipo de bola, tempo de passe e posição do central)[cite: 24].</li>
                 </ul>
             </article>
 
-            <!-- CAPÍTULO 7 -->
-            <article id="cap7" class="chapter-card">
-                <h2 class="chapter-header">7. Enquadramento Regulamentar: Regra dos 9 Jogadores</h2>
-                <p>Análise do regulamento federativo de arbitragem para os escalões de formação (Infantis e Iniciados).</p>
+            <!-- ==========================================
+                 MÓDULO IV: REGRAS OFICIAIS E ARBITRAGEM
+                 ========================================== -->
 
-                <div class="callout callout-accent">
-                    <div class="callout-title"> Consequências da Falta do Número Mínimo de 9 Atletas</div>
-                    <p>Quando uma equipa de Infantis ou Iniciados não atinge o número mínimo de 9 jogadores inscritos no boletim de jogo:</p>
+            <article id="m4-composicao" class="chapter-card">
+                <h2 class="chapter-header">1. Composição das Equipas e Inscrição</h2>
+                <p>Uma equipa é composta por até 12 jogadores (até 14 na 1.ª/2.ª Divisões e Juniores A), mais equipa técnica (1 Treinador, máximo 2 Adjuntos) e médica[cite: 22, 23]. Apenas os inscritos no boletim podem participar no jogo e no aquecimento[cite: 22, 23].</p>
+                <p><strong>Capitão em Jogo:</strong> Único autorizado a falar com os árbitros quando a bola está fora de jogo[cite: 22, 23].<br>
+                <strong>Treinador:</strong> Dirige a equipa da zona livre, solicita "Tempos" e substituições[cite: 23].</p>
+            </article>
+
+            <article id="m4-formacao" class="chapter-card">
+                <h2 class="chapter-header">2. Normas Específicas dos Escalões de Formação (FPV)</h2>
+                
+                <h3 class="section-header">Regra da Rotatividade de Jogadores (Infantis e Iniciados)</h3>
+                <ul>
+                    <li>Mínimo obrigatório de <strong>9 jogadores inscritos</strong>[cite: 22].</li>
+                    <li><strong>1.º Set:</strong> Formação inicial de 6 jogadores[cite: 22].</li>
+                    <li><strong>2.º Set:</strong> A formação deve incluir, no mínimo, <strong>3 jogadores novos</strong> que não jogaram no 1.º Set[cite: 22].</li>
+                    <li><strong>3.º Set:</strong> A formação deve incluir <strong>3 novos jogadores</strong>, não podendo alinhar atletas que jogaram os dois sets anteriores[cite: 22].</li>
+                    <li>Em nenhuma circunstância um atleta pode jogar 3 sets seguidos[cite: 22].</li>
+                </ul>
+
+                <div class="callout callout-danger">
+                    <div class="callout-title">Sancionamento por Incumprimento (Falta de 9 Atletas)</div>
+                    <p>Se a equipa não apresentar 9 jogadores ou violar a rotatividade obrigatória:</p>
                     <ol>
-                        <li><strong>Permissão de Jogo:</strong> A equipa **PODE** realizar o jogo, desde que cumpra a Regra 7.3.1 (Regra geral de Voleibol). Não se aplicam, nesta situação, as restrições obrigatórias de rotação/utilização de jogadores novos por set.</li>
-                        <li><strong>Derrota Administrativa:</strong> Independentemente do resultado alcançado em campo, é atribuída **derrota por 0–3** (parciais de 0–25, 0–25, 0–25) e **zero (0) pontos** na tabela de classificação à equipa incumpridora.</li>
-                        <li><strong>Adversário:</strong> À equipa adversária é atribuída a **vitória por 3–0** (parciais de 25–0, 25–0, 25–0) e **três (3) pontos** no jogo.</li>
+                        <li>O jogo realiza-se normalmente cumprindo a regra geral de 6 jogadores em campo[cite: 22].</li>
+                        <li><strong>Consequência:</strong> Derrota administrativa por <strong>0-3 (0-25, 0-25, 0-25) e 0 pontos</strong> para a equipa em falta[cite: 22]. À equipa adversária é atribuída Vitória por 3-0 (25-0, 25-0, 25-0) e 3 pontos[cite: 22].</li>
                     </ol>
                 </div>
             </article>
 
-            <!-- CAPÍTULO 8 -->
-            <article id="cap8" class="chapter-card">
-                <h2 class="chapter-header">8. Abordagem Metodológica por Escalão</h2>
-                <p>O planeamento deve respeitar as fases de maturação motora e tática dos atletas ao longo dos escalões de formação.</p>
+            <article id="m4-protocolo" class="chapter-card">
+                <h2 class="chapter-header">3. Protocolo de Jogo Cronometrado (FIVB / FPV)</h2>
+                <div class="diagram-box">
+                    <strong>T-50'</strong> Entrada da Arbitragem ➔ <strong>T-15'</strong> Sorteio Oficial ➔ <strong>T-14'</strong> Aquecimento à Rede<br>
+                    <strong>T-12'</strong> Fichas de Posição ➔ <strong>T-4'</strong> Fim do Aquecimento ➔ <strong>T-0'</strong> Apito do 1.º Serviço
+                </div>
+            </article>
 
+            <article id="m4-posicoes" class="chapter-card">
+                <h2 class="chapter-header">4. Posições, Faltas de Posição e Rotação</h2>
+                <div class="code-like-block">
+             REDE (Linha Central)
+ ┌──────────────────┬──────────────────┬──────────────────┐
+ │    Posição 4     │    Posição 3     │    Posição 2     │
+ │ (Avançado Esq.)  │ (Avançado Ctro)  │ (Avançado Dir.)  │
+ ├──────────────────┼──────────────────┼──────────────────┤
+ │    Posição 5     │    Posição 6     │    Posição 1     │
+ │  (Defesa Esq.)   │  (Defesa Ctro)   │(Defesa Dir/Serv) │
+ └──────────────────┴──────────────────┴──────────────────┘
+ Sentido da Rotação: Ponteiros do Relógio (2 ➔ 1 ➔ 6 ➔ 5 ➔ 4 ➔ 3 ➔ 2)
+                </div>
+                <p><strong>Falta de Posição:</strong> Um jogador está fora da posição relativa correta no instante em que a bola é batida pelo servidor[cite: 23]. Penalização: ponto e serviço para o adversário[cite: 23].</p>
+                <p><strong>Falta de Rotação:</strong> O serviço não é efetuado de acordo com a ordem registada[cite: 23]. Todos os pontos obtidos pela equipa em falta desde o momento do erro são **anulados**[cite: 23].</p>
+            </article>
+
+            <article id="m4-interrupcoes" class="chapter-card">
+                <h2 class="chapter-header">5. Interrupções Regulamentares e Gestão do Líbero</h2>
+                <p>Cada equipa dispõe de <strong>2 Tempos de Pausa</strong> (30s) e <strong>6 Substituições</strong> por set[cite: 23]. Um jogador inicial pode sair e reentrar uma única vez por set, para a mesma posição[cite: 23].</p>
+                
+                <h3 class="section-header">Regras do Líbero</h3>
+                <ul>
+                    <li>Atua exclusivamente como jogador defensivo na linha de trás (posições 5, 6, 1)[cite: 23].</li>
+                    <li>Não pode servir, blocar ou completar um ataque com a bola acima do bordo superior da rede[cite: 23].</li>
+                    <li>Se fizer um passe de dedos **dentro da zona de ataque (3m)**, a bola não pode ser atacada acima da rede[cite: 23]. Se for executado fora dos 3m, o ataque é livre[cite: 23].</li>
+                </ul>
+            </article>
+
+            <article id="m4-sancoes" class="chapter-card">
+                <h2 class="chapter-header">6. Disciplina e Escala Progressiva de Sanções</h2>
+                
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>Escalão / Categoria</th>
-                                <th>Foco Primário</th>
-                                <th>Sistema Tático</th>
-                                <th>Volume vs. Intensidade</th>
+                                <th>Comportamento</th>
+                                <th>Ocorrência</th>
+                                <th>Cartão Exibido</th>
+                                <th>Consequência Aplicada</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Iniciadas (Sub-14/15)</strong></td>
-                                <td>Leitura de bola, deslocamentos, manchete precisa, passe alto de dedos, serviço por cima consciente.</td>
-                                <td>6x0 / 4x2 Simples</td>
-                                <td>Alto volume técnico, baixa/média intensidade mecânica.</td>
+                                <td><strong>Menor</strong></td>
+                                <td>Nível 1</td>
+                                <td>Nenhum</td>
+                                <td>Advertência Verbal via Capitão em Jogo[cite: 23].</td>
                             </tr>
                             <tr>
-                                <td><strong>Cadetes (Sub-16/17)</strong></td>
-                                <td>Especialização funcional, bloqueio duplo, apoio de ataque e transição K2 rápida.</td>
-                                <td>4x2 c/ Infiltração / 5x1 Inicial</td>
-                                <td>Volume moderado, alta intensidade de deslocamento e saltos.</td>
+                                <td><strong>Menor</strong></td>
+                                <td>Nível 2</td>
+                                <td><strong>Amarelo</strong></td>
+                                <td>Advertência Formal (sem ponto, registo em boletim)[cite: 23].</td>
                             </tr>
                             <tr>
-                                <td><strong>Veteranos / Seniores</strong></td>
-                                <td>Eficiência tática, leitura de jogo, estabilidade emocional, gestão articular/prevenção.</td>
-                                <td>5x1 Avançado</td>
-                                <td>Volume controlado, máxima intensidade competitiva.</td>
+                                <td><strong>Grosseiro</strong></td>
+                                <td>1.ª Ocorrência</td>
+                                <td><strong>Vermelho</strong></td>
+                                <td><strong>Penalização:</strong> Ponto e serviço para o adversário[cite: 23].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grosseiro</strong></td>
+                                <td>2.ª Ocorrência</td>
+                                <td><strong>Amarelo + Vermelho Juntos</strong></td>
+                                <td><strong>Expulsão:</strong> Saída do set; vai para o balneário[cite: 23].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grosseiro</strong></td>
+                                <td>3.ª Ocorrência</td>
+                                <td><strong>Amarelo + Vermelho Separados</strong></td>
+                                <td><strong>Desqualificação:</strong> Saída do jogo; abandona a área[cite: 23].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ofensivo</strong></td>
+                                <td>1.ª Ocorrência</td>
+                                <td><strong>Amarelo + Vermelho Juntos</strong></td>
+                                <td><strong>Expulsão Direta:</strong> Saída do set[cite: 23].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agressão</strong></td>
+                                <td>1.ª Ocorrência</td>
+                                <td><strong>Amarelo + Vermelho Separados</strong></td>
+                                <td><strong>Desqualificação Direta:</strong> Saída do jogo[cite: 23].</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </article>
 
-            <!-- CAPÍTULO 9 -->
-            <article id="cap9" class="chapter-card">
-                <h2 class="chapter-header">9. Biomecânica dos Gestos Técnicos</h2>
+            <article id="m4-protestos" class="chapter-card">
+                <h2 class="chapter-header">7. Situações Especiais e Protestos de Jogo</h2>
                 
-                <h3 class="section-header">A. O Passe / Recepção de Manchete</h3>
-                <p>Base do jogo de recepção e defesa. Exige uma plataforma rígida formada pelos antebraços unidos, sem quebrar os cotovelos no momento do impacto. O impulso deve provir da extensão suave dos membros inferiores e não do "balanço" excessivo dos braços.</p>
+                <h3 class="section-header">Falta de Árbitro Nomeado (Art. 31.° Regulamento FPV)</h3>
+                <p>Nenhum jogo pode deixar de se realizar por falta de árbitro[cite: 22]. Se não houver árbitro oficial ativo ou inativo na assistência, o jogo é dirigido por um jogador de cada equipa, atuando o **jogador da equipa visitante como 1.º Árbitro**[cite: 22].</p>
 
-                <h3 class="section-header">B. A Distribuição / Passe de Dedos</h3>
-                <p>Executado sobre a linha da testa, com as mãos a formarem um triângulo/concha (indicadores e polegares). O contacto deve ser suave e simétrico, utilizando a flexão e extensão de pulsos e cotovelos.</p>
-
-                <h3 class="section-header">C. O Ataque (Cadeia Cinética)</h3>
-                <ul>
-                    <li><strong>Passada de Aproximação:</strong> A penúltima passada (passo de travagem) deve ser longa e profunda para converter a velocidade horizontal em impulsão vertical.</li>
-                    <li><strong>Armação de Braços:</strong> Elevação simétrica. O braço não-dominante aponta para a bola (estabilizador visual) enquanto o cotovelo dominante recua acima da linha dos ombros.</li>
-                    <li><strong>Punto de Contacto:</strong> No ponto mais alto do salto, à frente do corpo, aplicando flexão/pronação ativa do pulso para gerar efeito *top-spin*.</li>
-                </ul>
-
-                <h3 class="section-header">D. O Bloqueio</h3>
-                <p>A eficácia depende da velocidade de deslocamento lateral e da penetração das mãos sobre o plano da rede, selando o espaço com os ombros encolhidos para proteção articular.</p>
-            </article>
-
-            <!-- CAPÍTULO 10 -->
-            <article id="cap10" class="chapter-card">
-                <h2 class="chapter-header">10. Tática Coletiva: Complexo K1 e K2</h2>
-                <p>A organização tática do voleibol divide-se em duas fases fundamentais de jogo que exigem diferentes estados mentais e coordenações mecânicas.</p>
-
-                <h3 class="section-header">A. Complexo K1 (Ataque de Recepção / Side-Out)</h3>
-                <p>Compreende a sequência ofensiva primária: **Serviço Adversário ➔ Recepção de Manchete ➔ Distribuição ➔ Remate Ofensivo ➔ Cobertura do Ataque**. A prioridade do K1 é garantir uma recepção de alta qualidade para permitir ao distribuidor utilizar todas as opções táticas (zonas 4, 2, centrais e pipe).</p>
-
-                <h3 class="section-header">B. Complexo K2 (Contra-Ataque)</h3>
-                <p>Compreende a sequência defensiva e de re-ataque: **Serviço Próprio ➔ Bloqueio ➔ Defesa de Campo ➔ Distribuição de Transição ➔ Contra-Ataque**. É no K2 que as equipas de elevado rendimento constroem as diferenças pontuais no marcador, exigindo uma transição mental agressiva da defesa para o ataque.</p>
-
-                <div class="callout callout-success">
-                    <div class="callout-title"> Sinergia K1-K2</div>
-                    A estabilidade de uma equipa mede-se pela sua eficiência de K1, mas a capacidade de ganhar jogos decisivos reside na agressividade e organização do seu sistema K2.
-                </div>
+                <h3 class="section-header">Tramitação Legal de Protestos</h3>
+                <ol>
+                    <li>No momento da infração, o capitão em jogo comunica ao 1.º Árbitro que protesta[cite: 22, 23].</li>
+                    <li>No final do jogo, o capitão assina o boletim confirmando o protesto[cite: 22, 23].</li>
+                    <li>O clube deve submeter o processo fundamentado e a taxa ao Conselho Disciplinar da FPV no prazo rígido de **2 dias úteis**[cite: 22].</li>
+                </ol>
             </article>
 
         </div>
@@ -659,7 +904,7 @@
             
             chapters.forEach(chapter => {
                 const chapterTop = chapter.offsetTop;
-                if (pageYOffset >= chapterTop - 120) {
+                if (window.pageYOffset >= chapterTop - 120) {
                     current = chapter.getAttribute('id');
                 }
             });
